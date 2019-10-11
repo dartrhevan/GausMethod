@@ -18,7 +18,10 @@ function getSystem() {
 function directMove(sys) { //прямой проход(пока не доделал)
     for(let i = 0; i < sys.length; i++) {
         for(let j = i + 1; j < sys.length; j++) {
-            sys[j].forEach((e, k) => e = e * (sys[i][i] / sys[i][j]) - sys[i][k]);
+            const coef = sys[i][i] / sys[i][j];
+            for(let k = 0; k < sys[j].length; k++)
+                    sys[j][k] = sys[j][k] * coef - sys[i][k];
+            //sys[j].forEach((e, k) => e = e * (sys[i][i] / sys[i][j]) - sys[i][k]);
         }
     }
     console.log(sys);

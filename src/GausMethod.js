@@ -16,14 +16,29 @@ function getSystem() {
     return res;
 }
 
+function swapRows(row1, row2) {
+    for(let i = 0; i < row1.length; i++)
+    {
+        const temp = row1[i];
+        row1[i] = row2[i];
+        row2[i] = temp;
+    }
+}
+
 function directMove(sys) { //прямой проход(пока не доделал)
-    for(let i = 0; i < sys.length; i++) {
+    //let flag = null;
+    for(let i = 0; i < sys.length - 1; i++) {
         for(let j = i + 1; j < sys.length; j++) {
-            const coef = sys[i][i] / sys[i][j];
+            if(sys[j][i] === 0) continue;
+            const coef = sys[i][i] / sys[j][i];
             for(let k = 0; k < sys[j].length; k++)
-                    sys[j][k] = sys[j][k] * coef - sys[i][k];
-            //sys[j].forEach((e, k) => e = e * (sys[i][i] / sys[i][j]) - sys[i][k]);
+                    sys[j][k] = sys[j][k] - sys[i][k] * coef;
+            //if(i < sys.length - 1 && sys[j][i + 1] === 0) flag = j;
         }
+        /*if(flag) {
+            swapRows(sys[flag], sys[flag + 1]);
+            flag = null;
+        }*/
     }
     console.log(sys);
 }

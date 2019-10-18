@@ -27,17 +27,19 @@ function swapRows(row1, row2) {
 
 function validateAndCorrect(sys) {
     for(let j = 1; j < sys.length; j++) {
-        const ind = sys.indexOf((e) => e[j - 1] === 0);
-        if(ind !== j)
-            swapRows(sys[ind], sys[j]);
+        const row = sys.find(e => e[j - 1] === 0);
+        if(row !== sys[j])
+            swapRows(row, sys[j]);
+        /*if(ind !== j)
+            swapRows(sys[ind], sys[j]);*/
     }
 }
 
 function directMove(sys) { //прямой проход(пока не доделал)
     //let flag = null;
     for(let i = 0; i < sys.length - 1; i++) {
+        if(sys[i][i] === 0) continue;
         for(let j = i + 1; j < sys.length; j++) {
-            if(sys[j][i] === 0) continue;
             const coef = sys[j][i] / sys[i][i];
             for(let k = 0; k < sys[j].length; k++)
                     sys[j][k] = sys[j][k] - sys[i][k] * coef;
@@ -48,7 +50,7 @@ function directMove(sys) { //прямой проход(пока не додел�
             flag = null;
         }*/
     }
-    //validateAndCorrect(sys);
+    validateAndCorrect(sys);
     console.log(sys);
 }
 

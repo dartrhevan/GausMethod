@@ -49,9 +49,11 @@ function calc() {
         console.log(sys);
     }
 
-    function reverseMove(sys) {//обратный проход (можешь заняться этим)
-        for(let i = sys.length - 1; i >= 0 ; i--){
-            for(let j = i - 1; j >= 0; j--){
+    function reverseMove(sys) {//обратный проход т(можешь заняться этим)
+        for(let i = sys.length - 1; i >= 0 ; i--) {
+            sys[i][sys.length] /= sys[i][i];
+            sys[i][i] = 1;
+            for(let j = i - 1; j >= 0; j--) {
                 const coef = sys[j][i]  / sys[i][i];
                 for(let k = sys.length; k >=0 ; k--) {
                     sys[j][k] = sys[j][k] - sys[i][k] * coef;
@@ -71,8 +73,6 @@ function calc() {
         }
         resString += ')';
         alert(resString);
-
-
     }
 
     let sys = getSystem();

@@ -20,23 +20,26 @@ function calc() {
         return res;
     }
 
-    function swapRows(row1, row2) {
-        for(let i = 0; i < row1.length; i++) {
-            const temp = row1[i];
-            row1[i] = row2[i];
-            row2[i] = temp;
-        }
-    }
-
-    function validateAndCorrect(sys) {
-        for(let j = 1; j < sys.length; j++) {
-            const row = sys.find(e => e[j - 1] == 0);
-            if(row !== sys[j])
-                swapRows(row, sys[j]);
-        }
-    }
 
     function directMove(sys) { //прямой проход
+
+        function validateAndCorrect(sys) {
+
+            function swapRows(row1, row2) {
+                for(let i = 0; i < row1.length; i++) {
+                    const temp = row1[i];
+                    row1[i] = row2[i];
+                    row2[i] = temp;
+                }
+            }
+
+            for(let j = 1; j < sys.length; j++) {
+                const row = sys.find(e => e[j - 1] == 0);
+                if(row !== sys[j])
+                    swapRows(row, sys[j]);
+            }
+        }
+
         for(let i = 0; i < sys.length - 1; i++) {
             if(sys[i][i] === 0) continue;
             for(let j = i + 1; j < sys.length; j++) {
@@ -75,9 +78,13 @@ function calc() {
         alert(resString);
     }
 
-    let sys = getSystem();
-    directMove(sys);
-    reverseMove(sys);
+    function gausMethod(sys) {
+        directMove(sys);
+        reverseMove(sys);
+    }
+
+    const sys = getSystem();
+    gausMethod(sys);
     output(sys);
 }
 

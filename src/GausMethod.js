@@ -30,7 +30,7 @@ function calc() {
 
     function validateAndCorrect(sys) {
         for(let j = 1; j < sys.length; j++) {
-            const row = sys.find(e => e[j - 1] === 0);
+            const row = sys.find(e => e[j - 1] == 0);
             if(row !== sys[j])
                 swapRows(row, sys[j]);
         }
@@ -42,7 +42,7 @@ function calc() {
             for(let j = i + 1; j < sys.length; j++) {
                 const coef = sys[j][i] / sys[i][i];
                 for(let k = 0; k < sys[j].length; k++)
-                    sys[j][k] = sys[j][k] - sys[i][k] * coef;
+                    sys[j][k] = (sys[j][k] - sys[i][k] * coef).toFixed(15);
             }
         }
         validateAndCorrect(sys);
@@ -56,7 +56,7 @@ function calc() {
             for(let j = i - 1; j >= 0; j--) {
                 const coef = sys[j][i]  / sys[i][i];
                 for(let k = sys.length; k >=0 ; k--) {
-                    sys[j][k] = sys[j][k] - sys[i][k] * coef;
+                    sys[j][k] = (sys[j][k] - sys[i][k] * coef).toFixed(15);
                 }
             }
         }

@@ -50,11 +50,29 @@ function calc() {
     }
 
     function reverseMove(sys) {//обратный проход (можешь заняться этим)
-        //TODO
+        for(let i = sys.length - 1; i >= 0 ; i--){
+            for(let j = i - 1; j >= 0; j--){
+                const coef = sys[j][i]  / sys[i][i];
+                for(let k = sys.length; k >=0 ; k--) {
+                    sys[j][k] = sys[j][k] - sys[i][k] * coef;
+                }
+            }
+        }
+        console.log(sys);
     }
 
     function output(sys) {//вывод результата(этим тоже)
-        //TODO
+        let resString = 'Результат: (';
+        for(let i = 0 ; i < sys.length; i++)
+        {
+            resString+= sys[i][sys.length];
+            if(i !== sys.length - 1)
+                resString+= ', ';
+        }
+        resString += ')';
+        alert(resString);
+
+
     }
 
     let sys = getSystem();

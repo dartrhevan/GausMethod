@@ -30,6 +30,7 @@ class App extends React.Component {
           {rows}
           <button onClick={calc}>Calc</button>
         </div>
+
     );
   }
 }

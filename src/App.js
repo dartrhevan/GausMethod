@@ -29,6 +29,7 @@ class App extends React.Component {
           <br />
           {rows}
           <button onClick={calc}>Calc</button>
+            <h2 id="res"></h2>
         </div>
 
     );

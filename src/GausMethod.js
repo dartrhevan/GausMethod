@@ -75,6 +75,8 @@ function calc() {
                 resString+= ', ';
         }
         resString += ')';
+        const res = document.getElementById('res');
+        res.innerHTML = resString;
         alert(resString);
     }
 

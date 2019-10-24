@@ -83,6 +83,27 @@ function calc() {
         reverseMove(sys);
     }
 
+    function runMethod(sys) {
+        const us = [];
+        const vs = [];
+        const xs = [];
+        const getA = i => sys[i][i - 1];
+        const getB = i => sys[i][i];
+        const getC = i => sys[i][i + 1];
+        const getD = i => sys[i][sys[i].length - 1];
+        function calcCoefficients() {
+            us[0] = -getA(0) / getB(0);
+            vs[0] = getD(0) / getB(0);
+
+            for(let i = 1; i < sys.length; i++) {
+                us[i] = - getC(i) / (getA(i) * us[i - 1] + getB(i));
+                vs[i] = (getD(i) - getA(i) * vs[i - 1]) / (getA(i) * us[i - 1] + getB(i));
+            }
+        }
+        calcCoefficients();
+
+    }
+
     const sys = getSystem();
     gausMethod(sys);
     output(sys);

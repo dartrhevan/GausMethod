@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Row from "./Row";
-import {calc, runcalc} from './GausMethod'
+import {calc, runcalc, autofill} from './GausMethod'
 
 class App extends React.Component {
   constructor() {
@@ -30,7 +30,7 @@ class App extends React.Component {
           {rows}
           <button onClick={calc}>Calc</button>
             <button onClick={runcalc}>RunCalc</button>
-            <h2 id="res"></h2>
+            <button onClick={autofill}>AutoFill</button>
         </div>
 
     );

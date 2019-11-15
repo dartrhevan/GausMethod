@@ -88,16 +88,30 @@ function calc() {
     gausMethod(sys);
     output(sys);
 }
+function autofill() {
+    let sys = getSystem();
+    let i = 0;
+    let j = 0;
+    const arr = [3, 2, 0, 0, 4, 1, -8, 1, 0, -1, 0, 1, 4, -3, 2, 0, 0, 1, 2, 6];
+    for(let row of document.getElementsByClassName('row')) {
+         let vard = row.getElementsByClassName('ent');
+                for (let ent of vard) {
+                    ent.value = arr[i * (sys.length) + i + j].toString();
+                    j++;
+                }
+        }
+        i++;
 
+}
 function runcalc() {
     function runMethod(sys) {
         const us = [];
         const vs = [];
         const xs = [];
-        const getA = i => sys[i][i - 1];
-        const getB = i => sys[i][i];
-        const getC = i => sys[i][i + 1];
-        const getD = i => sys[i][sys[i].length - 1];
+        const getA = i => sys[i][i - 1]; //y
+        const getB = i => sys[i][i];     //beta
+        const getC = i => sys[i][i + 1]; //alfa
+        const getD = i => sys[i][sys[i].length - 1]; //delta
         function calcCoefficients() {
             us[0] = -getC(0) / getB(0);
             vs[0] = getD(0) / getB(0);
@@ -106,9 +120,18 @@ function runcalc() {
                 vs[i] = (getD(i) - getA(i) * vs[i - 1]) / (getA(i) * us[i - 1] + getB(i));
             }
         }
+        function calcAnswer(i) {
+            if(i === sys.length - 1)
+            xs[i] = (getC(i)*vs[i-1]-getD(i))/(getB(i) - getC(i)*us[i-1]);
+            else xs[i] = us[i]*xs[i+1] + vs[i];
+            if(i !== 0)
+            calcAnswer(i-1)
+        }
         calcCoefficients();
+        calcAnswer(sys.length - 1)
         console.log(us);
         console.log(vs);
+        alert(runOutput(xs));
     }
 
     const sys = getSystem();
@@ -116,8 +139,15 @@ function runcalc() {
     //output(sys);
 
 }
+function runOutput(xs) {
+    let string = '';
+    for(let a = 0; a < xs.length; a++)
+            string += xs[a] + ', ';
+    return string;
+}
 
 module.exports = {
     calc,
-    runcalc
+    runcalc,
+    autofill,
 };

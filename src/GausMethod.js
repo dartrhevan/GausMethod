@@ -1,25 +1,38 @@
 
+function output(sys) {//вывод результата
+    let resString = 'Результат: (';
+    for(let i = 0 ; i < sys.length; i++)
+    {
+        resString+= sys[i][sys.length];
+        if(i !== sys.length - 1)
+            resString+= ', ';
+    }
+    resString += ')';
+    const res = document.getElementById('res');
+    res.innerHTML = resString;
+    alert(resString);
+}
+
+function getRowArray(row) {
+    const res = [];
+
+    for(let ent of row) {
+        res.push(Number.parseFloat(ent.value));
+    }
+
+    return res;
+}
+
+function getSystem() {
+    const res = [];
+    for(let row of document.getElementsByClassName('row')) {
+        res.push(getRowArray(row.getElementsByClassName('ent')));
+    }
+    console.log(res);
+    return res;
+}
+
 function calc() {
-
-    function getRowArray(row) {
-        const res = [];
-
-        for(let ent of row) {
-            res.push(Number.parseFloat(ent.value));
-        }
-
-        return res;
-    }
-
-    function getSystem() {
-        const res = [];
-        for(let row of document.getElementsByClassName('row')) {
-            res.push(getRowArray(row.getElementsByClassName('ent')));
-        }
-        console.log(res);
-        return res;
-    }
-
 
     function directMove(sys) { //прямой проход
 
@@ -52,7 +65,7 @@ function calc() {
         console.log(sys);
     }
 
-    function reverseMove(sys) {//обратный проход т(можешь заняться этим)
+    function reverseMove(sys) {//обратный проход
         for(let i = sys.length - 1; i >= 0 ; i--) {
             sys[i][sys.length] /= sys[i][i];
             sys[i][i] = 1;
@@ -66,20 +79,6 @@ function calc() {
         console.log(sys);
     }
 
-    function output(sys) {//вывод результата(этим тоже)
-        let resString = 'Результат: (';
-        for(let i = 0 ; i < sys.length; i++)
-        {
-            resString+= sys[i][sys.length];
-            if(i !== sys.length - 1)
-                resString+= ', ';
-        }
-        resString += ')';
-        const res = document.getElementById('res');
-        res.innerHTML = resString;
-        alert(resString);
-    }
-
     function gausMethod(sys) {
         directMove(sys);
         reverseMove(sys);
@@ -90,4 +89,35 @@ function calc() {
     output(sys);
 }
 
-export default calc;
+function runcalc() {
+    function runMethod(sys) {
+        const us = [];
+        const vs = [];
+        const xs = [];
+        const getA = i => sys[i][i - 1];
+        const getB = i => sys[i][i];
+        const getC = i => sys[i][i + 1];
+        const getD = i => sys[i][sys[i].length - 1];
+        function calcCoefficients() {
+            us[0] = -getC(0) / getB(0);
+            vs[0] = getD(0) / getB(0);
+            for(let i = 1; i < sys.length; i++) {
+                us[i] = - getC(i) / (getA(i) * us[i - 1] + getB(i));
+                vs[i] = (getD(i) - getA(i) * vs[i - 1]) / (getA(i) * us[i - 1] + getB(i));
+            }
+        }
+        calcCoefficients();
+        console.log(us);
+        console.log(vs);
+    }
+
+    const sys = getSystem();
+    runMethod(sys);
+    //output(sys);
+
+}
+
+module.exports = {
+    calc,
+    runcalc
+};

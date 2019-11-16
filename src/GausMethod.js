@@ -112,22 +112,30 @@ function runcalc() {
         const us = [];
         const vs = [];
         const xs = [];
-        const getA = i => sys[i][i - 1]; //y
+        const getA = i => sys[i][i - 1]; //alfa
         const getB = i => sys[i][i];     //beta
-        const getC = i => i === sys.length - 1 ? 0 : sys[i][i + 1]; //alfa
+        const getC = i => i === sys.length - 1 ? 0 : sys[i][i + 1]; //y
         const getD = i => sys[i][sys[i].length - 1]; //delta
         function calcCoefficients() {
-            us[0] = -getC(0) / getB(0);
-            vs[0] = getD(0) / getB(0);
-            for(let i = 1; i < sys.length; i++) {
-                us[i] = - getC(i) / (getA(i) * us[i - 1] + getB(i));
-                vs[i] = (getD(i) - getA(i) * vs[i - 1]) / (getA(i) * us[i - 1] + getB(i));
+            us[0] = getC(0) / getB(0);
+            vs[0] = -getD(0) / getB(0);
+            for(let i = 1; i < sys.length - 1; i++) {
+                us[i] =  getC(i) / (-getA(i) * us[i - 1] + getB(i));
+                vs[i] = (-getD(i) + getA(i) * vs[i - 1]) / (-getA(i) * us[i - 1] + getB(i));
             }
         }
         function calcAnswer(i) {
-            if(i === sys.length - 1)
-            xs[i] = (getC(i)*vs[i-1]-getD(i))/(getB(i) - getC(i)*us[i-1]);
-            else xs[i] = us[i]*xs[i+1] + vs[i];
+            if(i === sys.length - 1){
+                let a = getA(i);
+                let q = vs[i-1];
+                let p = us[i-1];
+                let d = getD(i);
+                let b = getB(i)
+                xs[i] = (a*q-d)/(b - a*p);
+            }
+            else {
+                xs[i] = us[i]*xs[i+1] + vs[i];
+            }
             if(i !== 0)
             calcAnswer(i-1)
         }

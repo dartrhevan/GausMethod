@@ -16,9 +16,8 @@ function output(sys) {//вывод результата
 function getRowArray(row) {
     const res = [];
 
-    for(let ent of row) {
+    for(let ent of row)
         res.push(Number.parseFloat(ent.value));
-    }
 
     return res;
 }
@@ -47,7 +46,12 @@ function calc() {
             }
 
             for(let j = 1; j < sys.length; j++) {
-                const row = sys.find(e => e[j - 1] == 0);
+                const row = sys.find(e => {
+                    for(let i = 0; i < j; i++)
+                        if(e[i] != 0)
+                            return false;
+                        return true;
+                });
                 if(row !== sys[j])
                     swapRows(row, sys[j]);
             }

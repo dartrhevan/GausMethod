@@ -28,9 +28,12 @@ class App extends React.Component {
           <input type='number' className='ent' id='dim' value={this.state.dimension} onChange={this.changeDimension}/>
           <br />
           {rows}
+
           <button onClick={calc}>Calc</button>
             <button onClick={runcalc}>RunCalc</button>
             <button onClick={autofill}>AutoFill</button>
+          <br/>
+          <label id='res'></label>
         </div>
 
     );

@@ -114,7 +114,7 @@ function runcalc() {
         const xs = [];
         const getA = i => sys[i][i - 1]; //y
         const getB = i => sys[i][i];     //beta
-        const getC = i => sys[i][i + 1]; //alfa
+        const getC = i => i === sys.length - 1 ? 0 : sys[i][i + 1]; //alfa
         const getD = i => sys[i][sys[i].length - 1]; //delta
         function calcCoefficients() {
             us[0] = -getC(0) / getB(0);
@@ -133,8 +133,8 @@ function runcalc() {
         }
         calcCoefficients();
         calcAnswer(sys.length - 1)
-        console.log(us);
-        console.log(vs);
+        console.log("u:" + us);
+        console.log("v:" + vs);
         alert(runOutput(xs));
     }
 

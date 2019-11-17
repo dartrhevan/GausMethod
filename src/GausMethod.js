@@ -125,16 +125,16 @@ function runcalc() {
             }
         }
         function calcAnswer(i) {
-            if(i === sys.length - 1){
+            if(i === sys.length - 1){/*
                 let a = getA(i);
                 let q = vs[i-1];
                 let p = us[i-1];
                 let d = getD(i);
-                let b = getB(i);
-                xs[i] = (a*q-d)/(b - a*p);
+                let b = getB(i);*/
+                xs[i] = vs[i];//(a*q-d)/(b - a*p);
             }
             else {
-                xs[i] = us[i]*xs[i+1] + vs[i];
+                xs[i] = -us[i]*xs[i+1] + vs[i];
             }
             if(i !== 0)
             calcAnswer(i-1)

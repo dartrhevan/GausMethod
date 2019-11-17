@@ -114,14 +114,14 @@ function runcalc() {
         const xs = [];
         const getA = i => sys[i][i - 1]; //alfa
         const getB = i => sys[i][i];     //beta
-        const getC = i => i === sys.length - 1 ? 0 : sys[i][i + 1]; //y
+        const getC = i => ((i === sys.length - 1 )? 0 : sys[i][i + 1]); //y
         const getD = i => sys[i][sys[i].length - 1]; //delta
         function calcCoefficients() {
-            us[0] = getC(0) / getB(0);
-            vs[0] = -getD(0) / getB(0);
-            for(let i = 1; i < sys.length - 1; i++) {
-                us[i] =  getC(i) / (-getA(i) * us[i - 1] + getB(i));
-                vs[i] = (-getD(i) + getA(i) * vs[i - 1]) / (-getA(i) * us[i - 1] + getB(i));
+            us[0] = -getC(0) / getB(0);
+            vs[0] = getD(0) / getB(0);
+            for(let i = 1; i < sys.length; i++) {
+                us[i] =  -getC(i) / (getA(i) * us[i - 1] + getB(i));
+                vs[i] = (getD(i) - getA(i) * vs[i - 1]) / (getA(i) * us[i - 1] + getB(i));
             }
         }
         function calcAnswer(i) {
@@ -130,7 +130,7 @@ function runcalc() {
                 let q = vs[i-1];
                 let p = us[i-1];
                 let d = getD(i);
-                let b = getB(i)
+                let b = getB(i);
                 xs[i] = (a*q-d)/(b - a*p);
             }
             else {
@@ -140,7 +140,7 @@ function runcalc() {
             calcAnswer(i-1)
         }
         calcCoefficients();
-        calcAnswer(sys.length - 1)
+        calcAnswer(sys.length - 1);
         console.log("u:" + us);
         console.log("v:" + vs);
         alert(runOutput(xs));

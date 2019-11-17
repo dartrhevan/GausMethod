@@ -134,7 +134,7 @@ function runcalc() {
                 xs[i] = vs[i];//(a*q-d)/(b - a*p);
             }
             else {
-                xs[i] = -us[i]*xs[i+1] + vs[i];
+                xs[i] = us[i]*xs[i+1] + vs[i];
             }
             if(i !== 0)
             calcAnswer(i-1)

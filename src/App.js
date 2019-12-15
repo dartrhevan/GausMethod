@@ -1,43 +1,27 @@
 import React from 'react';
-import './App.css';
-import Row from "./Row";
-import {calc, runcalc, autofill} from './GausMethod'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import GausAndRunComponent from "./GausAndRunComponent";/*
+const Router = ReactRouterDOM.BrowserRouter;
+const Route = ReactRouterDOM.Route;
+const Switch = ReactRouterDOM.Switch;*/
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = { dimension: 4 };
-    this.changeDimension = this.changeDimension.bind(this);
-  }
-
-  changeDimension() {
-    const dim = document.getElementById('dim');
-    if(dim !== undefined && dim !== null)
-      this.setState({ dimension: dim.value});
-  }
-
-  render() {
-    const rows = [];
-    for(let i = 0; i < this.state.dimension; i++) {
-      rows.push(<Row dimension ={this.state.dimension}/>);
-      rows.push(<br/>);
+export default class App extends React.Component {
+    constructor() {
+        super();
     }
-    return (
-        <div>
-          Размерность:
-          <input type='number' className='ent' id='dim' value={this.state.dimension} onChange={this.changeDimension}/>
-          <br />
-          {rows}
 
-          <button onClick={calc}>Calc</button>
-            <button onClick={runcalc}>RunCalc</button>
-            <button onClick={autofill}>AutoFill</button>
-          <br/>
-          <label id='res'></label>
-        </div>
-
-    );
-  }
+    render() {
+        return (
+            <div id='a'>
+                <nav>Nav</nav>
+                <div className='App'>
+                    <BrowserRouter>
+                    <Switch>
+                        <Route path="/sle" component={GausAndRunComponent} />
+                    </Switch>
+                    </BrowserRouter>
+                </div>
+                <footer>foot</footer>
+            </div>);
+    }
 }
-
-export default App;

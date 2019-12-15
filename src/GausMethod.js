@@ -92,29 +92,29 @@ function calc() {
     gausMethod(sys);
     output(sys);
 }
+
 function autofill() {
     let sys = getSystem();
     let i = 0;
     let j = 0;
-    const arr = [3, 2, 0, 0, 4, 1, -8, 1, 0, -1, 0, 1, 4, -3, 2, 0, 0, 1, 2, 6];
-    for(let row of document.getElementsByClassName('row')) {
-         let vard = row.getElementsByClassName('ent');
-                for (let ent of vard) {
-                    ent.value = arr[i * (sys.length) + i + j].toString();
-                    j++;
-                }
+    const arr = [10 , -4 , 0 , 0 , 8 , 1 , 2 , -0.2 , 0 , 5.5 , 0 , 1 , -7 , 1 , 2 , 0 , 0 , -2 , 5 , -1];
+    for (let row of document.getElementsByClassName('row')) {
+        let vard = row.getElementsByClassName('ent');
+        for (let ent of vard) {
+            ent.value = arr[i * (sys.length) + i + j].toString();
+            j++;
         }
-        i++;
-
+    }
+    i++;
 }
 function runcalc() {
     function runMethod(sys) {
         const us = [];
         const vs = [];
         const xs = [];
-        const getA = i => sys[i][i - 1]; //alfa
+        const getA = i => (i === 0 ? 0 : sys[i][i - 1]); //alfa
         const getB = i => sys[i][i];     //beta
-        const getC = i => ((i === sys.length - 1 )? 0 : sys[i][i + 1]); //y
+        const getC = i => ((i === sys.length - 1 ) ? 0 : sys[i][i + 1]); //y
         const getD = i => sys[i][sys[i].length - 1]; //delta
         function calcCoefficients() {
             us[0] = -getC(0) / getB(0);
@@ -125,17 +125,10 @@ function runcalc() {
             }
         }
         function calcAnswer(i) {
-            if(i === sys.length - 1){/*
-                let a = getA(i);
-                let q = vs[i-1];
-                let p = us[i-1];
-                let d = getD(i);
-                let b = getB(i);*/
+            if(i === sys.length - 1)
                 xs[i] = vs[i];//(a*q-d)/(b - a*p);
-            }
-            else {
+            else
                 xs[i] = us[i]*xs[i+1] + vs[i];
-            }
             if(i !== 0)
             calcAnswer(i-1)
         }
@@ -143,18 +136,27 @@ function runcalc() {
         calcAnswer(sys.length - 1);
         console.log("u:" + us);
         console.log("v:" + vs);
-        alert(runOutput(xs));
+        function check() {
+            let res = '';
+            const getR = i => getD(i) - getA(i) * ( i > 0 ? xs[i - 1] : 0) - getB(i) * xs[i] - getC(i)*( i < xs.length - 1 ? xs[i + 1] : 0);
+            for(let j = 0; j < xs.length; ++j)
+                res += `Невязка для ${j}: ${getR(j)}\n`
+            return res;
+        }
+        alert(runOutput(xs, check()));
     }
 
     const sys = getSystem();
     runMethod(sys);
+
     //output(sys);
 
 }
-function runOutput(xs) {
+function runOutput(xs, check) {
     let string = '';
     for(let a = 0; a < xs.length; a++)
             string += xs[a] + ', ';
+    string += '\n' + check;
     return string;
 }
 

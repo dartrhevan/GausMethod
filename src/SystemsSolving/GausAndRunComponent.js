@@ -23,7 +23,7 @@ class GausAndRunComponent extends React.Component {
       rows.push(<br/>);
     }
     return (
-        <div>
+        <div className='calculator'>
           Размерность:
           <input type='number' className='ent' id='dim' value={this.state.dimension} onChange={this.changeDimension}/>
           <br />

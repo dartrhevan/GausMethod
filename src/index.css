@@ -5,9 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;/*
+  justify-content: center;
+  align-items: center;*/
+  height: 99vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.calculator {
+  margin: 15px;
+}
+
+nav {
+  background: #09d3ac;
+  flex-grow: 1;
+}
+
+footer {
+  background: #09d3ac;
+  flex-grow: 1;
 }

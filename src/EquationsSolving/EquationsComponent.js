@@ -11,7 +11,9 @@ export default class GausAndRunComponent extends React.Component {
             <div className='calculator'>
                 Function:
                 <br/>
-                f(x)=<input type="text" id="fun"/>
+                f(x)=
+                <br/>
+                <input type="text" id="fun"/>
                 <br/>
                 Delta:
                 <br/>

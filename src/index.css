@@ -8,7 +8,8 @@ body {
   padding: 0;/*
   justify-content: center;
   align-items: center;*/
-  height: 99vh;
+  height: 99.9vh;
+  font-size: 20px;
 }
 
 code {
@@ -21,11 +22,27 @@ code {
 }
 
 nav {
-  background: #09d3ac;
+  background: #09d3cf;
   flex-grow: 1;
+  display: flex;
+  height: 5vh;
 }
 
 footer {
-  background: #09d3ac;
+  background: #09d3cf;
   flex-grow: 1;
+  height: 5vh;
+}
+
+.App {
+  /*text-align: center;*/
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-grow: 200;
+}
+
+button, input {
+  margin: 10px;
+  font-size: inherit;
 }

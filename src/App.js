@@ -1,7 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import EquationsComponent from "./EquationsSolving/EquationsComponent";
-import GausAndRunComponent from "./SystemsSolving/GausAndRunComponent";/*
+import GausAndRunComponent from "./SystemsSolving/GausAndRunComponent";
+import StartComponent from "./StartComponent/StartComponent";
+/*
 const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
 const Switch = ReactRouterDOM.Switch;*/
@@ -20,6 +22,7 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/es" component={EquationsComponent} />
                         <Route path="/sle" component={GausAndRunComponent} />
+                        <Route path='/' component={StartComponent}/>
                     </Switch>
                     </BrowserRouter>
                 </div>

@@ -10,26 +10,26 @@ export default class GausAndRunComponent extends React.Component {
         return(
             <div className='calculator'>
                 Function:
-                <br/>
                 f(x)=
                 <br/>
-                <input type="text" id="fun"/>
+                <input type="text" className='inputRow' id="fun"/>
                 <br/>
                 Delta:
                 <br/>
-                <input type="text" id="delta"/>
+                <input type="text" className='inputRow' id="delta"/>
                 <br/>
                 Begin:
                 <br/>
-                <input type="text" id="beg"/>
+                <input type="text" className='inputRow' id="beg"/>
                 <br/>
                 End:
                 <br/>
-                <input type="text" id="end"/>
+                <input type="text" className='inputRow' id="end"/>
                 <br/>
                 Result:<label id="res"></label>
-                <button onClick={calcDivideByHalf}>Div</button>
-                <button onClick={calcNewton}>Newton</button>
+                <br/>
+                <button style={{float: 'left'}} onClick={calcDivideByHalf}>Div</button>
+                <button style={{float: 'right'}} onClick={calcNewton}>Newton</button>
             </div>);
     }
 }

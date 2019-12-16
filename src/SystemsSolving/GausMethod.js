@@ -92,7 +92,7 @@ function calc() {
     gausMethod(sys);
     output(sys);
 }
-
+/*
 function autofill() {
     let sys = getSystem();
     let i = 0;
@@ -106,7 +106,7 @@ function autofill() {
         }
     }
     i++;
-}
+}*/
 function runcalc() {
     function runMethod(sys) {
         const us = [];
@@ -162,6 +162,5 @@ function runOutput(xs, check) {
 
 module.exports = {
     calc,
-    runcalc,
-    autofill,
+    runcalc
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Row from "./Row";
-import {calc, runcalc, autofill} from './GausMethod'
+import {calc, runcalc} from './GausMethod'
 
 class GausAndRunComponent extends React.Component {
   constructor() {
@@ -12,26 +12,27 @@ class GausAndRunComponent extends React.Component {
 
   changeDimension() {
     const dim = document.getElementById('dim');
-    if(dim !== undefined && dim !== null)
-      this.setState({ dimension: dim.value});
+      if(dim.value < 2)
+      {
+          dim.value = 2;
+          return;
+      }
+      if(dim !== undefined && dim !== null)
+        this.setState({ dimension: dim.value});
   }
 
   render() {
     const rows = [];
-    for(let i = 0; i < this.state.dimension; i++) {
+    for(let i = 0; i < this.state.dimension; i++)
       rows.push(<Row dimension ={this.state.dimension}/>);
-      rows.push(<br/>);
-    }
     return (
         <div className='calculator'>
           Размерность:
           <input type='number' className='ent' id='dim' value={this.state.dimension} onChange={this.changeDimension}/>
           <br />
           {rows}
-          <button onClick={calc}>Calc</button>
-            <button onClick={runcalc}>RunCalc</button>
-            <button onClick={autofill}>AutoFill</button>
-          <br/>
+          <button style={{float: 'left'}} onClick={calc}>Calc</button>
+          <button style={{float: 'right'}} onClick={runcalc}>RunCalc</button>
           <label id='res'></label>
         </div>
 

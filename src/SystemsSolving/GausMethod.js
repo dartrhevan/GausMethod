@@ -1,4 +1,35 @@
 
+class Solution {
+    result = [];
+    toString() {
+        return this.result.join('=>');
+    }
+
+    constructor(fstp) {
+        console.log(fstp);
+        this.result.push(fstp);
+    }
+
+    add(step) {
+        this.result.push(step);
+    }
+}
+
+function sysToString(sys) {
+    let str = '';
+    for(let row of sys)
+    {
+        for(let ent of row)
+        {
+            str += ent + ' ';
+        }
+        str += '<br/>';
+    }
+    return str;
+}
+
+let solution;
+
 function output(sys) {//вывод результата
     let resString = 'Результат: (';
     for(let i = 0 ; i < sys.length; i++)
@@ -9,8 +40,8 @@ function output(sys) {//вывод результата
     }
     resString += ')';
     const res = document.getElementById('res');
-    res.innerHTML = resString;
-    alert(resString);
+    res.innerHTML = solution.toString();
+    //alert(resString);
 }
 
 function getRowArray(row) {
@@ -67,6 +98,7 @@ function calc() {
         }
         validateAndCorrect(sys);
         console.log(sys);
+        solution.add(sysToString(sys));
     }
 
     function reverseMove(sys) {//обратный проход
@@ -81,6 +113,7 @@ function calc() {
             }
         }
         console.log(sys);
+        solution.add(sysToString(sys));
     }
 
     function gausMethod(sys) {
@@ -89,24 +122,11 @@ function calc() {
     }
 
     const sys = getSystem();
+    solution = new Solution(sysToString(sys));
     gausMethod(sys);
     output(sys);
 }
-/*
-function autofill() {
-    let sys = getSystem();
-    let i = 0;
-    let j = 0;
-    const arr = [10 , -4 , 0 , 0 , 8 , 1 , 2 , -0.2 , 0 , 5.5 , 0 , 1 , -7 , 1 , 2 , 0 , 0 , -2 , 5 , -1];
-    for (let row of document.getElementsByClassName('row')) {
-        let vard = row.getElementsByClassName('ent');
-        for (let ent of vard) {
-            ent.value = arr[i * (sys.length) + i + j].toString();
-            j++;
-        }
-    }
-    i++;
-}*/
+
 function runcalc() {
     function runMethod(sys) {
         const us = [];
@@ -140,7 +160,7 @@ function runcalc() {
             let res = '';
             const getR = i => getD(i) - getA(i) * ( i > 0 ? xs[i - 1] : 0) - getB(i) * xs[i] - getC(i)*( i < xs.length - 1 ? xs[i + 1] : 0);
             for(let j = 0; j < xs.length; ++j)
-                res += `Невязка для ${j}: ${getR(j)}\n`
+                res += `Невязка для ${j}: ${getR(j)}\n`;
             return res;
         }
         alert(runOutput(xs, check()));

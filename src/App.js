@@ -18,8 +18,8 @@ export default class App extends React.Component {
             <div id='a'>
                 <nav>
                     <h3><a href='/'>Numeric Analysis</a></h3>
-                    <a href='es'>Equations</a>
-                    <a href='sle'>Systems</a>
+                    <a href='/es'>Equations</a>
+                    <a href='/sle'>Systems</a>
                 </nav>
                 <div className='App'>
                     <BrowserRouter>

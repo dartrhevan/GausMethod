@@ -27,14 +27,6 @@
   flex-direction: row;
 }
 
-.switcher {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid black;
-  margin: 0;
-  background-color: #05ccca;
-}
-
 .row{
   margin: 15px;
   padding: 0;

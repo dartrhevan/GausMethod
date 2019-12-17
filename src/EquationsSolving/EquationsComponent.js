@@ -1,14 +1,23 @@
 import React from 'react';
+import CalculatorComponent from "../CalculatorComponent";
 import {calcDivideByHalf, calcNewton} from "./DivideByHalf";
+import Type from "../Type";
 
-export default class GausAndRunComponent extends React.Component {
+export default class GausAndRunComponent extends CalculatorComponent {
     constructor() {
         super();
+        this.state = {
+            types: [new Type('a', this.getDescription()), new Type('b', 'awfdgsfdg'),],
+            dimension: 4, current: 0
+        };
+        this.getCalculator = this.getCalculator.bind(this);
     }
-
-    render() {
-        return(
-            <div className='calculator'>
+    getDescription() {
+        return '';
+    }
+    getCalculator()
+    {
+        return (<div>
                 Function:
                 f(x)=
                 <br/>

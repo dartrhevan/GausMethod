@@ -47,8 +47,9 @@ code {
 }
 
 .type {
-  margin: 0 10px 0 10px;
+  padding: 0 10px 0 10px;
   font-size: inherit;
+    height: inherit;
 }
 
 .switcher {
@@ -57,7 +58,8 @@ code {
   flex-direction: row;
   border-bottom: 2px solid white;
   margin: 0;
-  padding: 10px;
+  min-height: 35px;
+  /*padding: 10px;*/
   background-color: #05ccca;
 }
 
@@ -103,9 +105,23 @@ a {
   color: black;
 }
 
+.type:hover {
+    cursor: pointer;
+    background-color: #03a2a0;
+    color: lightgray;
+}
+
+.type:first-of-type {
+    border-radius: 15px 0 0 0;
+}
+
+.active-type {
+    background-color: white;
+}
+
 nav a:hover {
   color: lightgray;
-  background-color: #05ccca;
+  background-color: #03a2a0;
   /*#06c9c5;
   border-left: 1px solid #909090;
   border-right: 1px solid #909090;*/

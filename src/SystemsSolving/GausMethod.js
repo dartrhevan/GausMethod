@@ -1,9 +1,9 @@
-
+/*
 class Solution {
-    result = [];
+    result = [];/*
     toString() {
         return this.result.join('=>');
-    }
+    }*
 
     constructor(fstp) {
         console.log(fstp);
@@ -13,8 +13,8 @@ class Solution {
     add(step) {
         this.result.push(step);
     }
-}
-
+}*/
+/*
 function sysToString(sys) {
     let str = '';
     for(let row of sys)
@@ -26,7 +26,7 @@ function sysToString(sys) {
         str += '<br/>';
     }
     return str;
-}
+}*/
 
 let solution;
 
@@ -40,7 +40,8 @@ function output(sys) {//вывод результата
     }
     resString += ')';
     const res = document.getElementById('res');
-    res.innerHTML = solution.toString();
+    res.innerHTML = resString;
+    return solution;
     //alert(resString);
 }
 
@@ -98,7 +99,7 @@ function calc() {
         }
         validateAndCorrect(sys);
         console.log(sys);
-        solution.add(sysToString(sys));
+        solution.push(sys);
     }
 
     function reverseMove(sys) {//обратный проход
@@ -113,7 +114,7 @@ function calc() {
             }
         }
         console.log(sys);
-        solution.add(sysToString(sys));
+        solution.push(sys);
     }
 
     function gausMethod(sys) {
@@ -122,9 +123,9 @@ function calc() {
     }
 
     const sys = getSystem();
-    solution = new Solution(sysToString(sys));
+    solution = [sys];//new Solution(sysToString(sys));
     gausMethod(sys);
-    output(sys);
+    return output(sys);
 }
 
 function runcalc() {

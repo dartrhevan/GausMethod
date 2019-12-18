@@ -103,6 +103,8 @@ button:hover {
   /*font-size: 1.35rem;*/
   font-weight: bold;
   cursor: pointer;
+  background-color: #03a2a0;
+  color: darkgray;
 }
 
 .inputRow {

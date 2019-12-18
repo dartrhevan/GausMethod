@@ -13,7 +13,9 @@ const SystemComponent = (props) => {
     <table>
         <thead></thead>
         <tbody>
-            {props.sys.map(r => (<tr>{r.map((e, i) => <td style={{borderLeft: i === r.length - 1 ? '1px solid black ' : 'none'}}>{i === r.length - 1 ? Number(e).toFixed(3) : Number(e).toFixed(3)}</td>)}</tr>))}
+            {props.sys.map(r =>
+                (<tr>{r.map((e, i) => <td style={{borderLeft: i === r.length - 1 ? '1px solid black ' : 'none'}}>
+                    {i === r.length - 1 ? Number(e).toFixed(3) : Number(e).toFixed(3)}</td>)}</tr>))}
         </tbody>
     </table>);
 };

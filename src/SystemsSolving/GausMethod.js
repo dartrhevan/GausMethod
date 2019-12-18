@@ -164,7 +164,9 @@ function runcalc() {
                 res += `Невязка для ${j}: ${getR(j)}\n`;
             return res;
         }
-        alert(runOutput(xs, check()));
+        const res = document.getElementById('res');
+        res.innerHTML = runOutput(xs, check());
+        return solution;
     }
 
     const sys = getSystem();

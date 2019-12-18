@@ -17,7 +17,7 @@ export default class GausAndRunComponent extends CalculatorComponent {
     }
     getCalculator()
     {
-        return (<div>
+        return (<>
                 Function:
                 f(x)=
                 <br/>
@@ -35,6 +35,6 @@ export default class GausAndRunComponent extends CalculatorComponent {
                 <br/>
                 <input type="text" className='inputRow' id="end"/>
                 <br/>
-            </div>);
+            </>);
     }
 }

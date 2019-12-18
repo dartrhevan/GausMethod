@@ -51,7 +51,7 @@ code {
   padding: 0 10px 0 10px;
   font-size: inherit;
   height: inherit;
-  transition: background-color 0.5s;
+  transition: background-color 0.4s;
 }
 
 .active-type {
@@ -88,6 +88,7 @@ nav {
 nav a {
   display: block;
   padding: 5px;
+  transition: background-color 0.4s;
 }
 
 button {
@@ -96,6 +97,7 @@ button {
   color: lightgray;
   border-radius: 17px;
   border: none;
+  transition: background-color 0.4s;
 }
 
 

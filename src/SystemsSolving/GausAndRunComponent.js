@@ -40,13 +40,15 @@ class GausAndRunComponent extends CalculatorComponent {
       const rows = [];
       for(let i = 0; i < this.state.dimension; i++)
           rows.push(<Row dimension = {this.state.dimension}/>);
-      return (<div>
+      return (<>
           Размерность:
           <input type='number' className='ent' id='dim' value={this.state.dimension} onChange={this.changeDimension}/>
           <br />
-          {rows}
+          <div className='rows'>
+              {rows}
+          </div>
           {this.state.result ? <SystemSolvingResult syses = {this.state.result}/>: ''}
-      </div>);
+      </>);
   }
 
   getDescription() {

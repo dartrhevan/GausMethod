@@ -25,6 +25,7 @@
 #res {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .rows {
@@ -47,12 +48,12 @@
   flex-direction: row;
 }
 
-td {
+.matrix td {
   margin: 0;
-  padding: 0;
+  padding: 0 5px 0 5px;
 }
 
-table {
+table.matrix {
   border-right: 1px solid black;
   border-left:  1px solid black;
   border-radius: 10px;

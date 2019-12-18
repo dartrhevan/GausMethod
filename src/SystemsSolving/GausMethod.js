@@ -99,7 +99,7 @@ function calc() {
         }
         validateAndCorrect(sys);
         console.log(sys);
-        solution.push(sys);
+        solution.push(Object.assign([], sys));
     }
 
     function reverseMove(sys) {//обратный проход
@@ -114,7 +114,7 @@ function calc() {
             }
         }
         console.log(sys);
-        solution.push(sys);
+        solution.push(Object.assign([], sys));
     }
 
     function gausMethod(sys) {
@@ -123,7 +123,7 @@ function calc() {
     }
 
     const sys = getSystem();
-    solution = [sys];//new Solution(sysToString(sys));
+    solution = [Object.assign([], sys)];//new Solution(sysToString(sys));
     gausMethod(sys);
     return output(sys);
 }
@@ -155,31 +155,33 @@ function runcalc() {
         }
         calcCoefficients();
         calcAnswer(sys.length - 1);
+        solution = {us: us, vs: vs};
         console.log("u:" + us);
         console.log("v:" + vs);
         function check() {
             let res = '';
             const getR = i => getD(i) - getA(i) * ( i > 0 ? xs[i - 1] : 0) - getB(i) * xs[i] - getC(i)*( i < xs.length - 1 ? xs[i + 1] : 0);
             for(let j = 0; j < xs.length; ++j)
-                res += `Невязка для ${j}: ${getR(j)}\n`;
+                res += `Невязка для ${j}: ${getR(j)}<br/>`;
             return res;
         }
+
         const res = document.getElementById('res');
         res.innerHTML = runOutput(xs, check());
-        return solution;
+
     }
 
     const sys = getSystem();
     runMethod(sys);
 
     //output(sys);
-
+    return solution;
 }
 function runOutput(xs, check) {
     let string = '';
     for(let a = 0; a < xs.length; a++)
             string += xs[a] + ', ';
-    string += '\n' + check;
+    string += '<br/>' + check;
     return string;
 }
 

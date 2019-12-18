@@ -3,14 +3,14 @@ import React from "react";
 export const SystemSolvingResult = (props) => {
     return (
         <div className='systemSolving'>
-            {props.syses.map(s =><> <SystemComponent sys={s}/> => </>)}
+            {props.syses.map((s,i) =><> <SystemComponent sys={s}/> {i === props.syses.length - 1 ? '' : '=>'} </>)}
         </div>
     );
 };
 
 const SystemComponent = (props) => {
     return (
-    <table>
+    <table className='matrix'>
         <thead></thead>
         <tbody>
             {props.sys.map(r =>

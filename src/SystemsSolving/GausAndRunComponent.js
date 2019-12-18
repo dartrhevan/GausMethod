@@ -6,20 +6,38 @@ import {calc, runcalc} from './GausMethod';
 import Type from "../Type";
 import {SystemSolvingResult} from "./SystemSolvingResult";
 
+const CoefficientsResults = props => (
+    <>
+        <table border='1'>
+            <tbody>
+                <tr>
+                    <td>i</td> {props.coefs.us.map((u, i) => <td>{i}</td>)}
+                </tr>
+                <tr>
+                    <td>U</td> {props.coefs.us.map((u, i) => <td>{u.toFixed(3)}</td>)}
+                </tr>
+                <tr>
+                    <td>V</td> {props.coefs.vs.map((v, i) => <td>{v.toFixed(3)}</td>)}
+                </tr>
+            </tbody>
+        </table>
+    </>);
+
 class GausAndRunComponent extends CalculatorComponent {
   constructor() {
     super();
     //this.state = { dimension: 4 };
     this.changeDimension = this.changeDimension.bind(this);
-    const gausHdl = () => {/*
-        const state = this.state;
-        state.result = calc();
-        this.setState(state);*/
+    const gausHdl = () => {
         const s = calc();
-        this.setState({ dimension: this.state.dimension, types: this.state.types, current: this.state.current, result: s});
+        this.setState(this.getNewState({result: s}));
+    };
+    const runHdl = () => {
+          const s = runcalc();
+          this.setState(this.getNewState({result: s}));
     };
     this.state = {
-        types: [new Type('Gaus', this.getDescription(), gausHdl.bind(this)), new Type('Run', 'awfdgsfdg', runcalc)],
+        types: [new Type('Gaus', this.getDescription(), gausHdl.bind(this)), new Type('Run', 'awfdgsfdg', runHdl.bind(this))],
         dimension: 2, current: 0, result: null
     };
     this.getCalculator = this.getCalculator.bind(this);
@@ -33,7 +51,7 @@ class GausAndRunComponent extends CalculatorComponent {
           return;
       }
       if(dim)
-        this.setState({ dimension: dim.value, types: this.state.types, current: this.state.current, result: null});
+        this.setState(this.getNewState({dimension: dim.value, result: null}));
   }
 
   getCalculator() {
@@ -47,7 +65,7 @@ class GausAndRunComponent extends CalculatorComponent {
           <div className='rows'>
               {rows}
           </div>
-          {this.state.result ? <SystemSolvingResult syses = {this.state.result}/>: ''}
+          {this.state.result ? (this.state.current ? <CoefficientsResults coefs = {this.state.result} /> : <SystemSolvingResult syses = {this.state.result}/>): ''}
       </>);
   }
 

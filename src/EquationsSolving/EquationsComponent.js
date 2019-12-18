@@ -7,7 +7,7 @@ export default class GausAndRunComponent extends CalculatorComponent {
     constructor() {
         super();
         this.state = {
-            types: [new Type('a', this.getDescription()), new Type('b', 'awfdgsfdg'),],
+            types: [new Type('DivideByHalf', this.getDescription(), calcDivideByHalf), new Type('Newton', 'awfdgsfdg', calcNewton),],
             dimension: 4, current: 0
         };
         this.getCalculator = this.getCalculator.bind(this);
@@ -35,10 +35,6 @@ export default class GausAndRunComponent extends CalculatorComponent {
                 <br/>
                 <input type="text" className='inputRow' id="end"/>
                 <br/>
-                Result:<label id="res"></label>
-                <br/>
-                <button style={{float: 'left'}} onClick={calcDivideByHalf}>Div</button>
-                <button style={{float: 'right'}} onClick={calcNewton}>Newton</button>
             </div>);
     }
 }

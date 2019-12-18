@@ -11,7 +11,7 @@ class GausAndRunComponent extends CalculatorComponent {
     //this.state = { dimension: 4 };
     this.changeDimension = this.changeDimension.bind(this);
     this.state = {
-        types: [new Type('a', this.getDescription()), new Type('b', 'awfdgsfdg'),],
+        types: [new Type('Gaus', this.getDescription(), calc), new Type('Run', 'awfdgsfdg', runcalc)],
         dimension: 4, current: 0
     };
     this.getCalculator = this.getCalculator.bind(this);
@@ -37,9 +37,6 @@ class GausAndRunComponent extends CalculatorComponent {
           <input type='number' className='ent' id='dim' value={this.state.dimension} onChange={this.changeDimension}/>
           <br />
           {rows}
-          <button  onClick={calc}>Calc</button>
-          <button onClick={runcalc}>RunCalc</button>
-          <label id='res'></label>
       </div>);
   }
 

@@ -99,7 +99,7 @@ function calc() {
         }
         validateAndCorrect(sys);
         console.log(sys);
-        solution.push(Object.assign([], sys));
+        solution.push(Object.assign([], sys.map(r => [].concat(r))));
     }
 
     function reverseMove(sys) {//обратный проход
@@ -114,7 +114,7 @@ function calc() {
             }
         }
         console.log(sys);
-        solution.push(Object.assign([], sys));
+        solution.push(Object.assign([], sys.map(r => [].concat(r))));
     }
 
     function gausMethod(sys) {
@@ -123,7 +123,7 @@ function calc() {
     }
 
     const sys = getSystem();
-    solution = [Object.assign([], sys)];//new Solution(sysToString(sys));
+    solution = [Object.assign([], sys.map(r => [].concat(r)))];//new Solution(sysToString(sys));
     gausMethod(sys);
     return output(sys);
 }

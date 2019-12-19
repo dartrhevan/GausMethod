@@ -7,8 +7,7 @@ import Type from "../Type";
 import {SystemSolvingResult} from "./SystemSolvingResult";
 
 const CoefficientsResults = props => (
-    <>
-        <table border='1'>
+        <table className='coefTable' border='1'>
             <tbody>
                 <tr>
                     <td>i</td> {props.coefs.us.map((u, i) => <td>{i}</td>)}
@@ -21,7 +20,7 @@ const CoefficientsResults = props => (
                 </tr>
             </tbody>
         </table>
-    </>);
+    );
 
 class GausAndRunComponent extends CalculatorComponent {
   constructor() {
@@ -65,7 +64,7 @@ class GausAndRunComponent extends CalculatorComponent {
           <div className='rows'>
               {rows}
           </div>
-          {this.state.result ? (this.state.current ? <CoefficientsResults coefs = {this.state.result} /> : <SystemSolvingResult syses = {this.state.result}/>): ''}
+          {this.state.result ? (!(this.state.result instanceof Array) ? <CoefficientsResults coefs = {this.state.result} /> : <SystemSolvingResult syses = {this.state.result}/>): ''}
       </>);
   }
 

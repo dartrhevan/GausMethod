@@ -11,7 +11,7 @@ export default class CalculatorComponent extends React.Component {
 
     changeType(event) {
         const typeInd = this.state.types.map(t => t.title).indexOf(event.target.textContent);
-        this.setState(this.getNewState({current: typeInd, result: null}))
+        this.setState(this.getNewState({current: typeInd}))
     }
 
     getCalculator() {}
@@ -30,7 +30,7 @@ export default class CalculatorComponent extends React.Component {
                 <hr/>
                 <div align='center' className='calculator'>
                     {this.getCalculator()}
-                    <button onClick={this.state.types[this.state.current].handler} style={{minWidth: 100 + 'px'}}>Calc</button>
+                    <button onClick={this.state.types[this.state.current].handler} style={{minWidth: 100 + 'px'}}>Calculate</button>
                     <br/>
                     Result:<div id="res"></div>
                     <br/>

@@ -53,6 +53,19 @@
   padding: 0 5px 0 5px;
 }
 
+.coefTable {
+  background: black;
+}
+
+.coefTable tr td {
+  border: none;
+  background: white;
+}
+/*
+#coefTable tr:first-of-type:first-child, tr:first-of-type:last-child, tr:last-of-type:first-child, tr:last-of-type:last-child {
+  border-radius: 10px;
+}*/
+
 table.matrix {
   border-right: 1px solid black;
   border-left:  1px solid black;

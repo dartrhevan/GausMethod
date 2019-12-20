@@ -193,7 +193,6 @@ button, input {
 }
 
 iframe {
-  width: 550px;
-  min-height: 300px;
-  overflow-y: scroll;
+  width: 650px;
+  min-height: 350px;
 }

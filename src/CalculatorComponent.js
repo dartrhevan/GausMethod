@@ -30,10 +30,13 @@ export default class CalculatorComponent extends React.Component {
                 <hr/>
                 <div align='center' className='calculator'>
                     {this.getCalculator()}
-                    <button onClick={this.state.types[this.state.current].handler} style={{minWidth: 100 + 'px'}}>Calculate</button>
-                    <br/>
-                    Result:<div id="res"></div>
-                    <br/>
+                    {this.state.handler ? '' : (
+                        <>
+                            <button onClick={this.state.types[this.state.current].handler} style={{minWidth: 100 + 'px'}}>Calculate</button><br/>
+                            Result:<div id="res"></div>
+                            <br/>
+                        </>)
+                    }
                 </div>
             </div>);
     }

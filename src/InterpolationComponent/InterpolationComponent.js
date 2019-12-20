@@ -16,11 +16,13 @@ export default class InterpolationComponent extends CalculatorComponent {
     static onFrameLoad() {
         const frame = document.getElementById('frame');
         const app = frame.contentWindow.document.getElementById('app');
-        app.onclick = InterpolationComponent.onFrameClick;/*
+        app.onclick = InterpolationComponent.onFrameClick;
+        /*
         frame.contentWindow.onresize = e =>
         {
             frame.style.height = app.style.height
         };*/
+        frame.parentElement.style.padding = '5px';
     }
 
     static onFrameClick() {
@@ -38,6 +40,6 @@ export default class InterpolationComponent extends CalculatorComponent {
     }
 
     getCalculator() {
-        return <><iframe onLoad={InterpolationComponent.onFrameLoad}  id='frame' src={`/interpolation/interpolation.html?handler=${this.state.handler}`} seamless frameBorder='none' ></iframe><br/></>
+        return <><iframe onLoad={InterpolationComponent.onFrameLoad}  id='frame' src={`/interpolation.html?handler=${this.state.handler}`} seamless frameBorder='none' ></iframe><br/></>
     }
 }

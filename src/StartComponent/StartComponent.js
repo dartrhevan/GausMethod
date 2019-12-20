@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class GausAndRunComponent extends React.Component {
+export default class StartComponent extends React.Component {
     constructor() {
         super();
     }

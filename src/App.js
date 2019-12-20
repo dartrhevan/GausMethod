@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import EquationsComponent from "./EquationsSolving/EquationsComponent";
 import GausAndRunComponent from "./SystemsSolving/GausAndRunComponent";
 import StartComponent from "./StartComponent/StartComponent";
+import InterpolationComponent from "./InterpolationComponent/InterpolationComponent";
 /*
 const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
@@ -20,12 +21,14 @@ export default class App extends React.Component {
                     <h3><a href='/'>Numeric Analysis</a></h3>
                     <a href='/es'>Equations</a>
                     <a href='/sle'>Systems</a>
+                    <a href='/interpolation'>Interpolation</a>
                 </nav>
                 <div className='App'>
                     <BrowserRouter>
                     <Switch>
                         <Route path="/es" component={EquationsComponent} />
                         <Route path="/sle" component={GausAndRunComponent} />
+                        <Route path='/interpolation' component={InterpolationComponent} />
                         <Route path='/' component={StartComponent}/>
                     </Switch>
                     </BrowserRouter>

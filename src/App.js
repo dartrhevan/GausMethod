@@ -15,16 +15,12 @@ class MobileMenu extends React.Component {
     render() {
         return (
         <div className='mobileMenu' id='mobMenu' >
+            <a onClick={$('#mobMenu').animate({left: '100vw'}, {duration: 200})}>Hide</a>
             <a href='/es'>Equations</a>
             <a href='/sle'>Systems</a>
             <a href='/interpolation'>Interpolation</a>
         </div>);
     }
-/*
-    onMenuClick(event) {
-        event.preventDefault()
-    }
-*/
 }
 
 export default class App extends React.Component {
@@ -35,25 +31,23 @@ export default class App extends React.Component {
         document.onclick = event =>
         {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
-                $('#mobMenu').css('left', '100vw');
+                $('#mobMenu').animate({left: '100vw'}, {duration: 200});
         }
     }
 
     onMobileMenuButtonClick() {
-        //event.preventDefault();
         console.log($('#mobMenu a'));
-        //const a = $('#mobMenu').animate([{left: '100vw'}, {left: '20vw'}], {duration: 200});
-            //this.refs.mobMenu.animate([{left: '100vw'/*this.refs.mobMenu.style.left*/}, {left: '20vw'}], {duration: 200});
-        //a.onfinish = () => {};
-        $('#mobMenu').css('left', '20vw');
+        //$('#mobMenu').css('left', '20vw');
+        //$('#mobMenu').css('left', null);
+
         $('#mobMenu').css('width', window.outerWidth + 'vw');
         $('#mobMenu').css('height', window.outerHeight + 'vh');
-        $('#mobMenu a').each(/*ind =>
-            $(this).css('top', /*50 + 50 * ind +* '100px')*/ this.f);
+        $('#mobMenu a').each(this.f);
+        $('#mobMenu').animate({left: '20vw'}, {duration: 200});
     }
 
     f(ind) {
-        $(this).css('top', 50 + 50 * ind + 'px');
+        $(this).css('top', 15 + (10 + this.clientHeight) * ind + 'px');
     }
 
     render() {
@@ -66,7 +60,6 @@ export default class App extends React.Component {
                     <a href='/interpolation'>Interpolation</a>
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
                     <MobileMenu ref='mobMenu' />
-                    {/*this.refs.menuButton && this.refs.menuButton.style.display !== 'none' ? <MobileMenu ref={n => this.mobMenu = n} but={this.refs.menuButton} /> : ''*/}
                 </nav>
                 <div className='App'>
                     <BrowserRouter>

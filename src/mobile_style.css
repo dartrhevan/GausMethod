@@ -35,6 +35,7 @@
         display: block;
         position: fixed;
         /*top: 100px;*/
+        width: inherit;
     }
 
     nav a {

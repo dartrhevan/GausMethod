@@ -12,6 +12,10 @@ body {
   font-size: 20px;
 }
 
+#menuButton {
+  display: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -54,6 +58,10 @@ code {
   transition: background-color 0.4s;
 }
 
+.type:last-child {
+  margin-right: 15px;
+}
+
 .active-type {
   background-color: white;
 }
@@ -68,6 +76,7 @@ div.active-type:hover {
   flex-direction: row;
   border-bottom: 2px solid white;
   margin: 0;
+  overflow-y: hidden;
   min-height: 35px;
   /*padding: 10px;*/
   background-color: #05ccca;
@@ -93,6 +102,10 @@ nav a {
   transition: background-color 0.4s;
 }
 
+.mobileMenu {
+  display: none;
+}
+
 button {
   box-shadow: lightgray 1px 1px 1px 1px, lightgray -1px -1px 1px 1px;
   background: #09d3cf;
@@ -109,6 +122,10 @@ button:hover {
   cursor: pointer;
   background-color: #03a2a0;
   color: darkgray;
+}
+
+.last-type {
+  border-radius: 0 15px 0 0;
 }
 
 .inputRow {
@@ -194,5 +211,5 @@ button, input {
 
 iframe {
   margin: 0;
-  min-height: 350px;
+  min-height: 375px;
 }

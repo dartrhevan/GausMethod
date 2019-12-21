@@ -24,7 +24,8 @@ export default class CalculatorComponent extends React.Component {
         return(
             <div className='content'>
                 <div className='switcher'>
-                    {this.state.types.map((t, ind) => <div onClick={this.changeType} className={`type ${ind === this.state.current ? 'active-type':''}`}>{t.title}</div>)}
+                    {this.state.types.map((t, ind) =>
+                        <div onClick={this.changeType} className={`type ${ind === this.state.current ? 'active-type':''}`}>{t.title}</div>)}
                 </div>
                 {this.state.types[this.state.current].description }
                 <hr/>

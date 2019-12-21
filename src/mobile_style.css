@@ -1,0 +1,47 @@
+@media (max-width: 1020px) {
+    nav {
+        min-height: 10vh;
+    }
+
+    footer {
+        min-height: 10vh;
+    }
+
+    #menuButton {
+        padding: 10px;
+        background: inherit;
+        display: inline;
+    }
+
+    .mobileMenu a {
+        height: auto;
+        display: block;
+        padding: 5px;
+        transition: background-color 0.4s;
+    }
+
+    .mobileMenu {
+        left: 100vw;
+        z-index: 1;
+        background: #09d3cf;
+        display: block;
+        position: fixed;
+        width: 70vw;
+        height: 100vh;
+    }
+
+    div.mobileMenu a {
+        z-index: 2;
+        display: block;
+        position: fixed;
+        /*top: 100px;*/
+    }
+
+    nav a {
+        display: none;
+    }
+
+    h3 a {
+        display: block;
+    }
+}

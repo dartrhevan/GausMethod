@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GausMethodReact.iml" filepath="$PROJECT_DIR$/.idea/GausMethodReact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NumericAnalysis.iml" filepath="$PROJECT_DIR$/NumericAnalysis.iml" />
     </modules>
   </component>
 </project>

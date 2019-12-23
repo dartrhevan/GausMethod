@@ -1,6 +1,7 @@
 import React from "react";
 import CalculatorComponent from "../CalculatorComponent";
 import Type from "../Type";
+import $ from 'jquery';
 
 export default class InterpolationComponent extends CalculatorComponent {
     constructor() {
@@ -16,6 +17,8 @@ export default class InterpolationComponent extends CalculatorComponent {
     static onFrameLoad() {
         const frame = document.getElementById('frame');
         const app = frame.contentWindow.document.getElementById('app');
+        const res = frame.contentWindow.document.getElementById('res');
+        $(res).css('word-wrap', 'break-word');
         app.onclick = InterpolationComponent.onFrameClick;
         /*
         frame.contentWindow.onresize = e =>
@@ -29,9 +32,10 @@ export default class InterpolationComponent extends CalculatorComponent {
         const frame = document.getElementById('frame');
         const app = frame.contentWindow.document.getElementById('app');
         frame.height = app.offsetHeight * 1.1;
+        frame.width = app.offsetWidth;
         const details = frame.contentWindow.document.getElementsByTagName('details')[0];
         if(details)
-        details.ontoggle = e => frame.height = app.offsetHeight * 1.1;
+            details.ontoggle = e => frame.height = app.offsetHeight * 1.1;
     }
 
     changeType(event) {
@@ -40,6 +44,6 @@ export default class InterpolationComponent extends CalculatorComponent {
     }
 
     getCalculator() {
-        return <><iframe onLoad={InterpolationComponent.onFrameLoad}  id='frame' src={`/interpolation.html?handler=${this.state.handler}`} seamless frameBorder='none' ></iframe><br/></>
+        return <><iframe onLoad={InterpolationComponent.onFrameLoad} id='frame' src={`/interpolation.html?handler=${this.state.handler}`} seamless frameBorder='none' ></iframe><br/></>
     }
 }

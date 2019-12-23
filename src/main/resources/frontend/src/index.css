@@ -89,6 +89,7 @@ nav {
   display: flex;
   height: 5vh;
   max-height: 5vh;
+  min-height: 40px;
   justify-content: flex-end;
   align-items: center;
   box-shadow: 0 -5px 5px 5px;
@@ -99,6 +100,8 @@ nav a {
   height: auto;
   display: block;
   padding: 5px;
+  min-height: 40px;
+  box-sizing: border-box;
   transition: background-color 0.4s;
 }
 
@@ -174,6 +177,7 @@ nav h3 a:hover {
 }
 
 nav h3 {
+  min-height: inherit;
   margin: 0;
   padding: 0;
   height: inherit;
@@ -181,9 +185,11 @@ nav h3 {
   text-align: center;*/
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 footer {
+  min-height: 40px;
   background: #09d3cf;
   flex-grow: 1;
   box-shadow: 0 5px 5px 5px;
@@ -212,4 +218,5 @@ button, input {
 iframe {
   margin: 0;
   min-height: 375px;
+  min-width: 350px;
 }

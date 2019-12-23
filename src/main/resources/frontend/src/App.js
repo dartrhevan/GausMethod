@@ -55,11 +55,16 @@ export default class App extends React.Component {
             <div id='a'>
                 <nav>
                     <h3><a href='/'>Numeric Analysis</a></h3>
-                    <a href='/es'>Equations</a>
-                    <a href='/sle'>Systems</a>
-                    <a href='/interpolation'>Interpolation</a>
+                    {
+                        /*$('#menuButton').css('display') === 'none'*/window.outerWidth > 1020 ? (
+                            <>
+                                <a href='/es'>Equations</a>
+                                <a href='/sle'>Systems</a>
+                                <a href='/interpolation'>Interpolation</a>
+                            </>
+                        ) : <MobileMenu ref='mobMenu' />
+                    }
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
-                    <MobileMenu ref='mobMenu' />
                 </nav>
                 <div className='App'>
                     <BrowserRouter>

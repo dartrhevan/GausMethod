@@ -1,8 +1,26 @@
 package com.numericanalysis.numericanalysisbackend.model;
 
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Collection<Comment> comments;
+
+    private Integer id;
     private String email;
     private String password;
     private int age;

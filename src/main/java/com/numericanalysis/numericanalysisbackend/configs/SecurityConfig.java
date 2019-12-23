@@ -73,6 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
 
+        /**http.rememberMe()**/
     }
 
     // Указываем Spring контейнеру, что надо инициализировать ShaPasswordEncoder

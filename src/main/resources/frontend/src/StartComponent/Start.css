@@ -1,0 +1,46 @@
+#description {
+    text-align: center;
+}
+
+#links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#startComp {
+    animation: down-appear 0.8s;
+}
+
+@keyframes down-appear {
+    from{
+        margin-bottom: -150px;
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        margin-bottom: 15px;
+    }
+}
+
+.startLink {
+    margin: 15px;
+    word-break: break-word;
+    display: block;
+    /*border: 2px solid black;*/
+    width: 85px;
+    text-align: center;
+    height: 125px;
+    font-size: 1.1em;
+    transition: color, background-color 0.4s;
+    box-shadow: gray 1px 1px 1px 1px, gray -1px -1px 1px 1px;
+}
+
+.startLink:hover {
+    box-shadow: inset gray 1px 1px 1px 1px, inset gray -1px -1px 1px 1px,  gray 1px 1px 1px 1px, gray -1px -1px 1px 1px;
+    background: #09d3cf;
+    /*color: darkgrey;*/
+}
+/*
+@keyframes appear {
+
+}*/

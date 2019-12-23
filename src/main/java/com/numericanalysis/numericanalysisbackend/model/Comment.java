@@ -1,15 +1,40 @@
 package com.numericanalysis.numericanalysisbackend.model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "comment")
 public class Comment {
+    public Origin getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Origin origin) {
+        this.origin = origin;
+    }
+
+    private Origin origin;
     private Date date;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
     private User author;
     private String comment;
 
-    public Comment(Date date, User author, String comment) {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    private Integer id;
+
+    public Comment(Date date, User author, String comment, Origin origin) {
         this.date = date;
+        this.origin = origin;
         this.author = author;
         this.comment = comment;
     }
@@ -23,12 +48,12 @@ public class Comment {
         Comment comment1 = (Comment) o;
         return date.equals( comment1.date ) &&
                 author.equals( comment1.author ) &&
-                comment.equals( comment1.comment );
+                comment.equals( comment1.comment ) && origin.equals( comment1.origin );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( date, author, comment );
+        return Objects.hash( date, author, comment, origin );
     }
 
     public Date getDate() {

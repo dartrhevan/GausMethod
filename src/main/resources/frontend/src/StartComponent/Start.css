@@ -8,6 +8,7 @@
 }
 
 #startComp {
+    margin: 15px;
     animation: down-appear 0.8s;
 }
 

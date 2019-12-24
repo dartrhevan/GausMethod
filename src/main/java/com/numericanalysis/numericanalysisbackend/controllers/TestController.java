@@ -11,9 +11,10 @@ public class TestController {
     public String index(Model m) {
         return "OK!";
     }
-
+/*
     @RequestMapping(value = {"/login"})
     public String login(Model m){
         return "login";
     }
+ */
 }

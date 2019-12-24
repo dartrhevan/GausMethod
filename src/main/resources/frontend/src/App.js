@@ -6,6 +6,7 @@ import StartComponent from "./StartComponent/StartComponent";
 import InterpolationComponent from "./InterpolationComponent/InterpolationComponent";
 import './mobile_style.css'
 import $ from 'jquery';
+import LoginComponent from "./LoginComponent";
 /*
 const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
@@ -16,8 +17,8 @@ class MobileMenu extends React.Component {
         return (
         <div className='mobileMenu' id='mobMenu' >
             <a onClick={$('#mobMenu').animate({left: '100vw'}, {duration: 200})}>Hide</a>
-            <a href='/es'>Equations</a>
-            <a href='/sle'>Systems</a>
+            <a href='/equations'>Equations</a>
+            <a href='/systems'>Systems</a>
             <a href='/interpolation'>Interpolation</a>
         </div>);
     }
@@ -58,8 +59,8 @@ export default class App extends React.Component {
                     {
                         /*$('#menuButton').css('display') === 'none'*/window.outerWidth > 1020 ? (
                             <>
-                                <a href='/es'>Equations</a>
-                                <a href='/sle'>Systems</a>
+                                <a href='/equations'>Equations</a>
+                                <a href='/systems'>Systems</a>
                                 <a href='/interpolation'>Interpolation</a>
                             </>
                         ) : <MobileMenu ref='mobMenu' />
@@ -69,9 +70,10 @@ export default class App extends React.Component {
                 <div className='App'>
                     <BrowserRouter>
                     <Switch>
-                        <Route path="/es" component={EquationsComponent} />
-                        <Route path="/sle" component={GausAndRunComponent} />
+                        <Route path="/equations" component={EquationsComponent} />
+                        <Route path="/systems" component={GausAndRunComponent} />
                         <Route path='/interpolation' component={InterpolationComponent} />
+                        <Route path='/login' component={LoginComponent} />
                         <Route path='/' component={StartComponent}/>
                     </Switch>
                     </BrowserRouter>

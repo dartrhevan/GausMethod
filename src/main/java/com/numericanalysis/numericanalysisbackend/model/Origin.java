@@ -5,7 +5,7 @@ public enum Origin {
     Systems(1),
     Interpolation(2);
 
-    Origin(int number) {
+    private Origin(int number) {
         this.number = number;
     }
 

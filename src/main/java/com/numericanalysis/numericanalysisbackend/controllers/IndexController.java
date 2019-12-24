@@ -13,7 +13,7 @@ public class IndexController {/*
         return "OK!";
     }
 */
-    @RequestMapping(value = {"/", "es", "sle", "interpolation"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "equations", "systems", "interpolation", "login"},method = RequestMethod.GET)
     public String index(Model m) {
         return "forward:/index.html";
     }

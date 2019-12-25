@@ -13,14 +13,24 @@ const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
 const Switch = ReactRouterDOM.Switch;*/
 
+
+
+const Links = props => (
+    <>
+        <a href='/equations'>Equations</a>
+        <a href='/systems'>Systems</a>
+        <a href='/interpolation'>Interpolation</a>
+        <a href='/login'>Login</a>
+        <a href='/registration'>Registration</a>
+    </>
+);
+
 class MobileMenu extends React.Component {
     render() {
         return (
         <div className='mobileMenu' id='mobMenu' >
             <a onClick={$('#mobMenu').animate({left: '100vw'}, {duration: 200})}>Hide</a>
-            <a href='/equations'>Equations</a>
-            <a href='/systems'>Systems</a>
-            <a href='/interpolation'>Interpolation</a>
+            <Links />
         </div>);
     }
 }
@@ -57,15 +67,7 @@ export default class App extends React.Component {
             <div id='a'>
                 <nav>
                     <h3><a href='/'>Numeric Analysis</a></h3>
-                    {
-                        /*$('#menuButton').css('display') === 'none'*/window.outerWidth > 1020 ? (
-                            <>
-                                <a href='/equations'>Equations</a>
-                                <a href='/systems'>Systems</a>
-                                <a href='/interpolation'>Interpolation</a>
-                            </>
-                        ) : <MobileMenu ref='mobMenu' />
-                    }
+                    { window.outerWidth > 1020 ? <Links /> : <MobileMenu ref='mobMenu' /> }
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
                 </nav>
                 <div className='App'>

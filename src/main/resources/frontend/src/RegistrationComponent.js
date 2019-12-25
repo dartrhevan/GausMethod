@@ -13,13 +13,13 @@ export default class LoginComponent extends React.Component {
                 <input type='password' placeholder='password' required className='inputRow' name='password'/>
                 NickName
                 <br/>
-                <input type='text' placeholder='age' required className='inputRow' name='nickname'/>
+                <input type='text' placeholder='nickname' required className='inputRow' name='nickname'/>
                 Activity
                 <br/>
-                <input type='text' placeholder='age' className='inputRow' name='activity'/>
+                <input type='text' placeholder='activity' className='inputRow' name='activity'/>
                 Description
                 <br/>
-                <input type='text' placeholder='age' className='inputRow' name='description'/>
+                <input type='text' placeholder='description' className='inputRow' name='description'/>
                 Age
                 <br/>
                 <input type='number' placeholder='age' className='inputRow' name='age'/>

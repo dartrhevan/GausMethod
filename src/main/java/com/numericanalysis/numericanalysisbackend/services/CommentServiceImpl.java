@@ -1,5 +1,4 @@
 package com.numericanalysis.numericanalysisbackend.services;
 
-public interface CommentService {
-
+public class CommentServiceImpl implements CommentService {
 }

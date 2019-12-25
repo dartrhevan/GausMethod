@@ -7,6 +7,7 @@ import InterpolationComponent from "./InterpolationComponent/InterpolationCompon
 import './mobile_style.css'
 import $ from 'jquery';
 import LoginComponent from "./LoginComponent";
+import RegistrationComponent from "./RegistrationComponent";
 /*
 const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
@@ -74,6 +75,7 @@ export default class App extends React.Component {
                         <Route path="/systems" component={GausAndRunComponent} />
                         <Route path='/interpolation' component={InterpolationComponent} />
                         <Route path='/login' component={LoginComponent} />
+                        <Route path='/registration' component={RegistrationComponent} />
                         <Route path='/' component={StartComponent}/>
                     </Switch>
                     </BrowserRouter>

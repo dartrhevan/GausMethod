@@ -22,14 +22,12 @@ public class Comment {
     private User author;
     private String comment;
 
-    public Integer getId() {
-        return id;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     public Comment(Date date, User author, String comment, Origin origin) {

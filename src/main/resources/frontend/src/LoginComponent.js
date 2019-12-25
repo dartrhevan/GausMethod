@@ -5,8 +5,12 @@ export default class LoginComponent extends React.Component {
         return (
             <form align='center' className='content' method='post'action="/j_spring_security_check">
                 <h2>Authorisation</h2>
-                <input type='email' placeholder='email' className='inputRow' name='email'/>
-                <input type='password' placeholder='password' className='inputRow' name='password'/>
+                E-mail
+                <br/>
+                <input type='email' placeholder='email' required className='inputRow' name='email'/>
+                Password
+                <br/>
+                <input type='password' placeholder='password' required className='inputRow' name='password'/>
                 <button type='submit'>Submit</button>
             </form>
         );

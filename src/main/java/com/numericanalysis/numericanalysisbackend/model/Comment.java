@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "comment")
+@Entity(name = "comment")
+//@Table(name = "comment")
 public class Comment {
     public Origin getOrigin() {
         return origin;
@@ -18,7 +18,7 @@ public class Comment {
     private Origin origin;
     private Date date;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author")
     private User author;
     private String comment;
 

@@ -16,7 +16,7 @@ public class IndexController {
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @Autowired
     private UserService userService;
-    @RequestMapping(value = {"/", "equations", "systems", "interpolation", "login", "registration"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "equations", "systems", "interpolation", "login", "registration", "user-information"},method = RequestMethod.GET)
     public String index(Model m) {
         return "forward:/index.html";
     }

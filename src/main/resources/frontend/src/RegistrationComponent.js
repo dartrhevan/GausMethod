@@ -1,16 +1,21 @@
 import React from 'react'
+import $ from 'jquery';
 
 export default class LoginComponent extends React.Component {
+    onSubmit(event) {
+        if($('#password').val() !== $('#passwordConf').val()) {
+            event.preventDefault();
+            alert("Password and its confirm aren't equal");
+        }
+    }
+
     render() {
         return (
-            <form align='center' className='content' method='post'>
+            <form align='center' className='content' method='post' onSubmit={this.onSubmit}>
                 <h2>Registration</h2>
                 E-mail
                 <br/>
                 <input type='email' placeholder='email' required className='inputRow' name='email'/>
-                Password
-                <br/>
-                <input type='password' placeholder='password' required className='inputRow' name='password'/>
                 NickName
                 <br/>
                 <input type='text' placeholder='nickname' required className='inputRow' name='nickname'/>
@@ -23,6 +28,12 @@ export default class LoginComponent extends React.Component {
                 Age
                 <br/>
                 <input type='number' placeholder='age' className='inputRow' name='age'/>
+                Password
+                <br/>
+                <input type='password' placeholder='password' required className='inputRow' id='password' name='password'/>
+                Password confirm
+                <br/>
+                <input type='password' placeholder='password confirm' id='passwordConf' required className='inputRow'/>
                 <button type='submit'>Submit</button>
             </form>
         );

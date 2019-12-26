@@ -8,6 +8,7 @@ import './mobile_style.css'
 import $ from 'jquery';
 import LoginComponent from "./LoginComponent";
 import RegistrationComponent from "./RegistrationComponent";
+import UserInformationComponent from "./UserInformationComponent";
 
 const Links = props => (
     <>
@@ -20,7 +21,7 @@ const Links = props => (
 
 const Signs = props => props.user ?
   (<>
-      <a className='sign' href='/'>{props.user}</a>
+      <a className='sign' href='/user-information'>{props.user}</a>
       <a className='sign' href='/logout'>Logout</a>
   </>) :
   (<>
@@ -107,6 +108,7 @@ export default class App extends React.Component {
                         <Route path='/interpolation' component={InterpolationComponent} />
                         <Route path='/login' component={LoginComponent} />
                         <Route path='/registration' component={RegistrationComponent} />
+                        <Route path='/user-information' component={UserInformationComponent} />
                         <Route path='/' component={StartComponent}/>
                     </Switch>
                     </BrowserRouter>

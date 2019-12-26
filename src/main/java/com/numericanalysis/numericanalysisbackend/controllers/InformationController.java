@@ -1,12 +1,17 @@
 package com.numericanalysis.numericanalysisbackend.controllers;
 
+import com.google.common.base.Strings;
+import com.numericanalysis.numericanalysisbackend.model.User;
 import com.numericanalysis.numericanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.Principal;
 
 @RestController
@@ -27,5 +32,19 @@ public class InformationController {
         if(principal == null)
             return "{\"error\": \"You are not authorized\"}";
         return "{ \"user\": \"" + principal.getName() + "\"}";
+    }
+
+    @RequestMapping(value = {"/edit_user_data"},method = RequestMethod.POST)
+    public void editUserData(HttpServletResponse response, User u, String newPassword, Model m, Principal principal) throws Exception {//TODO: try/catch
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println( u );
+        System.out.println( newPassword );
+        u.setPassword( encoder.encode( u.getPassword() ) );
+        if(!Strings.isNullOrEmpty( newPassword ))
+            newPassword = encoder.encode( newPassword );
+
+        userService.edit( principal.getName(), newPassword, u );
+        response.sendRedirect("/");
+        //return "{\"error\": \"You are not authorized\"}";
     }
 }

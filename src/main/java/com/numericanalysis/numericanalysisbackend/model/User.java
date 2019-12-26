@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import org.checkerframework.common.aliasing.qual.Unique;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -26,6 +27,7 @@ public class User {
     private Collection<Comment> comments;
     @Expose(deserialize = true, serialize = false)
     private Integer id;
+    @Column(unique=true)
     @Expose
     private String email;
     @Expose(deserialize = true, serialize = false)

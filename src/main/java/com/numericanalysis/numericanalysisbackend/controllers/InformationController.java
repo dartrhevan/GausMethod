@@ -21,4 +21,11 @@ public class InformationController {
             return "{\"error\": \"You are not authorized\"}";
         return userService.findByEmail( principal.getName() ).toJSON();
     }
+
+    @RequestMapping(value = {"/get_user_name"},method = RequestMethod.GET)
+    public String getUserName(Model m, Principal principal) {
+        if(principal == null)
+            return "{\"error\": \"You are not authorized\"}";
+        return "{ \"user\": \"" + principal.getName() + "\"}";
+    }
 }

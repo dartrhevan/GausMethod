@@ -1,9 +1,9 @@
 import React from 'react';
-import CalculatorComponent from "../CalculatorComponent";
+import CalculatorComponent from "../CalculatorComponent/CalculatorComponent";
 import './App.css';
 import Row from "./Row";
 import {calc, runcalc} from './GausMethod';
-import Type from "../Type";
+import Type from "../CalculatorComponent/Type";
 import {SystemSolvingResult} from "./SystemSolvingResult";
 
 const CoefficientsResults = props => (

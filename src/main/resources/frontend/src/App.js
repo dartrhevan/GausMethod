@@ -8,30 +8,36 @@ import './mobile_style.css'
 import $ from 'jquery';
 import LoginComponent from "./LoginComponent";
 import RegistrationComponent from "./RegistrationComponent";
-/*
-const Router = ReactRouterDOM.BrowserRouter;
-const Route = ReactRouterDOM.Route;
-const Switch = ReactRouterDOM.Switch;
-*/
-
-
 
 const Links = props => (
     <>
         <a href='/equations'>Equations</a>
         <a href='/systems'>Systems</a>
         <a href='/interpolation'>Interpolation</a>
-        <a className='sign' href='/login'>Login</a>
-        <a className='sign' href='/registration'>Registration</a>
+        <Signs user={props.user}/>
     </>
 );
 
+const Signs = props => props.user ?
+  (<>
+      <a className='sign' href='/'>{props.user}</a>
+      <a className='sign' href='/logout'>Logout</a>
+  </>) :
+  (<>
+      <a className='sign' href='/login'>Login</a>
+      <a className='sign' href='/registration'>Registration</a>
+  </>
+);
+
 class MobileMenu extends React.Component {
+    onHide() {
+        $('#mobMenu').animate({left: '100vw'}, {duration: 200});
+    }
     render() {
         return (
         <div className='mobileMenu' id='mobMenu' >
-            <a onClick={$('#mobMenu').animate({left: '100vw'}, {duration: 200})}>Hide</a>
-            <Links />
+            <a onClick={this.onHide}>Hide</a>
+            <Links user = {this.props.user}/>
         </div>);
     }
 }
@@ -45,17 +51,37 @@ export default class App extends React.Component {
         {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
                 $('#mobMenu').animate({left: '100vw'}, {duration: 200});
+        };
+        this.state = {width: document.body.offsetWidth, user: null};
+        const resize = event => {
+            this.setState({width: document.body.offsetWidth, user: this.state.user});
+        };
+        window.onresize = resize.bind(this);
+        document.body.addEventListener("resize", resize.bind(this));
+        document.addEventListener("resize", resize.bind(this));
+        this.initUser = this.initUser.bind(this);
+    }
+
+    componentDidMount() {
+        $.get('/api/get_user_name', this.initUser);
+    }
+
+    initUser(data) {
+        const obj = JSON.parse(data);
+        if(obj.error || !obj.user)
+            console.log(obj.error);
+        else
+        {
+            console.log(obj.user);
+            this.setState({width: this.state.width, user: obj.user})
         }
     }
 
     onMobileMenuButtonClick() {
         console.log($('#mobMenu a'));
-        //$('#mobMenu').css('left', '20vw');
-        //$('#mobMenu').css('left', null);
-
         $('#mobMenu').css('width', window.outerWidth + 'vw');
         $('#mobMenu').css('height', window.outerHeight + 'vh');
-        $('#mobMenu').children().each(this.f);
+        $('#mobMenu a').each(this.f);
         $('#mobMenu').animate({left: '20vw'}, {duration: 200});
     }
 
@@ -68,7 +94,9 @@ export default class App extends React.Component {
             <div id='a'>
                 <nav>
                     <h3><a href='/'>Numeric Analysis</a></h3>
-                    { window.outerWidth > 1020 ? <Links /> : <MobileMenu ref='mobMenu' /> }
+                    {
+                        ((this.state.width > 1020) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
+                    }
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
                 </nav>
                 <div className='App'>

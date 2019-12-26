@@ -1,6 +1,6 @@
 import React from "react";
-import CalculatorComponent from "../CalculatorComponent";
-import Type from "../Type";
+import CalculatorComponent from "../CalculatorComponent/CalculatorComponent";
+import Type from "../CalculatorComponent/Type";
 import $ from 'jquery';
 
 export default class InterpolationComponent extends CalculatorComponent {

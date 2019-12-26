@@ -1,7 +1,7 @@
 import React from 'react';
-import CalculatorComponent from "../CalculatorComponent";
+import CalculatorComponent from "../CalculatorComponent/CalculatorComponent";
 import {calcDivideByHalf, calcNewton} from "./DivideByHalf";
-import Type from "../Type";
+import Type from "../CalculatorComponent/Type";
 
 export default class GausAndRunComponent extends CalculatorComponent {
     constructor() {

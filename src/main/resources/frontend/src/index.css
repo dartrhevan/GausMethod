@@ -112,14 +112,14 @@ nav a {
 
 nav .sign {
   transition: color 0.4s;
-  background-color: #2ff9cf;
+  background-color: #09d3cf;
 }
 
 nav .sign:hover {
   box-shadow: none;
   color: gray;
   text-decoration: underline;
-  background-color: #2ff9cf;
+  background-color: #09d3cf;
 }
 
 .mobileMenu {

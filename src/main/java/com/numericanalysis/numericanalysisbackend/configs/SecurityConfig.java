@@ -43,12 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 //.anyRequest()
-                .antMatchers( "/", "equations", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_data" )
+                .antMatchers( "/", "equations", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name" )
                 .permitAll();//.authenticated()
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
         http.authorizeRequests()
-                .antMatchers("sa").authenticated()
+                .antMatchers("/api/get_user_data").authenticated()
                 .and().httpBasic();
 
         http.csrf()

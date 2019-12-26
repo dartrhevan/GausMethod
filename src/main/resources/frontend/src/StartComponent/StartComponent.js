@@ -17,10 +17,10 @@ export default class StartComponent extends React.Component {
                 </div>
                 <hr/>
                 <div id='links'>
-                    <a href='/es' className='startLink'>Divide by half method</a>
-                    <a href='/es' className='startLink'>Newton method</a>
-                    <a href='/sle' className='startLink'>Gaus method</a>
-                    <a href='/sle' className='startLink'>Run method</a>
+                    <a href='/equations' className='startLink'>Divide by half method</a>
+                    <a href='/equations' className='startLink'>Newton method</a>
+                    <a href='/systems' className='startLink'>Gaus method</a>
+                    <a href='/systems' className='startLink'>Run method</a>
                     <a href='/interpolation' className='startLink'>Lagrange method</a>
                     <a href='/interpolation' className='startLink'>Newton method</a>
                     <a href='/interpolation' className='startLink'>MMS method</a>

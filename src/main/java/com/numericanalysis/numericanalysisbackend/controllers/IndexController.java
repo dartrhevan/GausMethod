@@ -12,12 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-public class IndexController {/*
-    @RequestMapping(value = {"/test"},method = RequestMethod.GET)
-    public String test(Model m) {
-        return "OK!";
-    }
-*/
+public class IndexController {
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @Autowired
     private UserService userService;
@@ -34,9 +29,4 @@ public class IndexController {/*
         return "redirect:/login";
     }
 
-/*
-    @RequestMapping(value = {"/interpolation.html"},method = RequestMethod.GET)
-    public String interpol(Model m) {
-        return "forward:/interpolation.html";
-    }*/
 }

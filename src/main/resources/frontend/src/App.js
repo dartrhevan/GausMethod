@@ -11,7 +11,8 @@ import RegistrationComponent from "./RegistrationComponent";
 /*
 const Router = ReactRouterDOM.BrowserRouter;
 const Route = ReactRouterDOM.Route;
-const Switch = ReactRouterDOM.Switch;*/
+const Switch = ReactRouterDOM.Switch;
+*/
 
 
 
@@ -20,8 +21,8 @@ const Links = props => (
         <a href='/equations'>Equations</a>
         <a href='/systems'>Systems</a>
         <a href='/interpolation'>Interpolation</a>
-        <a href='/login'>Login</a>
-        <a href='/registration'>Registration</a>
+        <a className='sign' href='/login'>Login</a>
+        <a className='sign' href='/registration'>Registration</a>
     </>
 );
 
@@ -54,7 +55,7 @@ export default class App extends React.Component {
 
         $('#mobMenu').css('width', window.outerWidth + 'vw');
         $('#mobMenu').css('height', window.outerHeight + 'vh');
-        $('#mobMenu a').each(this.f);
+        $('#mobMenu').children().each(this.f);
         $('#mobMenu').animate({left: '20vw'}, {duration: 200});
     }
 

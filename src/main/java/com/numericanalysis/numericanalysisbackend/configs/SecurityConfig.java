@@ -43,39 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 //.anyRequest()
-                .antMatchers( "/", "equations", "systems", "interpolation", "interpolation.html", "login" )
+                .antMatchers( "/", "equations", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_data" )
                 .permitAll();//.authenticated()
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
         http.authorizeRequests()
-                .antMatchers("/test").authenticated()
+                .antMatchers("sa").authenticated()
                 .and().httpBasic();
-/*
-        // включаем защиту от CSRF атак
-        http.csrf()
-                .disable()
-                // указываем правила запросов
-                // по которым будет определятся доступ к ресурсам и остальным данным
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/**").permitAll()
-                .anyRequest().permitAll()
-                .and();
-*/
-/*
-        http.formLogin()
-                // указываем страницу с формой логина
-                .loginPage("/login")
-                // указываем action с формы логина
-                //.loginProcessingUrl("/j_spring_security_check")
-                // указываем URL при неудачном логине
-                .failureUrl("/login?error")
-                .defaultSuccessUrl("/")//
-                // Указываем параметры логина и пароля с формы логина
-                .usernameParameter("email")
-                .passwordParameter("password")
-                // даем доступ к форме логина всем
-                .permitAll();
-*/
 
         http.csrf()
                 .disable();

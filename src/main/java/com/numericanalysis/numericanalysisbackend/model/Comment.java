@@ -1,5 +1,8 @@
 package com.numericanalysis.numericanalysisbackend.model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -38,6 +41,11 @@ public class Comment {
     }
 
     public Comment() {}
+
+    public String toJSON() {
+        Gson gson = new Gson();//GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        return gson.toJson( this );
+    }
 
     @Override
     public boolean equals(Object o) {

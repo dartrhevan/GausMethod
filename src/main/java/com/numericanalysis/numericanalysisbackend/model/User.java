@@ -1,5 +1,10 @@
 package com.numericanalysis.numericanalysisbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -16,16 +21,22 @@ public class User {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    @Expose(deserialize = true, serialize = false)
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Collection<Comment> comments;
-
+    @Expose(deserialize = true, serialize = false)
     private Integer id;
+    @Expose
     private String email;
+    @Expose(deserialize = true, serialize = false)
     private String password;
+    @Expose
     private int age;
+    @Expose
     private String nickname;
+    @Expose
     private String activity;
+    @Expose
     private String description;
 
     @Override
@@ -53,6 +64,11 @@ public class User {
                 ", activity='" + activity + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public String toJSON() {
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        return gson.toJson( this );
     }
 
     @Override

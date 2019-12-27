@@ -237,3 +237,12 @@ iframe {
   min-height: 375px;
   min-width: 350px;
 }
+
+#submit[disabled="disabled"] {
+  background-color: #03a2a0;
+}
+
+#submit[disabled="disabled"]:hover {
+  color: inherit;
+  font-weight: inherit;
+}

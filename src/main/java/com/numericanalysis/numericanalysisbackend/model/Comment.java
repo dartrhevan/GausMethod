@@ -30,6 +30,7 @@ public class Comment {
     }
 
     @Id
+    @Column(unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 

@@ -14,6 +14,7 @@ import java.util.Objects;
 //@Table(name = "user")
 public class User {
     @Id
+    @Column(unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;

@@ -27,7 +27,7 @@ export default class LoginComponent extends React.Component {
                 <input type='text' placeholder='description' className='inputRow' name='description'/>
                 Age
                 <br/>
-                <input type='number' placeholder='age' className='inputRow' name='age'/>
+                <input type='number' placeholder='age' className='inputRow' value='0' name='age'/>
                 Password
                 <br/>
                 <input type='password' placeholder='password' required className='inputRow' id='password' name='password'/>

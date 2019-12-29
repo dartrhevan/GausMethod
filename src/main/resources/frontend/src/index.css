@@ -154,6 +154,12 @@ button:hover {
   box-shadow: lightgray 1px 1px 1px 1px, lightgray -1px -1px 1px 1px;
 }
 
+.inputRow:focus
+{
+  box-shadow: #09d3cf 1px 1px 1px 1px, #09d3cf -1px -1px 1px 1px;
+  outline: none;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -238,11 +244,12 @@ iframe {
   min-width: 350px;
 }
 
-#submit[disabled="disabled"] {
+#submit:disabled {
   background-color: #03a2a0;
+  cursor: auto;
 }
 
-#submit[disabled="disabled"]:hover {
+#submit:disabled:hover {
   color: inherit;
   font-weight: inherit;
 }

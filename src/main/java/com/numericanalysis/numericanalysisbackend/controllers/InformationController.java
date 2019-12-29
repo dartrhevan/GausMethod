@@ -44,7 +44,7 @@ public class InformationController {
             newPassword = encoder.encode( newPassword );
 
         userService.edit( principal.getName(), newPassword, u );
-        response.sendRedirect("/");
+        response.sendRedirect(u.getEmail().equals(principal.getName()) ? "/" : "/logout");
         //return "{\"error\": \"You are not authorized\"}";
     }
 }

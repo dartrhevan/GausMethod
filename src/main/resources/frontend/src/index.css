@@ -238,10 +238,18 @@ button, input {
   color: black;
 }
 
+button:focus {
+  outline: none;
+}
+
 iframe {
   margin: 0;
   min-height: 375px;
   min-width: 350px;
+}
+
+#newPassBlock {
+  display: none;
 }
 
 #submit:disabled {

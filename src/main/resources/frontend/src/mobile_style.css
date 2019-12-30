@@ -13,6 +13,11 @@
         display: inline;
     }
 
+    #menuButton:hover {
+        font-weight: normal;
+
+    }
+
     .mobileMenu a {
         height: auto;
         display: block;

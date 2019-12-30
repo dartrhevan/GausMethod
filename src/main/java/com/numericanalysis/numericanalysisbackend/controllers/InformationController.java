@@ -47,4 +47,9 @@ public class InformationController {
         response.sendRedirect(u.getEmail().equals(principal.getName()) ? "/" : "/logout");
         //return "{\"error\": \"You are not authorized\"}";
     }
+
+    @RequestMapping("/get_comments")
+    public String getComments(int origin, Model model) {
+        return "";
+    }
 }

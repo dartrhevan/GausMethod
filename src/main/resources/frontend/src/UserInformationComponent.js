@@ -6,6 +6,8 @@ export default class UserInformationComponent extends React.Component {
         super();
         this.state = {user: {   }};
         this.initUser = this.initUser.bind(this);
+        this.passCh = this.passCh.bind(this);
+        this.toggleSubmit = this.toggleSubmit.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
 
@@ -18,6 +20,17 @@ export default class UserInformationComponent extends React.Component {
     }
 
     async componentDidMount() {
+        $("input").on('input', event => {
+            /*if(!this.state.user.hasOwnProperty(event.target.name))
+                this.state.user[event.target.name] = event.target.value;*/
+            this.toggleSubmit();
+        });
+        //$('#newPassBlock').hide();
+        await $.get('/api/get_user_data', this.initUser);
+    }
+
+    toggleSubmit()
+    {
         const check = ((i, e) =>
         {
             if(!this.state.user.hasOwnProperty(e.name))
@@ -25,13 +38,8 @@ export default class UserInformationComponent extends React.Component {
             let g = this.state.user[e.name], f = e.value;
             return f != g;
         }).bind(this);
-        $("input").on('input', event => {
-            /*if(!this.state.user.hasOwnProperty(event.target.name))
-                this.state.user[event.target.name] = event.target.value;*/
-            let a = $('input').is(check);
-            $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
-        });
-        await $.get('/api/get_user_data', this.initUser);
+        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check);
+        $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
     }
 
     initUser(data)
@@ -48,6 +56,13 @@ export default class UserInformationComponent extends React.Component {
             });
             //$('#email').val(obj.email);
         }
+    }
+
+    passCh(event) {
+        event.preventDefault();
+        $('#newPassBlock').toggle(500, this.toggleSubmit);
+        $('#passch').text( $('#passch').text() === 'hide' ? 'Change password' : 'hide');
+
     }
 
     render() {
@@ -69,13 +84,17 @@ export default class UserInformationComponent extends React.Component {
                 Age
                 <br/>
                 <input type='number' /*value={this.state.user.age}*/ placeholder='age' className='inputRow' name='age'/>
-                New password
+                <button id='passch' onClick={this.passCh}>Change password</button>
+                <div id='newPassBlock'>
+                    New password
+                    <br/>
+                    <input type='password' placeholder='password' id='password' className='inputRow' name='newPassword'/>
+                    New password confirm
+                    <br/>
+                    <input type='password'  id='passwordConf' placeholder='password confirm' className='inputRow'/>
+                </div>
                 <br/>
-                <input type='password' placeholder='password' id='password' className='inputRow' name='newPassword'/>
-                New password confirm
-                <br/>
-                <input type='password'  id='passwordConf' placeholder='password confirm' className='inputRow'/>
-                Old password
+                Current password
                 <br/>
                 <input type='password' placeholder='old password' name="password" required className='inputRow'/>
                 <button type='submit' disabled="disabled" id='submit'>Submit</button>

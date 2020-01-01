@@ -60,21 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data").authenticated()
                 .and().httpBasic();
 
-        http.csrf().disable();/*.addFilter(new OncePerRequestFilter() {/*
-            @Override
-            public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-                super.doFilter(servletRequest, servletResponse, filterChain);
-                HttpSession session = servletRequest.getSession(false)
-            }*
-
-            @Override
-            protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-                super.doFilter(httpServletRequest, httpServletResponse, filterChain);
-                HttpSession session = httpServletRequest.getSession(false);
-                Flash
-            }
-        });*/
-        //http.csrf().ignoringAntMatchers("/ws/**");
+        http.csrf().disable();
         http.formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")

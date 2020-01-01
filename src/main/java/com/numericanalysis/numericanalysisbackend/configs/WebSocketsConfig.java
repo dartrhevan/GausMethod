@@ -10,24 +10,11 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 import java.util.concurrent.Executors;
 
 @Configuration
-@EnableWebSocketMessageBroker
-public class WebSocketsConfig implements WebSocketMessageBrokerConfigurer // WebSocketConfigurer
+@EnableWebSocket
+public class WebSocketsConfig implements WebSocketConfigurer
 {
-
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws")/*.setAllowedOrigins("*")*/.withSockJS();
-    }
-
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/app");
-        registry.enableSimpleBroker("/topic");
-    }
-/*
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new SocketTextHandler(), "/user");
+        registry.addHandler(new SocketTextHandler(), "/ws");
     }
-*/
 }

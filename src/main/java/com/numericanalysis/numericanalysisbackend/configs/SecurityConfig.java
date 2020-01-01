@@ -1,5 +1,9 @@
 package com.numericanalysis.numericanalysisbackend.configs;
 
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.numericanalysis.numericanalysisbackend.services.UserDetailsServiceImpl;
@@ -12,12 +16,16 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;/*
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;*/
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
 
 //@EnableAsync(proxyTargetClass=true)
 @EnableCaching(proxyTargetClass=true)
@@ -41,9 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
                 //.anyRequest()
-                .antMatchers( "/", "equations", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name" )
+                .antMatchers( "/", "equations", "/ws", "/st/ind.html", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name" )
                 .permitAll();//.authenticated()
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
@@ -51,8 +60,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data").authenticated()
                 .and().httpBasic();
 
-        http.csrf()
-                .disable();
+        http.csrf().disable();/*.addFilter(new OncePerRequestFilter() {/*
+            @Override
+            public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+                super.doFilter(servletRequest, servletResponse, filterChain);
+                HttpSession session = servletRequest.getSession(false)
+            }*
+
+            @Override
+            protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+                super.doFilter(httpServletRequest, httpServletResponse, filterChain);
+                HttpSession session = httpServletRequest.getSession(false);
+                Flash
+            }
+        });*/
+        //http.csrf().ignoringAntMatchers("/ws/**");
         http.formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")

@@ -52,4 +52,5 @@ public class InformationController {
     public String getComments(int origin, Model model) {
         return "";
     }
+
 }

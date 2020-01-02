@@ -1,5 +1,6 @@
 package com.numericanalysis.numericanalysisbackend.configs;
 
+import com.numericanalysis.numericanalysisbackend.services.CommentService;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -37,6 +38,13 @@ public class DataConfig {
 
         return dataSource;
     }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    @Bean
+    public CommentService getCommentService() {
+        return CommentService.getInstance();
+    }
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {

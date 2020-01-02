@@ -2,6 +2,7 @@ package com.numericanalysis.numericanalysisbackend.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.springframework.web.socket.TextMessage;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -40,6 +41,7 @@ public class Comment {
         this.author = author;
         this.comment = comment;
     }
+
 
     public Comment() {}
 

@@ -1,14 +1,10 @@
 package com.numericanalysis.numericanalysisbackend.configs;
+import com.numericanalysis.numericanalysisbackend.controllers.SocketTextHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.scheduling.TaskScheduler;
-import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
-import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
-
-import java.util.concurrent.Executors;
 
 @Configuration
 @EnableWebSocket
@@ -21,8 +17,16 @@ public class WebSocketsConfig implements WebSocketConfigurer
         return container;
     }
 
+    @Bean
+    public SocketTextHandler getSocketTextHandler() {
+        return new SocketTextHandler();
+    }
+
+    @Autowired
+    private SocketTextHandler socketTextHandler;
+
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new SocketTextHandler(), "/ws").setAllowedOrigins("*");
+        registry.addHandler(/*new SocketTextHandler()*/socketTextHandler, "/ws").setAllowedOrigins("*");
     }
 }

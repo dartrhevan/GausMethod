@@ -1,7 +1,11 @@
 package com.numericanalysis.numericanalysisbackend.controllers;
 
 import com.google.common.base.Strings;
+import com.google.gson.Gson;
+import com.numericanalysis.numericanalysisbackend.model.Comment;
+import com.numericanalysis.numericanalysisbackend.model.Origin;
 import com.numericanalysis.numericanalysisbackend.model.User;
+import com.numericanalysis.numericanalysisbackend.services.CommentService;
 import com.numericanalysis.numericanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api")
@@ -48,9 +53,19 @@ public class InformationController {
         //return "{\"error\": \"You are not authorized\"}";
     }
 
-    @RequestMapping("/get_comments")
-    public String getComments(int origin, Model model) {
-        return "";
+    @RequestMapping(value = "/add_comment", method = RequestMethod.POST)
+    public void addComment( String origin, String comment, Model model, Principal principal) {
+        //return "";
+        commentService.addComment(new Comment(new Date(), userService.findByEmail(principal.getName()), comment, Origin.valueOf(origin)));
     }
+
+    private Gson gson = new Gson();
+    @Autowired
+    private CommentService commentService;// = CommentService.getInstance();
+/*
+    InformationController() {
+        commentService.getOnCommentAdd().accept(null);//setOnCommentAdd(() -> );
+    }*/
+
 
 }

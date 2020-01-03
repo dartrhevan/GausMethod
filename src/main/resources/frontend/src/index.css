@@ -230,6 +230,7 @@ input {
   align-items: center;
   display: flex;
   flex-grow: 200;
+  flex-direction: column;
 }
 
 button, input {

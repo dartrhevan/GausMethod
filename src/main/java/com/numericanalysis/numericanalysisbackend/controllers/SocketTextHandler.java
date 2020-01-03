@@ -46,7 +46,10 @@ public class SocketTextHandler extends TextWebSocketHandler {
         //sockets.add(session);
         if(commentService.getOnCommentAdd() == null)
             commentService.setOnCommentAdd(ob -> {
+
+                System.out.println("oncommentadd");
             sockets.forEach((s,o) -> {
+                System.out.println(s);
                 try {
                     s.sendMessage(new TextMessage(gson.toJson(commentService.getComments(o))));
                 } catch (IOException e) {

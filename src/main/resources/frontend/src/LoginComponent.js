@@ -11,7 +11,11 @@ export default class LoginComponent extends React.Component {
                 Password
                 <br/>
                 <input type='password' placeholder='password' required className='inputRow' name='password'/>
-                <button type='submit'>Submit</button>
+                <button type='submit'>Log in</button>
+                <br/>
+                If you do not have an account, you can create it
+                <br/>
+                <button onClick="event.preventDefault();window.location.href = '/registration'">Create</button>
             </form>
         );
     }

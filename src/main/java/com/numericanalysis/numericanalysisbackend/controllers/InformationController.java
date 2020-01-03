@@ -54,12 +54,16 @@ public class InformationController {
     }
 
     @RequestMapping(value = "/add_comment", method = RequestMethod.POST)
-    public void addComment( String origin, String comment, Model model, Principal principal) {
+    public void addComment(HttpServletResponse response, String origin, String comment, Model model, Principal principal) throws IOException {
         //return "";
+        System.out.println(origin);
+        System.out.println(comment);
         commentService.addComment(new Comment(new Date(), userService.findByEmail(principal.getName()), comment, Origin.valueOf(origin)));
+
+        response.sendRedirect("/index.html");
     }
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
     @Autowired
     private CommentService commentService;// = CommentService.getInstance();
 /*

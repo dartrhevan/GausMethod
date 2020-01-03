@@ -9,6 +9,7 @@ import $ from 'jquery';
 import LoginComponent from "./LoginComponent";
 import RegistrationComponent from "./RegistrationComponent";
 import UserInformationComponent from "./UserInformationComponent";
+import CommentsComponent from "./CommentsComponent/CommentsComponent";
 
 const Links = props => (
     <>
@@ -53,7 +54,7 @@ export default class App extends React.Component {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
                 $('#mobMenu').animate({left: '100vw'}, {duration: 200});
         };
-        this.state = {width: document.body.offsetWidth, user: null};
+        this.state = {width: /*document.body.offsetWidth*/window.outerWidth, user: null};
         const resize = event => {
             this.setState({width: document.body.offsetWidth, user: this.state.user});
         };

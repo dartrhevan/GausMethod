@@ -33,20 +33,7 @@ public class CommentService {
     public Collection<Comment> getComments(Origin origin){
         return commentRepository.findByOrigin(origin);
     }
-/*
-    public static Origin parseOrigin(TextMessage message) throws IllegalAccessException {
-        switch (message.getPayload())
-        {
-            case "Interpolation":
-                return Origin.Interpolation;
-            case "Equations":
-                return Origin.Equations;
-            case "Systems":
-                return Origin.Systems;
-            default:
-                throw new IllegalAccessException();
-        }
-    }*/
+
 
     public void addComment(Comment comment) {
         commentRepository.save(comment);

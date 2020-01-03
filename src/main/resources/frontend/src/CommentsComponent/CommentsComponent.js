@@ -21,15 +21,13 @@ export default class CommentsComponent extends React.Component {
 
     render() {
         return (
-        <>
-            <p>Comments</p>
-            {this.state.comments.map(c => <CommentComponent comment={c}/>)}
         <form method='post' action='/api/add_comment' className='commentSection content'>
+            <p>Comments</p>
+            {this.state.comments.map(c => <CommentComponent comment={c.comment}/>)}
             <textarea name='comment' className='inputRow'></textarea>
             <br/>
             <input type='hidden' name='origin' value='Systems'/>
             <button>Add</button>
-        </form>
-        </>);
+        </form>);
     }
 }

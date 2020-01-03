@@ -1,6 +1,7 @@
 package com.numericanalysis.numericanalysisbackend.services;
 
 import com.numericanalysis.numericanalysisbackend.model.Comment;
+import com.numericanalysis.numericanalysisbackend.model.CommentMessage;
 import com.numericanalysis.numericanalysisbackend.model.Origin;
 import com.numericanalysis.numericanalysisbackend.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.socket.TextMessage;
 
 import java.util.Collection;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+
 @Service
 public class CommentService {
     private static final CommentService instance = new CommentService();
@@ -30,8 +33,8 @@ public class CommentService {
         this.onCommentAdd = onCommentAdd;
     }
 
-    public Collection<Comment> getComments(Origin origin){
-        return commentRepository.findByOrigin(origin);
+    public Collection<CommentMessage> getComments(Origin origin){
+        return commentRepository.findByOrigin(origin).parallelStream().map(c -> new CommentMessage(c)).collect(Collectors.toList());
     }
 
 

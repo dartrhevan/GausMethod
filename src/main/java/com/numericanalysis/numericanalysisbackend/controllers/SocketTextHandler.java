@@ -47,7 +47,7 @@ public class SocketTextHandler extends TextWebSocketHandler {
         if(commentService.getOnCommentAdd() == null)
             commentService.setOnCommentAdd(ob -> {
 
-                System.out.println("oncommentadd");
+               // System.out.println("oncommentadd");
             sockets.forEach((s,o) -> {
                 System.out.println(s);
                 try {

@@ -5,7 +5,7 @@ import CommentsComponent from "../CommentsComponent/CommentsComponent";
 export default class CalculatorComponent extends React.Component {
     constructor() {
         super();
-        this.state = {types: [], dimension: 0, current: 0, result: null};
+        this.state = {types: [], dimension: 0, current: 0, result: null, title: ""};
         this.getCalculator = this.getCalculator.bind(this);
         this.changeType = this.changeType.bind(this);
     }
@@ -42,7 +42,7 @@ export default class CalculatorComponent extends React.Component {
                     }
                 </div>
             </div>
-            <CommentsComponent/>
+            <CommentsComponent title={this.state.title}/>
             </div>);
     }
 }

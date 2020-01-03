@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import EquationsComponent from "./EquationsSolving/EquationsComponent";
-import GausAndRunComponent from "./SystemsSolving/GausAndRunComponent";
+import SystemsComponent from "./SystemsComponent/SystemsComponent";
 import StartComponent from "./StartComponent/StartComponent";
 import InterpolationComponent from "./InterpolationComponent/InterpolationComponent";
 import './mobile_style.css'
@@ -105,7 +105,7 @@ export default class App extends React.Component {
                     <BrowserRouter>
                     <Switch>
                         <Route path="/equations" component={EquationsComponent} />
-                        <Route path="/systems" component={GausAndRunComponent} />
+                        <Route path="/systems" component={SystemsComponent} />
                         <Route path='/interpolation' component={InterpolationComponent} />
                         <Route path='/login' component={LoginComponent} />
                         <Route path='/registration' component={RegistrationComponent} />

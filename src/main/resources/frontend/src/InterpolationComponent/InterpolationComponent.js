@@ -9,7 +9,7 @@ export default class InterpolationComponent extends CalculatorComponent {
         this.state = {
             types: [new Type('Lagrange', 'this.getDescription()', null), new Type('Newton', 'awfdgsfdg',null),
                 new Type('MMS', 'awfdgsfdg',null), new Type('Splains', 'awfdgsfdg',null)],
-            dimension: 2, current: 0, result: null, handler: 'Lagrange'
+            dimension: 2, current: 0, result: null, handler: 'Lagrange', title: "Interpolation"
         };
         //InterpolationComponent.onFrameLoad();
     }

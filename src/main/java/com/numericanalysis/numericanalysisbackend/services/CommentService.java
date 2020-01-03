@@ -34,9 +34,8 @@ public class CommentService {
     }
 
     public Collection<CommentMessage> getComments(Origin origin){
-        return commentRepository.findByOrigin(origin).parallelStream().map(c -> new CommentMessage(c)).collect(Collectors.toList());
+        return commentRepository.findByOrigin(origin).parallelStream().map(c -> new CommentMessage(c)).collect( Collectors.toList());
     }
-
 
     public void addComment(Comment comment) {
         commentRepository.save(comment);

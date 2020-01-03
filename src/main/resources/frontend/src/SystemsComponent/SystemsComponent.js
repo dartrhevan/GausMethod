@@ -22,7 +22,7 @@ const CoefficientsResults = props => (
         </table>
     );
 
-class GausAndRunComponent extends CalculatorComponent {
+class SystemsComponent extends CalculatorComponent {
   constructor() {
     super();
     //this.state = { dimension: 4 };
@@ -37,7 +37,7 @@ class GausAndRunComponent extends CalculatorComponent {
     };
     this.state = {
         types: [new Type('Gaus', this.getDescription(), gausHdl.bind(this)), new Type('Run', 'awfdgsfdg', runHdl.bind(this))],
-        dimension: 2, current: 0, result: null
+        dimension: 2, current: 0, result: null, title: "Systems"
     };
     this.getCalculator = this.getCalculator.bind(this);
   }
@@ -111,4 +111,4 @@ class GausAndRunComponent extends CalculatorComponent {
   }*/
 }
 
-export default GausAndRunComponent;
+export default SystemsComponent;

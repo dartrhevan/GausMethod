@@ -8,7 +8,7 @@ export default class GausAndRunComponent extends CalculatorComponent {
         super();
         this.state = {
             types: [new Type('DivideByHalf', this.getDescription(), calcDivideByHalf), new Type('Newton', 'awfdgsfdg', calcNewton),],
-            dimension: 4, current: 0
+            dimension: 4, current: 0, title: "Equations"
         };
         this.getCalculator = this.getCalculator.bind(this);
     }
@@ -17,7 +17,8 @@ export default class GausAndRunComponent extends CalculatorComponent {
     }
     getCalculator()
     {
-        return (<>
+        return (
+            <>
                 Function:
                 f(x)=
                 <br/>

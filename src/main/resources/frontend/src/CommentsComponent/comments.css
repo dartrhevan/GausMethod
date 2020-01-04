@@ -1,4 +1,5 @@
-.commentSection {
+#commentSection {
+    max-width: none;
 }
 
 textarea {
@@ -8,5 +9,19 @@ textarea {
 }
 
 .comment {
+    display: flex;
+    flex-direction: row;
+}
+
+.nick {
+
+}
+
+.commentInf {
+    border-right: 2px solid gray;
+    width: 30%;
+}
+
+.commentText {
 
 }

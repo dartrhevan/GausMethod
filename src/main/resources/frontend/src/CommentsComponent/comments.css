@@ -8,9 +8,18 @@ textarea {
     margin: 10px;
 }
 
-.comment {
+.comment {/*
     display: flex;
-    flex-direction: row;
+    flex-direction: row;*/
+    margin: 15px 0 15px 0;
+    border-bottom: 2px solid grey;
+    border-top: 2px solid grey;
+}
+
+.comment:hover {
+    background: #09d3cf;
+    font-weight: bold;
+    color: darkgrey;
 }
 
 .nick {
@@ -18,7 +27,7 @@ textarea {
 }
 
 .commentInf {
-    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
     width: 30%;
 }
 

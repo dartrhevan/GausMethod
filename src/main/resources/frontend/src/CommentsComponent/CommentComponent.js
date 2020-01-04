@@ -6,9 +6,9 @@ export default class CommentComponent extends React.Component{
         return (
         <div className='comment'>
             <div className='commentInf'>
-                <div className='nick'>{this.props.nick}</div>
-                <div className='activ'>{this.props.activity}</div>
-                <div className='date'>{this.props.date}</div>
+                <span className='nick'>{this.props.nick}</span>
+                <span className='activ'>{this.props.activity}</span>
+                <span className='date'>{this.props.date}</span>
             </div>
             <div className='commentText'>
                 {this.props.comment}

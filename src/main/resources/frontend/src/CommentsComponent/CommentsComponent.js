@@ -31,7 +31,7 @@ export default class CommentsComponent extends React.Component {
     render() {
         return (
         <form method='post' action='/api/add_comment' id='commentSection' className='content'>
-            <p>Comments</p>
+            <p align='center'><b>Comments</b></p>
             {this.state.comments.map(c => <CommentComponent comment={c.comment} date={c.date} nick={c.author.nickname} activity={c.author.activity}/>)}
             <textarea name='comment' className='inputRow'></textarea>
             <br/>

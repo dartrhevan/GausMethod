@@ -25,6 +25,10 @@
         transition: background-color 0.4s;
     }
 
+    textarea {
+        width: 90%;
+    }
+
     .mobileMenu {
         left: 100vw;
         z-index: 1;

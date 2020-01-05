@@ -2,35 +2,61 @@
     max-width: none;
 }
 
+#commentSection p {
+    font-size: 1.6rem;
+}
+
+#commentSection button {
+    min-width: 75px;
+    margin: 0 0 20px 30px;
+}
+
 textarea {
     resize: none;
-    width: 90%;
-    margin: 10px;
+    width: 95%;
+    font-size: inherit;
+    margin: 15px;
 }
 
 .comment {/*
     display: flex;
     flex-direction: row;*/
-    margin: 15px 0 15px 0;
-    border-bottom: 2px solid grey;
-    border-top: 2px solid grey;
+    margin: 15px;
+    /*border-bottom: 2px solid grey;
+    border-top: 2px solid grey;*/
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .comment:hover {
     background: #09d3cf;
-    font-weight: bold;
-    color: darkgrey;
 }
 
 .nick {
 
+    font-size: 1.35rem;
+    padding: 0 0 0 10px;
 }
 
+.date {
+    padding: 0 0 0 20px;
+    font-size: 0.8rem;
+}
+
+.activ {
+    color: darkgrey;
+    padding: 0 0 0 20px;
+    font-size: 0.8rem;
+}
+
+
+
 .commentInf {
-    border-bottom: 2px solid gray;
-    width: 30%;
 }
 
 .commentText {
-
+    padding: 10px 5px 10px 5px;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
 }

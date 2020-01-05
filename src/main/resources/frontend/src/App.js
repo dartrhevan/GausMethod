@@ -54,7 +54,7 @@ export default class App extends React.Component {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
                 $('#mobMenu').animate({left: '100vw'}, {duration: 200});
         };
-        this.state = {width: /*document.body.offsetWidth*/window.outerWidth, user: null};
+        this.state = {width: document.body.offsetWidth, user: null};
         const resize = event => {
             this.setState({width: document.body.offsetWidth, user: this.state.user});
         };
@@ -92,12 +92,13 @@ export default class App extends React.Component {
     }
 
     render() {
+        console.log(this.state.user);
         return (
             <div id='a'>
                 <nav>
                     <h3><a href='/'>Numeric Analysis</a></h3>
                     {
-                        ((this.state.width > 1020) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
+                        ((this.state.width > 1003) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
                     }
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
                 </nav>

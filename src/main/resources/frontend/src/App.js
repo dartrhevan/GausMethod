@@ -92,7 +92,6 @@ export default class App extends React.Component {
     }
 
     render() {
-        console.log(this.state.user);
         return (
             <div id='a'>
                 <nav>
@@ -105,9 +104,9 @@ export default class App extends React.Component {
                 <div className='App'>
                     <BrowserRouter>
                     <Switch>
-                        <Route path="/equations" component={EquationsComponent} />
-                        <Route path="/systems" component={SystemsComponent} />
-                        <Route path='/interpolation' component={InterpolationComponent} />
+                        <Route path="/equations" render={(props) => <EquationsComponent isLogged={this.state.user !== null} />}/>
+                        <Route path="/systems" render={(props) => <SystemsComponent isLogged={this.state.user !== null} />} />
+                        <Route path='/interpolation' render={(props) => <InterpolationComponent isLogged={this.state.user !== null} />}  />
                         <Route path='/login' component={LoginComponent} />
                         <Route path='/registration' component={RegistrationComponent} />
                         <Route path='/user-information' component={UserInformationComponent} />

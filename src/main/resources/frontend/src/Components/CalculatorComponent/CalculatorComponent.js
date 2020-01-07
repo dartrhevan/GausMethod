@@ -3,11 +3,12 @@ import '../../index.css';
 import CommentsComponent from "../CommentsComponent/CommentsComponent";
 
 export default class CalculatorComponent extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {types: [], dimension: 0, current: 0, result: null, title: ""};
         this.getCalculator = this.getCalculator.bind(this);
         this.changeType = this.changeType.bind(this);
+        console.log(props.isLogged);
     }
 
     changeType(event) {
@@ -42,7 +43,7 @@ export default class CalculatorComponent extends React.Component {
                     }
                 </div>
             </div>
-            <CommentsComponent title={this.state.title}/>
+            <CommentsComponent title={this.state.title} isLogged={this.props.isLogged}/>
             </div>);
     }
 }

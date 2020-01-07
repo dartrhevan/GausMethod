@@ -14,6 +14,7 @@
 textarea {
     resize: none;
     width: 95%;
+    max-width: calc(95% - 15px);
     font-size: inherit;
     margin: 15px;
 }

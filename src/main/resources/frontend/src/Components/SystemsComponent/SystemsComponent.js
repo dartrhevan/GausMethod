@@ -23,8 +23,8 @@ const CoefficientsResults = props => (
     );
 
 class SystemsComponent extends CalculatorComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     //this.state = { dimension: 4 };
     this.changeDimension = this.changeDimension.bind(this);
     const gausHdl = () => {

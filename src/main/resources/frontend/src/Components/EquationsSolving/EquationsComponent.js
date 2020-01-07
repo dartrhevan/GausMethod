@@ -4,8 +4,8 @@ import {calcDivideByHalf, calcNewton} from "./DivideByHalf";
 import Type from "../CalculatorComponent/Type";
 
 export default class GausAndRunComponent extends CalculatorComponent {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             types: [new Type('DivideByHalf', this.getDescription(), calcDivideByHalf), new Type('Newton', 'awfdgsfdg', calcNewton),],
             dimension: 4, current: 0, title: "Equations"

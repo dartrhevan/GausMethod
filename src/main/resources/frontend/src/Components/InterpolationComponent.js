@@ -4,8 +4,8 @@ import Type from "./CalculatorComponent/Type";
 import $ from 'jquery';
 
 export default class InterpolationComponent extends CalculatorComponent {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             types: [new Type('Lagrange', 'this.getDescription()', null), new Type('Newton', 'awfdgsfdg',null),
                 new Type('MMS', 'awfdgsfdg',null), new Type('Splains', 'awfdgsfdg',null)],

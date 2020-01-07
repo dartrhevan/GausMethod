@@ -32,6 +32,16 @@ code {
   }
 }
 
+#calculator {
+  animation: appear 0.8s;
+  margin: 15px;
+}
+
+
+#calculator .content {
+  animation: none;
+}
+
 .content {
   width: 90%;
   animation: appear 0.8s;

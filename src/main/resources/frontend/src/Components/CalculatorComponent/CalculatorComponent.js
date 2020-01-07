@@ -1,5 +1,5 @@
 import React from 'react';
-import '../index.css';
+import '../../index.css';
 import CommentsComponent from "../CommentsComponent/CommentsComponent";
 
 export default class CalculatorComponent extends React.Component {
@@ -23,7 +23,7 @@ export default class CalculatorComponent extends React.Component {
 
     render() {
         return(
-            <div>
+            <div id='calculator'>
             <div className='content'>
                 <div className='switcher'>
                     {this.state.types.map((t, ind) =>

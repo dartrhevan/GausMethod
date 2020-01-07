@@ -58,6 +58,7 @@ public class InformationController {
         //return "";
         System.out.println(origin);
         System.out.println(comment);
+
         commentService.addComment(new Comment(new Date(), userService.findByEmail(principal.getName()), comment, Origin.valueOf(origin)));
 
         response.sendRedirect("/index.html");

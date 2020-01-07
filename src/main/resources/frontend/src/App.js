@@ -1,15 +1,15 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import EquationsComponent from "./EquationsSolving/EquationsComponent";
-import SystemsComponent from "./SystemsComponent/SystemsComponent";
-import StartComponent from "./StartComponent/StartComponent";
-import InterpolationComponent from "./InterpolationComponent/InterpolationComponent";
+import EquationsComponent from "./Components/EquationsSolving/EquationsComponent";
+import SystemsComponent from "./Components/SystemsComponent/SystemsComponent";
+import StartComponent from "./Components/StartComponent/StartComponent";
+import InterpolationComponent from "./Components/InterpolationComponent";
 import './mobile_style.css'
 import $ from 'jquery';
-import LoginComponent from "./LoginComponent";
-import RegistrationComponent from "./RegistrationComponent";
-import UserInformationComponent from "./UserInformationComponent";
-import CommentsComponent from "./CommentsComponent/CommentsComponent";
+import LoginComponent from "./Components/LoginComponent";
+import RegistrationComponent from "./Components/RegistrationComponent";
+import UserInformationComponent from "./Components/UserInformationComponent";
+//import CommentsComponent from "./CommentsComponent/CommentsComponent";
 
 const Links = props => (
     <>
@@ -119,3 +119,4 @@ export default class App extends React.Component {
             </div>);
     }
 }
+

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
@@ -54,19 +55,25 @@ public class InformationController {
     }
 
     @RequestMapping(value = "/add_comment", method = RequestMethod.POST)
-    public void addComment(HttpServletResponse response, String origin, String comment, Model model, Principal principal) throws IOException {
+    public String addComment(String origin,String comment,Model model,Principal principal) throws IOException {
         //return "";
+        /*System.out.println(req.getRequestURI());
+        System.out.println(req.getRequestURL());
+        System.out.println(req.getRemoteAddr());*/
         System.out.println(origin);
-        System.out.println(comment);
-
-        commentService.addComment(new Comment(new Date(), userService.findByEmail(principal.getName()), comment, Origin.valueOf(origin)));
-
-        response.sendRedirect("/index.html");
+        if(principal == null)
+            //response.sendRedirect("/login");
+            return "{\"error\": \"You are not authorised\"";
+        else {
+            commentService.addComment(new Comment(new Date(), userService.findByEmail(principal.getName()), comment, Origin.valueOf(origin)));
+            //response.sendRedirect(req.getRequestURI());
+            return "{}";
+        }
     }
 
-    private final Gson gson = new Gson();
     @Autowired
     private CommentService commentService;// = CommentService.getInstance();
+    private final Gson gson = new Gson();
 /*
     InformationController() {
         commentService.getOnCommentAdd().accept(null);//setOnCommentAdd(() -> );

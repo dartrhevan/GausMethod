@@ -1,5 +1,6 @@
 import React from  'react';
 import './comments.css';
+import $ from 'jquery';
 import CommentComponent from "./CommentComponent";
 
 export default class CommentsComponent extends React.Component {
@@ -15,6 +16,7 @@ export default class CommentsComponent extends React.Component {
             this.setState({comments: JSON.parse(mes.data)});
         };
         this.ws.onmessage = onMes.bind(this);
+        this.sendData = this.sendData.bind(this);
     }
     /*
     componentDidMount() {
@@ -28,15 +30,20 @@ export default class CommentsComponent extends React.Component {
         this.ws.onmessage = onMes.bind(this);
     }
 */
+    sendData() {
+        $.post('/api/add_comment', {comment: $("#comment").val(), origin: this.props.title});
+    }
+
     render() {
+        //console.log(this.props.title);
         return (
-        <form method='post' action='/api/add_comment' id='commentSection' className='content'>
+        <div id='commentSection' className='content'>
             <p align='center'><b>Comments</b></p>
             {this.state.comments.map(c => <CommentComponent comment={c.comment} date={c.date} nick={c.author.nickname} activity={c.author.activity}/>)}
-            <textarea name='comment' className='inputRow'></textarea>
+            <textarea readOnly={!this.props.isLogged} id='comment' className='inputRow'></textarea>
             <br/>
-            <input type='hidden' name='origin' value='Systems'/>
-            <button>Add</button>
-        </form>);
+            {/*<input type='hidden' name='origin' value={this.props.title}/>*/}
+            <button disabled={!this.props.isLogged} onClick={this.sendData}>Add</button>
+        </div>);
     }
 }

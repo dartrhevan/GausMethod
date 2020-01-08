@@ -144,6 +144,7 @@ button {
   border-radius: 17px;
   border: none;
   transition: background-color 0.4s;
+  cursor: pointer;
 }
 
 
@@ -153,6 +154,17 @@ button:hover {
   cursor: pointer;
   background-color: #03a2a0;
   color: darkgray;
+}
+
+button:disabled {
+  background-color: #03a2a0;
+  cursor: default;
+  font-weight: normal;
+}
+
+button:focus {
+  outline: none;
+  border: 2px solid #03a2a0;
 }
 
 .last-type {
@@ -248,10 +260,6 @@ button, input {
   margin: 10px;
   font-size: inherit;
   color: black;
-}
-
-button:focus {
-  outline: none;
 }
 
 iframe {

@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 //.anyRequest()
-                .antMatchers( "/", "equations", "/comments", "/st/ind.html", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name" )
+                .antMatchers( "/", "equations", "/comments", "/st/ind.html", "/drop_password", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name" )
                 .permitAll();//.authenticated()
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
@@ -85,15 +85,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public BCryptPasswordEncoder getBCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
-    }/**
+    }
+    /**
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         InMemoryTokenRepositoryImpl memory = new InMemoryTokenRepositoryImpl();
         return memory;
     }
 */
-    @Bean
-    public UserDetailsServiceImpl getUserDetailsService(){
-        return new UserDetailsServiceImpl();
-    }
 }

@@ -3,13 +3,10 @@ package com.numericanalysis.numericanalysisbackend.controllers;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 import com.google.gson.Gson;
 import com.numericanalysis.numericanalysisbackend.model.Origin;
-import com.numericanalysis.numericanalysisbackend.services.CommentService;
+import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -33,7 +30,7 @@ public class SocketTextHandler extends TextWebSocketHandler {
     }
 
     @Autowired
-    private CommentService commentService;// = CommentService.getInstance();
+    private CommentServiceImpl commentService;// = CommentService.getInstance();
 /*
     public SocketTextHandler() {
 

@@ -1,15 +1,16 @@
 package com.numericanalysis.numericanalysisbackend.configs;
 
-import com.numericanalysis.numericanalysisbackend.services.CommentService;
+import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
+import com.numericanalysis.numericanalysisbackend.services.PasswordDropping;
+import com.numericanalysis.numericanalysisbackend.services.UserDetailsServiceImpl;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -38,13 +39,23 @@ public class DataConfig {
 
         return dataSource;
     }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
     @Bean
-    public CommentService getCommentService() {
-        return CommentService.getInstance();
+    @Primary
+    public CommentServiceImpl getCommentService() {
+        return CommentServiceImpl.getInstance();
     }
 
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    @Bean
+    public UserDetailsServiceImpl getUserDetailsService() {
+        return new UserDetailsServiceImpl();
+    }
+
+    @Bean
+    public PasswordDropping getPasswordDroppingService() {
+        return new PasswordDropping();
+    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {

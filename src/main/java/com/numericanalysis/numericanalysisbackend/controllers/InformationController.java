@@ -5,7 +5,8 @@ import com.google.gson.Gson;
 import com.numericanalysis.numericanalysisbackend.model.Comment;
 import com.numericanalysis.numericanalysisbackend.model.Origin;
 import com.numericanalysis.numericanalysisbackend.model.User;
-import com.numericanalysis.numericanalysisbackend.services.CommentService;
+import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
+import com.numericanalysis.numericanalysisbackend.services.PasswordDropping;
 import com.numericanalysis.numericanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
@@ -72,12 +72,26 @@ public class InformationController {
     }
 
     @Autowired
-    private CommentService commentService;// = CommentService.getInstance();
+    private CommentServiceImpl commentService;// = CommentService.getInstance();
     private final Gson gson = new Gson();
 /*
     InformationController() {
         commentService.getOnCommentAdd().accept(null);//setOnCommentAdd(() -> );
     }*/
 
+    @RequestMapping("/drop_password")
+    public String dropPassword(String email, Model model) {
+        try{
+            passwordDropping.dropPassword(email);
+            return "Password has been successfully dropped";
+        }
+        catch (Exception e)
+        {
+            return e.getMessage();
+        }
+    }
+
+    @Autowired
+    private PasswordDropping passwordDropping;
 
 }

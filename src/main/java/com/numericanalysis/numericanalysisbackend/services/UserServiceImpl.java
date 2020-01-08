@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {/*
     @Override
     public void edit(String email, String newPassword, User user) throws Exception {
         User u = findByEmail( email );
-        if(u.getPassword().equals( user.getPassword()))
+        if(!u.getPassword().equals( user.getPassword()))
             throw new Exception( "Wrong password" );
          user.setPassword( newPassword );
         userRepository.edit( email, !Strings.isNullOrEmpty(user.getEmail()) ? user.getEmail() : u.getEmail(),

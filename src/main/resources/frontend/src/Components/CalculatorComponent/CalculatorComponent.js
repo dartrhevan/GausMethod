@@ -30,7 +30,9 @@ export default class CalculatorComponent extends React.Component {
                     {this.state.types.map((t, ind) =>
                         <div onClick={this.changeType} className={`type ${ind === this.state.current ? 'active-type':''}`}>{t.title}</div>)}
                 </div>
-                {this.state.types[this.state.current].description }
+                <div className='description'>
+                    {this.state.types[this.state.current].description }
+                </div>
                 <hr/>
                 <div align='center' className='calculator'>
                     {this.getCalculator()}

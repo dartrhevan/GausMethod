@@ -44,11 +44,11 @@ code {
 
 .content {
   max-width: 750px;
-  width: 90%;
+  /*width: 90%;*/
   animation: appear 0.8s;
   /*width: 45%;*/
   padding: 0;
-  margin: 15px 0 15px 15px;
+  margin: 15px;
   border: 1px solid lightgrey;
   border-radius: 15px;
   box-shadow: lightgray 2px 2px 2px 2px, lightgray -2px -2px 2px 2px;
@@ -161,6 +161,7 @@ button:disabled {
   background-color: #03a2a0;
   cursor: default;
   font-weight: normal;
+  color: black;
 }
 
 button:focus {

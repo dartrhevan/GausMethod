@@ -23,6 +23,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;/*
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;*/
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -77,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
 
-        /**http.rememberMe()**/
+        http.rememberMe().key("uniqueAndSecret").tokenRepository(persistentTokenRepository());
     }
 
     // Указываем Spring контейнеру, что надо инициализировать ShaPasswordEncoder
@@ -86,11 +88,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder getBCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    /**
+
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
-        InMemoryTokenRepositoryImpl memory = new InMemoryTokenRepositoryImpl();
-        return memory;
+        final JdbcTokenRepositoryImpl impl = new JdbcTokenRepositoryImpl();
+        //impl.setCreateTableOnStartup(true);
+        impl.setDataSource(dataSource);
+        return impl;
     }
+
+/**
+ * создание таблицы JdbcTokenRepositoryImpl
+ * create table persistent_logins(
+ username varchar(50) not null,
+ series varchar(64) primary key,
+ token varchar(64) not null,
+ last_used timestamp not null
+ );
 */
 }

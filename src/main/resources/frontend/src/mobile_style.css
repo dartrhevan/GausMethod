@@ -15,7 +15,7 @@
 
     #menuButton:hover {
         font-weight: normal;
-
+        background: #03a2a0;
     }
 
     .mobileMenu a {

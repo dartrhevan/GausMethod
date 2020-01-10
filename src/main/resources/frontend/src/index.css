@@ -55,11 +55,34 @@ code {
 }
 
 form.content {
-  max-width: 600px;
+  max-width: 640px;
+  padding: 15px;
 }
+
+input[type='checkbox'] {
+  background: white;
+  width: fit-content;
+  display: inline;
+}
+/*
+input[type='checkbox']:checked {
+  color: #09d3cf;
+}*/
 
 .description {
   padding: 20px;
+}
+
+.error {
+  color: red;
+}
+
+.But {
+  max-width: 55px;
+  width: 55px;
+  margin-right: 10px;
+  display: inline-block;
+  overflow-x: visible;
 }
 
 .calculator {

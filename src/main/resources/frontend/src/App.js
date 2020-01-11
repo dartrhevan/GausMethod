@@ -33,7 +33,7 @@ const Signs = props => props.user ?
 
 class MobileMenu extends React.Component {
     onHide() {
-        $('#mobMenu').animate({left: '100vw'}, {duration: 200});
+        $('#mobMenu').animate({left: '110vw'}, {duration: 200});
     }
     render() {
         return (
@@ -52,7 +52,7 @@ export default class App extends React.Component {
         document.onclick = event =>
         {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
-                $('#mobMenu').animate({left: '100vw'}, {duration: 200});
+                $('#mobMenu').animate({left: '110vw'}, {duration: 200});
         };
         this.state = {width: document.body.offsetWidth, user: null};
         const resize = event => {

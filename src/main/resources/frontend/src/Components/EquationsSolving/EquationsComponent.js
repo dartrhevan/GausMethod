@@ -1,5 +1,5 @@
 import React from 'react';
-import CalculatorComponent from "../CalculatorComponent/CalculatorComponent";
+import CalculatorComponent, {Img} from "../CalculatorComponent/CalculatorComponent";
 import {calcDivideByHalf, calcNewton} from "./DivideByHalf";
 import Type from "../CalculatorComponent/Type";
 
@@ -20,7 +20,7 @@ export default class EquationsComponent extends CalculatorComponent {
                 Example
                 Solve  e^x-2x^2+3x+1=0 correct up to 2 decimal places.
                 <br/>
-                <img src='/img/bisectionExample.png'/>
+                <Img src='/img/bisectionExample.png'/>
             </>);
     }
 
@@ -39,13 +39,13 @@ export default class EquationsComponent extends CalculatorComponent {
 
                 The tangent through the point (xn, f(xn)) is
                 <br/>
-                <img src='/img/newtonFormula1.png'/>
+                <Img src='/img/newtonFormula1.png'/>
                 <br/>
 
                 The next approximation, xn+1, is where the tangent line intersects the axis, so where y=0. Rearranging, we find
 
                 <br/>
-                <img src='/img/newtonFormula2.png'/>
+                <Img src='/img/newtonFormula2.png'/>
                 <br/>
             </>);
     }

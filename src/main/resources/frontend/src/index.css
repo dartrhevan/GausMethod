@@ -88,6 +88,12 @@ input[type='checkbox']:checked {
 .calculator {
   padding: 15px;
 }
+/*
+#testimg {
+  background: url("/img/lagrangeFormula2.png") no-repeat;
+  background-size: contain;
+  height: 75px;
+}*/
 
 .type {
   min-width: 75px;

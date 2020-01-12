@@ -78,9 +78,8 @@ export default class UserInformationComponent extends React.Component {
                 Activity
                 <br/>
                 <input type='text' /*value={this.state.user.activity}*/ placeholder='activity' className='inputRow' name='activity'/>
-                Description
-                <br/>
-                <input type='text' /*value={this.state.user.description}*/ placeholder='description' className='inputRow' name='description'/>
+                Photo
+                <img src='/api/get_photo'/>
                 Age
                 <br/>
                 <input type='number' /*value={this.state.user.age}*/ placeholder='age' className='inputRow' name='age'/>

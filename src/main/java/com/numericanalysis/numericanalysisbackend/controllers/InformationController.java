@@ -10,9 +10,11 @@ import com.numericanalysis.numericanalysisbackend.services.PasswordDropping;
 import com.numericanalysis.numericanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -40,15 +42,12 @@ public class InformationController {
         return "{ \"user\": \"" + principal.getName() + "\"}";
     }
 
+
     @RequestMapping(value = {"/edit_user_data"},method = RequestMethod.POST)
     public void editUserData(HttpServletResponse response, User u, String newPassword, Model m, Principal principal) throws Exception {//TODO: try/catch
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         System.out.println( u );
         System.out.println( newPassword );
-        u.setPassword( encoder.encode( u.getPassword() ) );
-        if(!Strings.isNullOrEmpty( newPassword ))
-            newPassword = encoder.encode( newPassword );
-
         userService.edit( principal.getName(), newPassword, u );
         response.sendRedirect(u.getEmail().equals(principal.getName()) ? "/" : "/logout");
         //return "{\"error\": \"You are not authorized\"}";
@@ -93,5 +92,10 @@ public class InformationController {
 
     @Autowired
     private PasswordDropping passwordDropping;
+    @ResponseBody
+    @RequestMapping("/get_photo")
+    public byte[] getPhoto(Model model, Principal principal) {
+        return userService.findByEmail(principal.getName()).getPhoto();
+    }
 
 }

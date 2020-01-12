@@ -11,7 +11,7 @@ export default class LoginComponent extends React.Component {
 
     render() {
         return (
-            <form align='center' className='content' method='post' onSubmit={this.onSubmit}>
+            <form align='center' className='content' method='post' enctype="multipart/form-data" onSubmit={this.onSubmit}>
                 <h2>Registration</h2>
                 E-mail
                 <br/>
@@ -22,9 +22,9 @@ export default class LoginComponent extends React.Component {
                 Activity
                 <br/>
                 <input type='text' placeholder='activity' className='inputRow' name='activity'/>
-                Description
+                Photo
                 <br/>
-                <input type='text' placeholder='description' className='inputRow' name='description'/>
+                <input type='file'  name='file'/>
                 Age
                 <br/>
                 <input type='number' placeholder='age' className='inputRow' value='0' name='age'/>

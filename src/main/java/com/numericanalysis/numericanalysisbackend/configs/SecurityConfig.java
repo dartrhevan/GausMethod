@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import com.numericanalysis.numericanalysisbackend.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,8 +24,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;/*
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;*/
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -59,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
         http.authorizeRequests()
-                .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data").authenticated()
+                .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data", "/api/get_photo").authenticated()
                 .and().httpBasic();
 
         http.csrf().disable();
@@ -84,9 +87,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Указываем Spring контейнеру, что надо инициализировать ShaPasswordEncoder
     // Это можно вынести в WebAppConfig, но для понимаемости оставил тут
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder getBCryptPasswordEncoder(){
+        return encoder;
     }
 
     @Bean

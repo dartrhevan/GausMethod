@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity(name = "users")
 //@Table(name = "user")
-public class User {
+public class User {/*
     @Id
     @Column(unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,10 +24,11 @@ public class User {
         this.id = id;
     }
     @Expose(deserialize = true, serialize = false)
+    private Integer id;*/
+    @Expose(deserialize = true, serialize = false)
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Collection<Comment> comments;
-    @Expose(deserialize = true, serialize = false)
-    private Integer id;
+    @Id
     @Column(unique=true)
     @Expose
     private String email;
@@ -39,8 +40,16 @@ public class User {
     private String nickname;
     @Expose
     private String activity;
-    @Expose
-    private String description;
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo=photo;
+    }
+
+    private byte[] photo;
 
     @Override
     public boolean equals(Object o) {
@@ -51,21 +60,19 @@ public class User {
                 email.equals( user.email ) &&
                 password.equals( user.password ) &&
                 nickname.equals( user.nickname ) &&
-                Objects.equals( activity, user.activity ) &&
-                Objects.equals( description, user.description );
+                Objects.equals( activity, user.activity );
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "comments=" + comments +
-                ", id=" + id +
+                //", id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", age=" + age +
                 ", nickname='" + nickname + '\'' +
                 ", activity='" + activity + '\'' +
-                ", description='" + description + '\'' +
                 '}';
     }
 
@@ -76,16 +83,15 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash( email, password, age, nickname, activity, description );
+        return Objects.hash( email, password, age, nickname, activity);
     }
 
-    public User(String email, String password, int age, String nickname, String activity, String description) {
+    public User(String email, String password, int age, String nickname, String activity) {
         this.email = email;
         this.password = password;
         this.age = age;
         this.nickname = nickname;
         this.activity = activity;
-        this.description = description;
     }
 
     public User() {}
@@ -138,11 +144,4 @@ public class User {
         this.activity = activity;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

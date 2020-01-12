@@ -3,6 +3,7 @@ package com.numericanalysis.numericanalysisbackend.services;
 import com.numericanalysis.numericanalysisbackend.model.User;
 import com.numericanalysis.numericanalysisbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.google.common.base.Strings;
 
@@ -35,16 +36,21 @@ public class UserServiceImpl implements UserService {/*
         //users.add(user);
     }
 
+    @Autowired
+    private PasswordEncoder encoder;
     @Override
     public void edit(String email, String newPassword, User user) throws Exception {
         User u = findByEmail( email );
-        if(!u.getPassword().equals( user.getPassword()))
+        if(/*!u.getPassword().equals( user.getPassword())*/!encoder.matches(user.getPassword(), u.getPassword()))
             throw new Exception( "Wrong password" );
-         user.setPassword( newPassword );
+        //u.setPassword( encoder.encode( u.getPassword() ) );
+        if(!Strings.isNullOrEmpty( newPassword ))
+            newPassword=encoder.encode(newPassword);
+        user.setPassword( newPassword );
         userRepository.edit( email, !Strings.isNullOrEmpty(user.getEmail()) ? user.getEmail() : u.getEmail(),
                 !Strings.isNullOrEmpty(user.getPassword()) ? user.getPassword() : u.getPassword(), user.getAge(),
                 !Strings.isNullOrEmpty(user.getNickname()) ? user.getNickname() : u.getNickname(),
-                !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity(),
-                !Strings.isNullOrEmpty(user.getDescription()) ? user.getDescription() : u.getDescription());
+                !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity()
+                /*!Strings.isNullOrEmpty(user.getDescription()) ? user.getDescription() : u.getDescription()*/);
     }
 }

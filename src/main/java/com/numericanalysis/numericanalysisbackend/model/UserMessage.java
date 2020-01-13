@@ -14,10 +14,20 @@ public class UserMessage {
         this.age = user.getAge();
         this.nickname = user.getNickname();
         this.activity = user.getActivity();
+        email = user.getEmail();
     }
 
     private int age;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email=email;
+    }
+
+    private String email;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

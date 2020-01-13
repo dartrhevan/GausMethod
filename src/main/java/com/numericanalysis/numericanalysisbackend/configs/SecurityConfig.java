@@ -57,12 +57,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 //.anyRequest()
-                .antMatchers( "/", "equations", "/img/bisectionExample.png", "/comments", "/st/ind.html", "/drop_password", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name" )
+                .antMatchers( "/", "equations", "/img/bisectionExample.png", "/comments", "/st/ind.html", "/drop_password", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name", "/api/get_photo" )
                 .permitAll();//.authenticated()
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
         http.authorizeRequests()
-                .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data", "/api/get_photo").authenticated()
+                .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data").authenticated()
                 .and().httpBasic();
 
         http.csrf().disable();

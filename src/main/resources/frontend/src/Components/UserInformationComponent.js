@@ -38,7 +38,7 @@ export default class UserInformationComponent extends React.Component {
             let g = this.state.user[e.name], f = e.value;
             return f != g;
         }).bind(this);
-        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check);
+        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#newPhoto").val();
         $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
     }
 
@@ -55,6 +55,7 @@ export default class UserInformationComponent extends React.Component {
                     e.value = obj[e.name];
             });
             //$('#email').val(obj.email);
+            $("#photo").attr('src', `/api/get_photo?email=${obj.email}`);
         }
     }
 
@@ -65,9 +66,18 @@ export default class UserInformationComponent extends React.Component {
 
     }
 
+    static showPhoto() {
+        const file = $("#file").prop("files")[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+            $("#newPhoto").attr("src", reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+
     render() {
         return (
-            <form align='center' className='content' method='post' action='/api/edit_user_data' onSubmit={this.onSubmit}>
+            <form align='center' className='content' method='post' enctype="multipart/form-data" action='/api/edit_user_data' onSubmit={this.onSubmit}>
                 <h2>Information about you</h2>
                 E-mail
                 <br/>
@@ -79,7 +89,13 @@ export default class UserInformationComponent extends React.Component {
                 <br/>
                 <input type='text' /*value={this.state.user.activity}*/ placeholder='activity' className='inputRow' name='activity'/>
                 Photo
-                <img src='/api/get_photo'/>
+                <br/>
+                <img id="photo" width='250' height='250' align='center'/>
+                <br/>
+                Change photo
+                <input type='file' name='file' id='file' onInput={UserInformationComponent.showPhoto}/>
+                <img alt='new photo' id='newPhoto'/>
+                <br/>
                 Age
                 <br/>
                 <input type='number' /*value={this.state.user.age}*/ placeholder='age' className='inputRow' name='age'/>

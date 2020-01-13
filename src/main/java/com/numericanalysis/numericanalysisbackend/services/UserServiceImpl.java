@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.google.common.base.Strings;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -50,7 +51,8 @@ public class UserServiceImpl implements UserService {/*
         userRepository.edit( email, !Strings.isNullOrEmpty(user.getEmail()) ? user.getEmail() : u.getEmail(),
                 !Strings.isNullOrEmpty(user.getPassword()) ? user.getPassword() : u.getPassword(), user.getAge(),
                 !Strings.isNullOrEmpty(user.getNickname()) ? user.getNickname() : u.getNickname(),
-                !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity()
+                !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity(),
+                user.getPhoto() != null && user.getPhoto().length != 0 ? user.getPhoto() : u.getPhoto()
                 /*!Strings.isNullOrEmpty(user.getDescription()) ? user.getDescription() : u.getDescription()*/);
     }
 }

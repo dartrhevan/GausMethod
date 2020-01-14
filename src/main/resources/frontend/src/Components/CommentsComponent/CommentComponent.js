@@ -5,15 +5,18 @@ export default class CommentComponent extends React.Component{
     render() {
         return (
         <div className='comment'>
+            <img width='100' height='100' src={`/api/get_photo?email=${this.props.email}`} onerror="this.src = '/logo192.png'"/>
             <div className='commentInf'>
-                <img width='100' height='100' border='1' src={`/api/get_photo?email=${this.props.email}`}/>
-                <b className='nick'>{this.props.nick}</b>
-                <span className='activ'>{this.props.activity}</span>
+                <div className='nick'>{this.props.nick}</div>
+                <div className='activ'>{this.props.activity}</div>
+                <div className='activ'>{this.props.age}</div>
             </div>
-            <div className='commentText'>
-                {this.props.comment}
+            <div className='commentSection'>
+                <div className='commentText'>
+                    {this.props.comment}
+                </div>
+                <div className='date'>{this.props.date}</div>
             </div>
-            <span className='date'>{this.props.date}</span>
         </div>);
     }
 }

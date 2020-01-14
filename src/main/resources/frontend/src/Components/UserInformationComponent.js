@@ -1,6 +1,8 @@
 import React from 'react'
 import $ from 'jquery';
 
+import {FileUploadComponent} from "./FileUploadComponent";
+
 export default class UserInformationComponent extends React.Component {
     constructor() {
         super();
@@ -21,8 +23,6 @@ export default class UserInformationComponent extends React.Component {
 
     async componentDidMount() {
         $("input").on('input', event => {
-            /*if(!this.state.user.hasOwnProperty(event.target.name))
-                this.state.user[event.target.name] = event.target.value;*/
             this.toggleSubmit();
         });
         //$('#newPassBlock').hide();
@@ -66,15 +66,6 @@ export default class UserInformationComponent extends React.Component {
 
     }
 
-    static showPhoto() {
-        const file = $("#file").prop("files")[0];
-        const reader = new FileReader();
-        reader.onload = () => {
-            $("#newPhoto").attr("src", reader.result);
-        };
-        reader.readAsDataURL(file);
-    }
-
     render() {
         return (
             <form align='center' className='content' method='post' enctype="multipart/form-data" action='/api/edit_user_data' onSubmit={this.onSubmit}>
@@ -90,11 +81,11 @@ export default class UserInformationComponent extends React.Component {
                 <input type='text' /*value={this.state.user.activity}*/ placeholder='activity' className='inputRow' name='activity'/>
                 Photo
                 <br/>
-                <img id="photo" width='250' height='250' align='center'/>
+                <img id="photo" width='100' height='100' border='1' align='center' src='/logo192.png'/>
+                <img alt='new photo' width='100' height='100' border='1' id='newPhoto' src='/logo192.png' />
                 <br/>
                 Change photo
-                <input type='file' name='file' id='file' onInput={UserInformationComponent.showPhoto}/>
-                <img alt='new photo' id='newPhoto'/>
+                <FileUploadComponent/>
                 <br/>
                 Age
                 <br/>

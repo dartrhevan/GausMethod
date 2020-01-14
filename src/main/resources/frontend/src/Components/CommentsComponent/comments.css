@@ -19,9 +19,9 @@ textarea {
     margin: 15px;
 }
 
-.comment {/*
+.comment {
     display: flex;
-    flex-direction: row;*/
+    flex-direction: row;
     margin: 15px;
     /*border-bottom: 2px solid grey;
     border-top: 2px solid grey;*/
@@ -35,30 +35,35 @@ textarea {
     background: #09d3cf;
 }
 
-.nick {
+.commentSection {
+    width: 100%;
+}
 
+.nick {
+    font-weight: bold;
     font-size: 1.35rem;
     padding: 0 0 0 10px;
 }
 
 .date {
-    padding: 0 0 0 20px;
+    padding: 5px;
     font-size: 0.8rem;
 }
 
 .activ {
     color: darkgrey;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 10px;
     font-size: 0.8rem;
 }
 
-
-
 .commentInf {
+    border-right: 1px solid lightgrey;
+    padding: 5px;
 }
 
 .commentText {
-    padding: 10px 5px 10px 5px;
-    border-top: 1px solid lightgrey;
+    min-height: 75px;
+    padding: 0 10px;/*
+    border-top: 1px solid lightgrey;*/
     border-bottom: 1px solid lightgrey;
 }

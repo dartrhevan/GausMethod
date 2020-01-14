@@ -80,8 +80,8 @@ class SystemsComponent extends CalculatorComponent {
           </ul>
           Using these operations, a matrix can always be transformed into an upper triangular matrix, and in fact one that is in row echelon form. Once all of the leading coefficients (the leftmost nonzero entry in each row) are 1, and every column containing a leading coefficient has zeros elsewhere, the matrix is said to be in reduced row echelon form. This final form is unique; in other words, it is independent of the sequence of row operations used. For example, in the following sequence of row operations (where multiple elementary operations might be done at each step), the third and fourth matrices are the ones in row echelon form, and the final matrix is the unique reduced row echelon form.
           <br/>
-          <Img src='/img/gaussExample1.png'/>
-          <Img src='/img/gaussExample2.png'/>
+          <Img src='/img/Gauss/gaussExample1.png'/>
+          <Img src='/img/Gauss/gaussExample2.png'/>
           <br/>
       </>)
   }
@@ -90,22 +90,22 @@ class SystemsComponent extends CalculatorComponent {
       return (<>
           In numerical linear algebra, the tridiagonal matrix algorithm, also known as the Thomas algorithm (named after Llewellyn Thomas), is a simplified form of Gaussian elimination that can be used to solve tridiagonal systems of equations. A tridiagonal system for n unknowns may be written as
           <br/>
-          <Img src='/img/triadiagonalExample1.png' width='30'/>
+          <Img src='/img/Tridiagonal/triadiagonalExample1.png' width='30'/>
           <br/>where a1=0, and cn=0.
           <br/>
-          <Img src='/img/tridiagonalExample2.png' width='150'/>
+          <Img src='/img/Tridiagonal/tridiagonalExample2.png' width='150'/>
           <br/>
           The forward sweep consists of modifying the coefficients as follows, denoting the new coefficients with primes:
           <br/>
-          <Img src='/img/cs.png' width='100'/>
+          <Img src='/img/Tridiagonal/cs.png' width='100'/>
           <br/>
           and
           <br/>
-          <Img src='/img/ds.png' width='100'/>
+          <Img src='/img/Tridiagonal/ds.png' width='100'/>
           <br/>
           The solution is then obtained by back substitution:
           <br/>
-          <Img src='/img/sln.png'/>
+          <Img src='/img/Tridiagonal/sln.png'/>
           <br/>
       </>)
   }

@@ -7,7 +7,7 @@ export default class InterpolationComponent extends CalculatorComponent {
     constructor(props) {
         super(props);
         this.state = {
-            types: [new Type('Lagrange', InterpolationComponent.getLagrangeDescription(), null), new Type('Newton', InterpolationComponent.getNetonDescription(),null),
+            types: [new Type('Lagrange', InterpolationComponent.getLagrangeDescription(), null), new Type('Newton', InterpolationComponent.getNewtonDescription(),null),
                 new Type('MMS', 'awfdgsfdg',null), new Type('Splains', 'awfdgsfdg',null)],
             dimension: 2, current: 0, result: null, handler: 'Lagrange', title: "Interpolation"
         };
@@ -47,17 +47,17 @@ export default class InterpolationComponent extends CalculatorComponent {
         return (<>
             The Lagrange form of the interpolating polynomial is a linear combination of the given values. In many scenarios, an efficient and convenient polynomial interpolation is a linear combination of the given values, using previously known coefficients. Given a set of k+1 data points (x0,y0),...,(xj,yj), ... ,(xk,yk) where each data point is a (position, value) pair and where no two positions xj are the same, the interpolation polynomial in the Lagrange form is a linear combination
             <br/>
-            <Img src='/img/lagrangeFormula1.png'/>
+            <Img src='/img/Lagrange/lagrangeFormula1.png'/>
             <br/>
             of the given values yj with each coefficient cj(x) given by evaluating the corresponding Lagrange basis polynomial using the given k+1 positions xj.
             <br/>
-            <Img src='/img/lagrangeFormula2.png'/>
-            <Img src='/img/lagrangeFormula3.png'/>
+            <Img src='/img/Lagrange/lagrangeFormula2.png'/>
+            <Img src='/img/Lagrange/lagrangeFormula3.png'/>
             <br/>
         </>)
     }
 
-    static getNetonDescription() {
+    static getNewtonDescription() {
         return (<>
             The polynomials of Newton’s basis,ek, are defined by:
             ek(x) = (x - x0)(x - x1) ... (x - xk-1), k = 1, ... n.
@@ -92,11 +92,11 @@ export default class InterpolationComponent extends CalculatorComponent {
             &#125;
             is:
             <br/>
-            <Img src='/img/newtonInt1.png'/>
+            <Img src='/img/NewtonInt/newtonInt1.png'/>
             <br/>
             where
             <br/>
-            <Img src='/img/newtonInt2.png'/>
+            <Img src='/img/NewtonInt/newtonInt2.png'/>
             <br/>
             We shall see how to determine the coefficients
             (
@@ -124,10 +124,10 @@ export default class InterpolationComponent extends CalculatorComponent {
             , gives:
 
             <br/>
-            <Img src='/img/newtonInt3.png'/>
+            <Img src='/img/NewtonInt/newtonInt3.png'/>
             <br/>
             Generally speaking, we write:
-            <Img src='/img/newtonInt4.png'/>
+            <Img src='/img/NewtonInt/newtonInt4.png'/>
             <br/>
             f
             [
@@ -136,14 +136,14 @@ export default class InterpolationComponent extends CalculatorComponent {
             ]
             is called a zero-order divided difference.By recurrence, we obtain:
             <br/>
-            <Img src='/img/newtonInt5.png'/>
+            <Img src='/img/NewtonInt/newtonInt5.png'/>
             <br/>
             <h3>Newton’s interpolation polynomial of degree n</h3>
             Newton’s interpolation polynomial of degree
             n
             is obtained via the successive divided differences:
             <br/>
-            <Img src='/img/newtonInt6.png'/>
+            <Img src='/img/NewtonInt/newtonInt6.png'/>
             <br/>
         </>);
     }

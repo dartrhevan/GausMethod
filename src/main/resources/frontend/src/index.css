@@ -24,11 +24,13 @@ code {
 @keyframes appear {
   from{
     margin-left: -150px;
+    margin-right: 150px;
     opacity: 0;
   }
   to{
     opacity: 1;
     margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
@@ -81,6 +83,15 @@ input[type='checkbox']:checked {
   max-width: 55px;
   width: 55px;
   margin-right: 10px;
+  display: inline-block;
+  overflow-x: visible;
+}
+
+.upload {
+  max-width: 75px;
+  width: 75px;
+  margin-right: 10px;
+  padding: 0;
   display: inline-block;
   overflow-x: visible;
 }
@@ -167,7 +178,7 @@ nav .sign:hover {
   display: none;
 }
 
-button {
+button, input[type='file'] + label {
   box-shadow: lightgray 1px 1px 1px 1px, lightgray -1px -1px 1px 1px;
   background: #09d3cf;
   color: lightgray;
@@ -177,8 +188,7 @@ button {
   cursor: pointer;
 }
 
-
-button:hover {
+input[type='file'] + label:hover, button:hover {
   /*font-size: 1.35rem;*/
   font-weight: bold;
   cursor: pointer;
@@ -186,18 +196,34 @@ button:hover {
   color: darkgray;
 }
 
-button:disabled {
+input[type='file'] + label:focus, button:disabled {
   background-color: #03a2a0;
   cursor: default;
   font-weight: normal;
   color: black;
 }
 
-button:focus {
+input[type='file'] + label:focus, button:focus {
   outline: none;
   border: 2px solid #03a2a0;
 }
 
+img  {
+   border: 1px solid lightgray;
+   /*background-image: url("/logo192.png");*/
+   border-radius: 15px;
+   min-width: 100px;
+   min-height: 100px;
+ }
+
+input[type='file'] + label {
+  padding: 0 10px 3px 10px;
+}
+/*
+img {
+  background: url("/logo512.png");
+}
+*/
 .last-type {
   border-radius: 0 15px 0 0;
 }
@@ -265,6 +291,14 @@ nav h3 {
   align-items: center;
 }
 
+.uploadFile {
+  padding: 1px 5px 1px 0px;
+  border: 1px solid;
+  border-radius: 15px;
+  width: fit-content;
+  margin: 10px;
+}
+
 footer {
   min-height: 40px;
   background: #09d3cf;
@@ -287,7 +321,7 @@ input {
   flex-direction: column;
 }
 
-button, input {
+input[type='file'] + label, button, input {
   margin: 10px;
   font-size: inherit;
   color: black;
@@ -300,6 +334,10 @@ iframe {
 }
 
 #newPassBlock {
+  display: none;
+}
+
+input[type='file'] {
   display: none;
 }
 

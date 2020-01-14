@@ -1,6 +1,8 @@
 import React from 'react'
 import $ from 'jquery';
 
+import {FileUploadComponent} from "./FileUploadComponent";
+
 export default class LoginComponent extends React.Component {
     onSubmit(event) {
         if($('#password').val() !== $('#passwordConf').val()) {
@@ -22,9 +24,10 @@ export default class LoginComponent extends React.Component {
                 Activity
                 <br/>
                 <input type='text' placeholder='activity' className='inputRow' name='activity'/>
-                Photo
                 <br/>
-                <input type='file'  name='file'/>
+                <FileUploadComponent/>
+                <img alt='photo' id='newPhoto' width='100' src='/logo192.png' height='100'/>
+                <br/>
                 Age
                 <br/>
                 <input type='number' placeholder='age' className='inputRow' value='0' name='age'/>
@@ -34,6 +37,7 @@ export default class LoginComponent extends React.Component {
                 Password confirm
                 <br/>
                 <input type='password' placeholder='password confirm' id='passwordConf' required className='inputRow'/>
+                <br/>
                 <button type='submit'>Submit</button>
             </form>
         );

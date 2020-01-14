@@ -43,6 +43,13 @@
         width: inherit;
     }
 
+    img {
+        height: 70px;
+        width: 70px;
+        min-width: 70px;
+        min-height: 70px;
+    }
+
     nav a {
         display: none;
     }

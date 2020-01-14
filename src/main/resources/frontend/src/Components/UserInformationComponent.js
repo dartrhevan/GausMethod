@@ -2,6 +2,7 @@ import React from 'react'
 import $ from 'jquery';
 
 import {FileUploadComponent} from "./FileUploadComponent";
+import {But} from "./LoginComponent";
 
 export default class UserInformationComponent extends React.Component {
     constructor() {
@@ -38,7 +39,7 @@ export default class UserInformationComponent extends React.Component {
             let g = this.state.user[e.name], f = e.value;
             return f != g;
         }).bind(this);
-        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#newPhoto").val();
+        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#file").val();
         $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
     }
 
@@ -81,16 +82,16 @@ export default class UserInformationComponent extends React.Component {
                 <input type='text' /*value={this.state.user.activity}*/ placeholder='activity' className='inputRow' name='activity'/>
                 Photo
                 <br/>
-                <img id="photo" width='100' height='100' border='1' align='center' src='/logo192.png'/>
-                <img alt='new photo' width='100' height='100' border='1' id='newPhoto' src='/logo192.png' />
+                <img id="photo" onError={event => event.target.src = '/logo192.png'} src='/logo192.png'/>
+                <img id='newPhoto' src='/logo192.png' />
                 <br/>
                 Change photo
-                <FileUploadComponent/>
+                <FileUploadComponent  align='center'/>
                 <br/>
                 Age
                 <br/>
                 <input type='number' /*value={this.state.user.age}*/ placeholder='age' className='inputRow' name='age'/>
-                <button id='passch' onClick={this.passCh}>Change password</button>
+                <But text={'Change password'} width='220' id='passch' onClick={this.passCh} />
                 <div id='newPassBlock'>
                     New password
                     <br/>

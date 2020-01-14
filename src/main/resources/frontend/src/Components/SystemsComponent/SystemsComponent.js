@@ -90,18 +90,18 @@ class SystemsComponent extends CalculatorComponent {
       return (<>
           In numerical linear algebra, the tridiagonal matrix algorithm, also known as the Thomas algorithm (named after Llewellyn Thomas), is a simplified form of Gaussian elimination that can be used to solve tridiagonal systems of equations. A tridiagonal system for n unknowns may be written as
           <br/>
-          <Img src='/img/Tridiagonal/triadiagonalExample1.png' width='30'/>
+          <Img src='/img/Tridiagonal/triadiagonalExample1.png' height='30'/>
           <br/>where a1=0, and cn=0.
           <br/>
-          <Img src='/img/Tridiagonal/tridiagonalExample2.png' width='150'/>
+          <Img src='/img/Tridiagonal/tridiagonalExample2.png' height='150'/>
           <br/>
           The forward sweep consists of modifying the coefficients as follows, denoting the new coefficients with primes:
           <br/>
-          <Img src='/img/Tridiagonal/cs.png' width='100'/>
+          <Img src='/img/Tridiagonal/cs.png' height='125'/>
           <br/>
           and
           <br/>
-          <Img src='/img/Tridiagonal/ds.png' width='100'/>
+          <Img src='/img/Tridiagonal/ds.png' height='125'/>
           <br/>
           The solution is then obtained by back substitution:
           <br/>

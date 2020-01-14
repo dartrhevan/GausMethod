@@ -1,8 +1,8 @@
 import React from 'react'
 import $ from 'jquery';
 
-const But = props =>
-    <span className='But'><button  onClick={props.onClick}>{props.text}</button></span>;
+export const But = props =>
+    <span style={{width: props.width +'px', maxWidth: props.width + 'px'}} className='But'><button onClick={props.onClick} id={props.id}>{props.text}</button></span>;
 export default class LoginComponent extends React.Component {
     dropPassword(event) {
         event.preventDefault();

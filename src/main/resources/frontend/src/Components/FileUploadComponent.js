@@ -17,5 +17,5 @@ export const FileUploadComponent = props => (
             <input type='file' name='file' id='file' onInput={showPhoto}/>
             <label htmlFor='file'>Photo</label>
         </span>
-        <span id='fileName'>Nothing has been chosen</span>
+        <span id='fileName'>Nothing</span>
     </div>);

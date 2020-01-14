@@ -7,13 +7,14 @@ export const Img = props => {
     const style = {
         background: `url("${props.src}") no-repeat`,
         backgroundSize: 'contain',
-        height: `${props.width}px`,
+        height: `${props.height}px`,
+        margin: '10px'
     };
     return <div style={style}></div>
 };
 
 Img.defaultProps = {
-    width: 75
+    height: 75
 };
 
 export default class CalculatorComponent extends React.Component {

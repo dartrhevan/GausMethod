@@ -20,7 +20,7 @@ export default class EquationsComponent extends CalculatorComponent {
                 Example
                 Solve  e^x-2x^2+3x+1=0 correct up to 2 decimal places.
                 <br/>
-                <Img src='/img/bisectionExample.png'/>
+                <Img  height='150' src='/img/bisectionExample.png'/>
             </>);
     }
 
@@ -39,13 +39,13 @@ export default class EquationsComponent extends CalculatorComponent {
 
                 The tangent through the point (xn, f(xn)) is
                 <br/>
-                <Img src='/img/Newton/newtonFormula1.png'/>
+                <Img height='45' src='/img/Newton/newtonFormula1.png'/>
                 <br/>
 
                 The next approximation, xn+1, is where the tangent line intersects the axis, so where y=0. Rearranging, we find
 
                 <br/>
-                <Img src='/img/Newton/ewtonnewtonFormula2.png'/>
+                <Img height='60' src='/img/Newton/newtonFormula2.png'/>
                 <br/>
             </>);
     }

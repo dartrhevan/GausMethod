@@ -11,9 +11,11 @@ export default class StartComponent extends React.Component {
             <div id='startComp'>
                 <div id='description'>
                     <h1>Numeric Analysis</h1>
-                    sdjkdfklfkfgsdjkdfklfkfgsdjkdfklfkfg
+                    This site is devoted numerical methods in mathematics.
                     <br/>
-                    sdjkdfklfkfgsdjkdfklfkfgsdjkdfklfkfg
+                    It contains online-calculators and brief theory about numerical methods of solving non-linear equations,
+                    <br/>
+                    systems of linear equations and function interpolations.
                 </div>
                 <hr/>
                 <div id='links'>
@@ -24,7 +26,7 @@ export default class StartComponent extends React.Component {
                     <a href='/interpolation' className='startLink'>Lagrange method</a>
                     <a href='/interpolation' className='startLink'>Newton method</a>
                     <a href='/interpolation' className='startLink'>MMS method</a>
-                    <a href='/interpolation' className='startLink'>Splains method</a>
+                    <a href='/interpolation' className='startLink'>Cubic Splains method</a>
                 </div>
             </div>);
     }

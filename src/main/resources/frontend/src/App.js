@@ -114,7 +114,7 @@ export default class App extends React.Component {
                     </Switch>
                     </BrowserRouter>
                 </div>
-                <footer>foot</footer>
+                <footer>Powered by <a href='https://github.com/dartrhevan'>dartrhevan</a> and <a href='https://github.com/Nordennavic'>Nordennavic</a></footer>
             </div>);
     }
 }

@@ -317,6 +317,7 @@ footer {
   box-shadow: 0 5px 5px 5px;
   max-height: 5vh;
   height: 5vh;
+  padding-left: 10px;
 }
 
 input {

@@ -70,6 +70,7 @@ class SystemsComponent extends CalculatorComponent {
 
   static getGaussDescription() {
       return (<>
+          <h1>Method of Gauss</h1>
           Gaussian elimination, also known as row reduction, is an algorithm in linear algebra for solving a system of linear equations. It is usually understood as a sequence of operations performed on the corresponding matrix of coefficients. This method can also be used to find the rank of a matrix, to calculate the determinant of a matrix, and to calculate the inverse of an invertible square matrix. The method is named after Carl Friedrich Gauss (1777–1855).
           <br/>
           To perform row reduction on a matrix, one uses a sequence of elementary row operations to modify the matrix until the lower left-hand corner of the matrix is filled with zeros, as much as possible. There are three types of elementary row operations:
@@ -88,6 +89,7 @@ class SystemsComponent extends CalculatorComponent {
 
   static getTridiagonalDescription() {
       return (<>
+          <h1>Tridiagonal matrix method</h1>
           In numerical linear algebra, the tridiagonal matrix algorithm, also known as the Thomas algorithm (named after Llewellyn Thomas), is a simplified form of Gaussian elimination that can be used to solve tridiagonal systems of equations. A tridiagonal system for n unknowns may be written as
           <br/>
           <Img src='/img/Tridiagonal/triadiagonalExample1.png' height='30'/>

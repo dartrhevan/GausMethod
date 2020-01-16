@@ -3,6 +3,7 @@ package com.numericanalysis.numericanalysisbackend.model;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CommentMessage {
     private Origin origin;
@@ -70,9 +71,9 @@ public class CommentMessage {
         this.comment = comment.getComment();
         this.author = new UserMessage(comment.getAuthor());
         this.date = comment.getDate();
-        ///this.id =comment.returnId();
+        this.id =comment.returnId();
         this.nesting = comment.getNesting();
-        this.replies = comment.getReplies();
+        this.replies = comment.getReplies().parallelStream().map(CommentMessage::new).collect(Collectors.toList());
     }
 
 
@@ -86,11 +87,11 @@ public class CommentMessage {
         this.nesting = nesting;
     }
 
-    public Collection<Comment> getReplies() {
+    public Collection<CommentMessage> getReplies() {
         return replies;
     }
 
-    public void setReplies(Collection<Comment> replies) {
+    public void setReplies(Collection<CommentMessage> replies) {
         this.replies=replies;
     }
 
@@ -102,7 +103,7 @@ public class CommentMessage {
         this.id=id;
     }
 
-    private Collection<Comment> replies;
+    private Collection<CommentMessage> replies;
     private int nesting = 0;
     private int id;
     private Date date;

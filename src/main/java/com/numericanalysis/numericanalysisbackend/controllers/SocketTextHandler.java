@@ -26,7 +26,9 @@ public class SocketTextHandler extends TextWebSocketHandler {
         Origin o = Origin.valueOf(message.getPayload());
         System.out.println(o);
         sockets.put(session, o);
-        session.sendMessage(new TextMessage(gson.toJson(commentService.getComments(o))));
+        String s = gson.toJson(commentService.getComments(o));
+        System.out.println(s);
+        session.sendMessage(new TextMessage(s));
     }
 
     @Autowired
@@ -44,7 +46,7 @@ public class SocketTextHandler extends TextWebSocketHandler {
         if(commentService.getOnCommentAdd() == null)
             commentService.setOnCommentAdd(ob -> {
 
-               // System.out.println("oncommentadd");
+            System.out.println("oncommentadd");
             sockets.forEach((s,o) -> {
                 System.out.println(s);
                 try {

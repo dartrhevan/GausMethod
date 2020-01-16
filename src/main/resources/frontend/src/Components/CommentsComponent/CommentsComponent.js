@@ -17,6 +17,7 @@ export default class CommentsComponent extends React.Component {
         };
         this.ws.onmessage = onMes.bind(this);
         this.sendData = this.sendData.bind(this);
+
     }
     /*
     componentDidMount() {
@@ -39,7 +40,7 @@ export default class CommentsComponent extends React.Component {
         return (
         <div id='commentSection' className='content'>
             <p align='center'><b>Comments</b></p>
-            {this.state.comments.map(c => <CommentComponent email = {c.author.email} comment={c.comment} date={c.date} nick={c.author.nickname} age={c.author.age} activity={c.author.activity}/>)}
+            {this.state.comments.map(c => <CommentComponent key={c.id} title = {this.props.title} nesting={c.nesting} id={c.id} email = {c.author.email} comment={c.comment} date={c.date} nick={c.author.nickname} age={c.author.age} activity={c.author.activity}/>)}
             <textarea readOnly={!this.props.isLogged} id='comment' className='inputRow'></textarea>
             <br/>
             {/*<input type='hidden' name='origin' value={this.props.title}/>*/}

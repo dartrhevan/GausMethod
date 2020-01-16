@@ -10,4 +10,6 @@ public interface CommentService {
     Collection<CommentMessage> getComments(Origin origin);
 
     void addComment(Comment comment);
+
+    void addComment(Comment comment,int parentId);
 }

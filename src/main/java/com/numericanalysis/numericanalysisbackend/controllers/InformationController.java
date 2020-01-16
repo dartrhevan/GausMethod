@@ -52,8 +52,21 @@ public class InformationController {
         //return "{\"error\": \"You are not authorized\"}";
     }
 
+    @RequestMapping(value="/reply_comment", method=RequestMethod.POST)
+    public String replyComment(String origin,String comment, int id, Model model, Principal principal) {
+        System.out.println(origin);
+        if(principal == null)
+            //response.sendRedirect("/login");
+            return "{\"error\": \"You are not authorised\"";
+        else {
+            commentService.addComment(new Comment(new Date(), userService.findByEmail(principal.getName()), comment, Origin.valueOf(origin)), id);
+            //response.sendRedirect(req.getRequestURI());
+            return "{}";
+        }
+    }
+
     @RequestMapping(value = "/add_comment", method = RequestMethod.POST)
-    public String addComment(String origin,String comment,Model model,Principal principal) throws IOException {
+    public String addComment(String origin,String comment,Model model,Principal principal) {
         //return "";
         /*System.out.println(req.getRequestURI());
         System.out.println(req.getRequestURL());

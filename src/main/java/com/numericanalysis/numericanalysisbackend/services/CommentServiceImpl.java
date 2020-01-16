@@ -33,7 +33,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Collection<CommentMessage> getComments(Origin origin){
-        return commentRepository.findByOrigin(origin).parallelStream().map(c -> new CommentMessage(c)).collect( Collectors.toList());
+        return commentRepository.findByOrigin(origin).parallelStream().map(CommentMessage::new)
+                .collect( Collectors.toList());
     }
 
     @Override
@@ -42,4 +43,12 @@ public class CommentServiceImpl implements CommentService {
         onCommentAdd.accept(null);
     }
 
+    @Override
+    public void addComment(Comment comment,int parentId) {
+        Comment parent = commentRepository.getOne(parentId);
+        comment.setParent(parent);
+        comment.setNesting(parent.getNesting() + 1);
+        commentRepository.save(comment);
+        onCommentAdd.accept(null);
+    }
 }

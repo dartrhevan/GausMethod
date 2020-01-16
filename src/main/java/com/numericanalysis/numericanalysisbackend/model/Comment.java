@@ -53,9 +53,9 @@ public class Comment {
     }
 */
 
-    /*public int returnId() {
+    public int returnId() {
         return id;
-    }*/
+    }
     @Id
     @Column(unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)

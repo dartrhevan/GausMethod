@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();
         http.authorizeRequests()
-                .antMatchers("/api/get_user_data", "/user-information", "/api/edit_user_data").authenticated()
+                .antMatchers("/api/get_user_data", "/api/reply_comment", "/user-information", "/api/edit_user_data").authenticated()
                 .and().httpBasic();
 
         http.csrf().disable();

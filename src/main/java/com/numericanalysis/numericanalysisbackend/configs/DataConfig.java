@@ -82,7 +82,7 @@ public class DataConfig {
         properties.put(PROP_HIBERNATE_DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         properties.put(PROP_HIBERNATE_SHOW_SQL, "true");
         //properties.put( "spring.jpa.show-sql", "true" );
-        properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, "update");
+        properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, "update"); //create-drop | validate | create | update
         //properties.put( "spring.jpa.hibernate.ddl-auto", "update" );
         return properties;
     }

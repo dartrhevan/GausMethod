@@ -2,9 +2,11 @@ package com.numericanalysis.numericanalysisbackend.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 import org.springframework.web.socket.TextMessage;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -26,22 +28,69 @@ public class Comment {
     private User author;
     private String comment;
 
+    @JoinColumn(name = "parent", nullable=true)
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    private Comment parent = null;
+
+    @Expose(deserialize = false, serialize = true)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
+    private Collection<Comment> replies;
+
+    public int getNesting() {
+        return nesting;
+    }
+
+    public void setNesting(int nesting) {
+        if(nesting < 0)
+            throw new IllegalArgumentException();
+        this.nesting = nesting;
+    }
+
+    private int nesting = 0;
+    /*
     public void setId(Integer id) {
         this.id = id;
     }
+*/
 
+    /*public int returnId() {
+        return id;
+    }*/
     @Id
     @Column(unique=true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public Comment(Date date, User author, String comment, Origin origin) {
+    public Comment getParent() {
+        return parent;
+    }
+
+    public void setParent(Comment parent) {
+        this.parent=parent;
+    }
+
+    public Collection<Comment> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(Collection<Comment> replies) {
+        this.replies=replies;
+    }
+
+    public Comment(Date date,User author,String comment,Origin origin) {
         this.date = date;
         this.origin = origin;
         this.author = author;
         this.comment = comment;
     }
 
+    public Comment(Date date, User author, String comment, Origin origin, int nesting) {
+        this.date = date;
+        this.nesting = nesting;
+        this.origin = origin;
+        this.author = author;
+        this.comment = comment;
+    }
 
     public Comment() {}
 

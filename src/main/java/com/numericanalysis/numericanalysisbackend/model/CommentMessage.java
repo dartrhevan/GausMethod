@@ -1,5 +1,6 @@
 package com.numericanalysis.numericanalysisbackend.model;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -69,7 +70,40 @@ public class CommentMessage {
         this.comment = comment.getComment();
         this.author = new UserMessage(comment.getAuthor());
         this.date = comment.getDate();
+        ///this.id =comment.returnId();
+        this.nesting = comment.getNesting();
+        this.replies = comment.getReplies();
     }
 
+
+    public int getNesting() {
+        return nesting;
+    }
+
+    public void setNesting(int nesting) {
+        if(nesting < 0)
+            throw new IllegalArgumentException();
+        this.nesting = nesting;
+    }
+
+    public Collection<Comment> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(Collection<Comment> replies) {
+        this.replies=replies;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id=id;
+    }
+
+    private Collection<Comment> replies;
+    private int nesting = 0;
+    private int id;
     private Date date;
 }

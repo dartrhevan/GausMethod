@@ -11,17 +11,20 @@ export default class CommentComponent extends React.Component {
         //this.getReplyArea = this.getReplyArea.bind(this);
         this.getId = this.getId.bind(this);
         this.sendData = this.sendData.bind(this);
+        this.style = {marginLeft: 15 + this.props.nesting * 15 + 'px'};
+        if(props.nesting > 0)
+            this.style.borderColor = "darkgrey";
     }
 
     showReplyArea()
     {
-        this.setState({hasReply: true})
+        this.setState({hasReply: true});
         //$(`#${this.getId()}`).append(this.getReplyArea());
     }
 
     render() {
         return (<>
-        <div className='comment' id={this.getId()}>
+        <div className='comment' id={this.getId()} style={this.style}>
             <img onError={event => event.target.src = '/logo192.png'} src={`/api/get_photo?email=${this.props.email}`} />
             <div className='commentInf'>
                 <div className='nick'>{this.props.nick}</div>
@@ -32,16 +35,17 @@ export default class CommentComponent extends React.Component {
                 <div className='commentText'>
                     {this.props.comment}
                 </div>
-                <div className='date'>{this.props.date} <button onClick = {this.showReplyArea}>Reply</button></div>
+                <div className='bottomInformation'>{this.props.date} <button className='replyButton'  onClick = {this.showReplyArea}>Reply</button></div>
             </div>
         </div>
         {
             this.state.hasReply ?
-            (<div  className='comment' style={{marginLeft: '10px'}}>
+            (<div  className='reply' style={this.style}>
                 <textarea id='reply' className='inputRow'></textarea>
                 <br/>
                 {/*<input type='hidden' name='origin' value={this.props.title}/>*/}
-                <button onClick={this.sendData}>Add</button>
+                <button  onClick={this.sendData}>Add</button>
+                <button onClick={() => this.setState({hasReply: false})}>Cancel</button>
             </div>) : ''
         }
             </>);
@@ -49,6 +53,7 @@ export default class CommentComponent extends React.Component {
 
     sendData() {
         $.post('/api/reply_comment', {comment: $("#reply").val(), origin: this.props.title, id: this.props.id});
+        this.setState({hasReply: false});
     }
 
     getId() {

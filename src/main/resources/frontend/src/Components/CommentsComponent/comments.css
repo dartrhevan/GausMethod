@@ -11,6 +11,15 @@
     margin: 0 0 20px 30px;
 }
 
+.replyButton {
+    margin: 0 0 0 10px;
+}
+
+
+.replyButton button {
+    margin: 0;
+}
+
 textarea {
     resize: none;
     width: 95%;
@@ -28,7 +37,20 @@ textarea {
     border: 2px solid lightgrey;
     border-radius: 15px;
     transition: background-color 0.8s;
-    padding: 10px 15px 10px 15px;
+    padding: 5px 10px;
+}
+
+
+.reply button {
+    margin: 0;
+}
+
+.reply {
+    margin: 15px;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    transition: background-color 0.8s;
+    padding: 5px 10px;
 }
 
 .comment:hover {
@@ -45,8 +67,8 @@ textarea {
     padding: 0 0 0 10px;
 }
 
-.date {
-    padding: 5px;
+.bottomInformation {
+    padding: 5px 5px 0 5px;
     font-size: 0.8rem;
 }
 
@@ -62,8 +84,15 @@ textarea {
 }
 
 .commentText {
-    min-height: 75px;
-    padding: 0 10px;/*
+    padding: 5px 10px;
+    min-height: 50px;
+    /*
     border-top: 1px solid lightgrey;*/
     border-bottom: 1px solid lightgrey;
+}
+
+@media (max-width: 1020px) {
+    .commentText {
+        min-height: 0;
+    }
 }

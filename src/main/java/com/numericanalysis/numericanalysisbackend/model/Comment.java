@@ -3,6 +3,7 @@ package com.numericanalysis.numericanalysisbackend.model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.web.socket.TextMessage;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
+@DynamicUpdate
 @Entity(name = "comment")
 //@Table(name = "comment")
 public class Comment {

@@ -5,6 +5,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.gson.Gson;
+import com.numericanalysis.numericanalysisbackend.model.Comment;
+import com.numericanalysis.numericanalysisbackend.model.CommentMessage;
 import com.numericanalysis.numericanalysisbackend.model.Origin;
 import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,8 @@ public class SocketTextHandler extends TextWebSocketHandler {
             sockets.forEach((s,o) -> {
                 System.out.println(s);
                 try {
-                    s.sendMessage(new TextMessage(gson.toJson(commentService.getComments(o))));
+                    Collection<CommentMessage> cms = commentService.getComments(o);
+                    s.sendMessage(new TextMessage(gson.toJson(cms)));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

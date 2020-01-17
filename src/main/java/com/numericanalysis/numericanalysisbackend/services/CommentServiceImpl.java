@@ -48,7 +48,8 @@ public class CommentServiceImpl implements CommentService {
         Comment parent = commentRepository.getOne(parentId);
         comment.setParent(parent);
         comment.setNesting(parent.getNesting() + 1);
-        commentRepository.save(comment);
+        parent.getReplies().add(comment);
+        commentRepository.saveAndFlush(comment);
         onCommentAdd.accept(null);
     }
 }

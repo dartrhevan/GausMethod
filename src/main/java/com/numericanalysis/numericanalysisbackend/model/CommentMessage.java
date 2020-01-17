@@ -1,5 +1,6 @@
 package com.numericanalysis.numericanalysisbackend.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
@@ -73,7 +74,7 @@ public class CommentMessage {
         this.date = comment.getDate();
         this.id =comment.returnId();
         this.nesting = comment.getNesting();
-        this.replies = comment.getReplies().parallelStream().map(CommentMessage::new).collect(Collectors.toList());
+        this.replies = comment.getReplies() == null ? new ArrayList<>() : comment.getReplies().parallelStream().map(CommentMessage::new).collect(Collectors.toList());
     }
 
 

@@ -223,6 +223,11 @@ img  {
   margin: 0;
 }
 
+footer a {
+  text-decoration: underline;
+  color: blue;
+}
+
 .upload input[type='file'] + label {
   padding: 0 10px 3px 10px;
   margin: 0;

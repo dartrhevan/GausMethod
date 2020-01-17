@@ -33,7 +33,7 @@ export default class LoginComponent extends React.Component {
                 <But onClick={this.dropPassword} text='Drop'/>
                 <br/>
                 If you do not have an account, you can create it
-                <But onClick="event.preventDefault();window.location.href = '/registration'" text='Create'/>
+                <But onClick={event => {event.preventDefault();window.location.href = '/registration'}} text='Create'/>
             </form>
         );
     }

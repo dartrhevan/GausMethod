@@ -74,6 +74,7 @@ public class CommentMessage {
         this.date = comment.getDate();
         this.id =comment.returnId();
         this.nesting = comment.getNesting();
+        this.parentId = comment.getParent() != null ? comment.getParent().returnId() : 0;
         this.replies = comment.getReplies() == null ? new ArrayList<>() : comment.getReplies().parallelStream().map(CommentMessage::new).collect(Collectors.toList());
     }
 
@@ -108,4 +109,14 @@ public class CommentMessage {
     private int nesting = 0;
     private int id;
     private Date date;
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId=parentId;
+    }
+
+    private int parentId = 0;
 }

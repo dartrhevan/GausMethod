@@ -31,6 +31,7 @@ import org.springframework.util.unit.DataSize;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 //@EnableAsync(proxyTargetClass=true)
 @EnableCaching(proxyTargetClass=true)
@@ -98,12 +99,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         final JdbcTokenRepositoryImpl impl = new JdbcTokenRepositoryImpl();
         //impl.setCreateTableOnStartup(true);
         impl.setDataSource(dataSource);
+        impl.getJdbcTemplate().execute("create table if not exists persistent_logins(" +
+                " username varchar(50) not null," +
+                " series varchar(64) primary key," +
+                " token varchar(64) not null," +
+                " last_used timestamp not null" +
+                " );");
         return impl;
     }
 
 /**
  * создание таблицы JdbcTokenRepositoryImpl
- * create table persistent_logins(
+ * create table if not exists persistent_logins(
  username varchar(50) not null,
  series varchar(64) primary key,
  token varchar(64) not null,

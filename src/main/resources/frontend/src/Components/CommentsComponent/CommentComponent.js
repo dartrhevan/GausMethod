@@ -35,16 +35,19 @@ export default class CommentComponent extends React.Component {
                 <div className='commentText'>
                     {this.props.comment}
                 </div>
-                <div className='bottomInformation'>{this.props.date} <button className='replyButton'  onClick = {this.showReplyArea}>Reply</button></div>
+                <div className='bottomInformation'>
+                    {this.props.date} <button className='replyButton' disabled={!this.props.logged} onClick = {this.showReplyArea}>Reply</button>
+                    <div className='activ'>id:#{this.getId()} {this.props.nesting > 0 ? `Reply to comment ${this.props.parentId}` : ``} </div>
+                </div>
             </div>
         </div>
         {
             this.state.hasReply ?
             (<div  className='reply' style={this.style}>
-                <textarea id='reply' className='inputRow'></textarea>
+                <textarea readOnly={!this.props.logged}  id='reply' className='inputRow'></textarea>
                 <br/>
                 {/*<input type='hidden' name='origin' value={this.props.title}/>*/}
-                <button  onClick={this.sendData}>Add</button>
+                <button disabled={!this.props.logged}  onClick={this.sendData}>Add</button>
                 <button onClick={() => this.setState({hasReply: false})}>Cancel</button>
             </div>) : ''
         }

@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.Properties;
 
 @Configuration
@@ -33,9 +34,9 @@ public class DataConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/db3");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("android");
+        dataSource.setUrl("jdbc:postgresql://ec2-46-137-91-216.eu-west-1.compute.amazonaws.com:5432/dfh3ph8dela78s");
+        dataSource.setUsername("sxnsbiouzcjnzc");
+        dataSource.setPassword("751f0bf9d930ab64e795d1bd28f6ee53e67ac7d7a8f37bc6e075027353241d9f");
 
         return dataSource;
     }

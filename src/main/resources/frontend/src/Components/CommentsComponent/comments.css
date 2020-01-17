@@ -10,14 +10,14 @@
     min-width: 75px;
     margin: 0 0 20px 30px;
 }
-
+/*
 .replyButton {
     margin: 0 0 0 10px;
 }
+*/
 
-
-.replyButton button {
-    margin: 0;
+#commentSection .replyButton {
+    margin: 0 0 0 10px;
 }
 
 textarea {
@@ -32,6 +32,7 @@ textarea {
     display: flex;
     flex-direction: row;
     margin: 15px;
+    word-break: break-word;
     /*border-bottom: 2px solid grey;
     border-top: 2px solid grey;*/
     border: 2px solid lightgrey;
@@ -41,8 +42,12 @@ textarea {
 }
 
 
-.reply button {
-    margin: 0;
+#commentSection .reply button {
+    margin: 0 10px;
+}
+
+#commentSection .reply textarea {
+    margin: 3px 10px;
 }
 
 .reply {
@@ -65,6 +70,7 @@ textarea {
     font-weight: bold;
     font-size: 1.35rem;
     padding: 0 0 0 10px;
+    word-break: keep-all;
 }
 
 .bottomInformation {
@@ -94,5 +100,12 @@ textarea {
 @media (max-width: 1020px) {
     .commentText {
         min-height: 0;
+        word-break: break-all;
+    }
+
+    .nick {
+        font-weight: bold;
+        font-size: inherit;
+        padding: 0 0 0 10px;
     }
 }

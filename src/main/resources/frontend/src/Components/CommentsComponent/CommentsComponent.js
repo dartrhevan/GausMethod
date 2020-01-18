@@ -9,7 +9,7 @@ export default class CommentsComponent extends React.Component {
         this.state = {comments: []};
         //this.componentDidMount = this.componentDidMount.bind(this);
 
-        this.ws = new WebSocket(`ws://${window.location.host}/comments`);
+        this.ws = new WebSocket(`wss://${window.location.host}/comments`);
         this.ws.onopen = ev => {this.ws.send(this.props.title)};
         const onMes = mes => {
             console.log(mes.data);

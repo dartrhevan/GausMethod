@@ -90,7 +90,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Это можно вынести в WebAppConfig, но для понимаемости оставил тут
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @Bean
-    public PasswordEncoder getBCryptPasswordEncoder(){
+    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
         return encoder;
     }
 

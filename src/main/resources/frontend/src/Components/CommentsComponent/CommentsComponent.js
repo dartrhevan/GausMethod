@@ -50,8 +50,8 @@ export default class CommentsComponent extends React.Component {
 }
 
 const Comment = props => (<>
-    <CommentComponent key={props.id} logged={this.props.isLogged} parentId={props.parentId} title = {props.title} nesting={props.nesting} id={props.id} email = {props.email} comment={props.comment} date={props.date} nick={props.nick} age={props.age} activity={props.activity}/>
-    {props.replies.map(r => <Comment logged={this.props.isLogged} key={r.id} parentId={r.parentId} replies={r.replies} title = {props.title} nesting={r.nesting} id={r.id} email = {r.author.email} comment={r.comment} date={r.date} nick={r.author.nickname} age={r.author.age} activity={r.author.activity}/>)}
+    <CommentComponent key={props.id} logged={props.isLogged} parentId={props.parentId} title = {props.title} nesting={props.nesting} id={props.id} email = {props.email} comment={props.comment} date={props.date} nick={props.nick} age={props.age} activity={props.activity}/>
+    {props.replies.map(r => <Comment logged={props.isLogged} key={r.id} parentId={r.parentId} replies={r.replies} title = {props.title} nesting={r.nesting} id={r.id} email = {r.author.email} comment={r.comment} date={r.date} nick={r.author.nickname} age={r.author.age} activity={r.author.activity}/>)}
 </>);
 
 Comment.defaultProps = {replies: []};

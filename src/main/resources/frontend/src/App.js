@@ -95,7 +95,7 @@ export default class App extends React.Component {
         return (
             <div id='a'>
                 <nav>
-                    <h3><a href='/'>Numeric Analysis</a></h3>
+                    <h3><a href='/'>Numerical Analysis</a></h3>
                     {
                         ((this.state.width > 1003) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
                     }

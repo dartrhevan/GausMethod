@@ -113,10 +113,10 @@ input[type='checkbox']:checked {
   height: inherit;
   transition: background-color 0.4s;
 }
-
+/*
 .type:last-child {
   margin-right: 15px;
-}
+}*/
 
 .active-type {
   background-color: white;

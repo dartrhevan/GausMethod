@@ -25,7 +25,7 @@ export default class StartComponent extends React.Component {
                     <a href='/systems' className='startLink'>Tridiagonal matrix method</a>
                     <a href='/interpolation' className='startLink'>Lagrange method</a>
                     <a href='/interpolation' className='startLink'>Newton method</a>
-                    <a href='/interpolation' className='startLink'>MMS method</a>
+                    <a href='/interpolation' className='startLink'>Linear approximation</a>
                     <a href='/interpolation' className='startLink'>Cubic Splains method</a>
                 </div>
             </div>);

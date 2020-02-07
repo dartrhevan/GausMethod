@@ -41,7 +41,7 @@ public class DataConfig {
         return dataSource;
     }
 
-
+/*
     @Bean
     @Primary
     public CommentServiceImpl getCommentService() {
@@ -57,7 +57,7 @@ public class DataConfig {
     public PasswordDropping getPasswordDroppingService() {
         return new PasswordDropping();
     }
-
+*/
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();

@@ -214,9 +214,10 @@ img  {
    border-radius: 15px;
    min-width: 100px;
    min-height: 100px;
-  width: 100px;
-  height: 100px;
+   width: 100px;
+   height: 100px;
    margin: 10px;
+  word-break: break-all;
  }
 
 .comment img {
@@ -368,4 +369,12 @@ input[type='file'] {
 #submit:disabled:hover {
   color: inherit;
   font-weight: inherit;
+}
+
+#fileUploadComponent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }

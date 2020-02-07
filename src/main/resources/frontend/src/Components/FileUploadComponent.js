@@ -1,21 +1,27 @@
 import React from 'react';
 import $ from "jquery";
 
-function showPhoto() {
-    const file = $("#file").prop("files")[0];
+function addPhoto() {
+    showPhoto($("#file").prop("files")[0]);
+}
+
+export function showPhoto(file) {
     const reader = new FileReader();
     reader.onload = () => {
         $("#newPhoto").attr("src", reader.result);
     };
     reader.readAsDataURL(file);
     $("#fileName").text(file.name);
+
 }
 
 export const FileUploadComponent = props => (
-    <div className='uploadFile'>
+    <div id='fileUploadComponent'>
+        <div className='uploadFile' >
         <span className='upload'>
-            <input type='file' name='file' id='file' onInput={showPhoto}/>
+            <input type='file' name='file' id='file' onInput={addPhoto}/>
             <label htmlFor='file'>Photo</label>
         </span>
-        <span id='fileName'>Nothing</span>
+            <span id='fileName'>Nothing</span>
+        </div>
     </div>);

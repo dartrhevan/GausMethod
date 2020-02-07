@@ -3,6 +3,7 @@ import $ from 'jquery';
 
 import {FileUploadComponent} from "./FileUploadComponent";
 import {But} from "./LoginComponent";
+import DropImageComponent from "./DropImageComponent";
 
 export default class UserInformationComponent extends React.Component {
     constructor() {
@@ -37,9 +38,9 @@ export default class UserInformationComponent extends React.Component {
             if(!this.state.user.hasOwnProperty(e.name))
                 return false;
             let g = this.state.user[e.name], f = e.value;
-            return f != g;
+            return f !== g;
         }).bind(this);
-        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#file").val();
+        let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#file").val() || $("#file").prop('files').length > 0;
         $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
     }
 
@@ -82,11 +83,11 @@ export default class UserInformationComponent extends React.Component {
                 <input type='text' /*value={this.state.user.activity}*/ placeholder='activity' className='inputRow' name='activity'/>
                 Photo
                 <br/>
-                <img id="photo" onError={event => event.target.src = '/logo192.png'} src='/logo192.png'/>
-                <img id='newPhoto' src='/logo192.png' />
+                <img onDragOver={e => e.preventDefault()} id="photo" onError={event => event.target.src = '/logo192.png'} src='/logo192.png'/>
+                <DropImageComponent toggleSubmit={this.toggleSubmit.bind(this)} />
                 <br/>
                 Change photo
-                <FileUploadComponent  align='center'/>
+                <FileUploadComponent />
                 <br/>
                 Age
                 <br/>

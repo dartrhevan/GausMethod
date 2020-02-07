@@ -2,6 +2,7 @@ import React from 'react'
 import $ from 'jquery';
 
 import {FileUploadComponent} from "./FileUploadComponent";
+import DropImageComponent from "./DropImageComponent";
 
 export default class LoginComponent extends React.Component {
     onSubmit(event) {
@@ -26,7 +27,7 @@ export default class LoginComponent extends React.Component {
                 <input type='text' placeholder='activity' className='inputRow' name='activity'/>
                 <br/>
                 <FileUploadComponent/>
-                <img alt='photo' id='newPhoto' width='100' src='/logo192.png' />
+                <DropImageComponent toggleSubmit={()=>{}} />
                 <br/>
                 Age
                 <br/>

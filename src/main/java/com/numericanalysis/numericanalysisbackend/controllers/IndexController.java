@@ -4,6 +4,7 @@ import com.numericanalysis.numericanalysisbackend.model.User;
 import com.numericanalysis.numericanalysisbackend.services.PasswordDropping;
 import com.numericanalysis.numericanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -27,13 +30,14 @@ public class IndexController {
     }
     //@ResponseBody
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String register(User user,@RequestParam("file")MultipartFile file,Model model) throws IOException {
+    public String register(User user, @RequestParam("file")MultipartFile file, HttpServletRequest r, Model model) throws IOException {
         //System.out.println( user );
         user.setPassword( encoder.encode( user.getPassword() ) );
         System.out.println(file);
         user.setPhoto(file.getBytes());
         userService.save( user );
-        return "redirect:/login";
+        r.setAttribute( View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
+        return "redirect:/j_spring_security_check";
     }
 
 }

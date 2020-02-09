@@ -41,23 +41,6 @@ public class DataConfig {
         return dataSource;
     }
 
-/*
-    @Bean
-    @Primary
-    public CommentServiceImpl getCommentService() {
-        return CommentServiceImpl.getInstance();
-    }
-
-    @Bean
-    public UserDetailsServiceImpl getUserDetailsService() {
-        return new UserDetailsServiceImpl();
-    }
-
-    @Bean
-    public PasswordDropping getPasswordDroppingService() {
-        return new PasswordDropping();
-    }
-*/
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();

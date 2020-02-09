@@ -58,7 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 //.anyRequest()
-                .antMatchers( "/", "equations", "/img/*", "/comments", "/drop_password", "systems", "interpolation", "interpolation.html", "login", "/api/get_user_name", "/api/get_photo", "/favicon.ico", "/logo192.png" )
+                .antMatchers( "/", "equations", "/img/*", "/comments", "/drop_password", "systems",
+                        "interpolation", "interpolation.html", "login", "/api/get_user_name", "/api/get_photo", "/favicon.ico", "/logo192.png" )
                 .permitAll();//.authenticated()
                 //.and().httpBasic();
         http.headers().frameOptions().sameOrigin().and();

@@ -67,10 +67,6 @@ public class InformationController {
 
     @RequestMapping(value = "/add_comment", method = RequestMethod.POST)
     public String addComment(String origin,String comment,Model model,Principal principal) {
-        //return "";
-        /*System.out.println(req.getRequestURI());
-        System.out.println(req.getRequestURL());
-        System.out.println(req.getRemoteAddr());*/
         System.out.println(origin);
         if(principal == null)
             //response.sendRedirect("/login");
@@ -85,10 +81,6 @@ public class InformationController {
     @Autowired
     private CommentServiceImpl commentService;// = CommentService.getInstance();
     private final Gson gson = new Gson();
-/*
-    InformationController() {
-        commentService.getOnCommentAdd().accept(null);//setOnCommentAdd(() -> );
-    }*/
 
     @RequestMapping("/drop_password")
     public String dropPassword(String email, Model model) {

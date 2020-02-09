@@ -16,12 +16,7 @@ public class WebSocketsConfig implements WebSocketConfigurer
         container.setMaxBinaryMessageBufferSize(1024000);
         return container;
     }
-/*
-    @Bean
-    public SocketTextHandler getSocketTextHandler() {
-        return new SocketTextHandler();
-    }
-*/
+
     @Autowired
     private SocketTextHandler socketTextHandler;
 

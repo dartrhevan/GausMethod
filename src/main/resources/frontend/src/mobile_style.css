@@ -1,13 +1,8 @@
 @media (max-width: 1020px) {
-    nav {
+    nav, footer {
         height: 10vh;
         min-height: 60px;
     }
-
-    footer {
-        min-height: 10vh;
-    }
-
     .switcher .type {
         padding: 0 2px;
     }

@@ -11,10 +11,12 @@ import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-@Service
+
 public class CommentServiceImpl implements CommentService {
     private static final CommentServiceImpl instance = new CommentServiceImpl();
-    private CommentServiceImpl(){}
+    private CommentServiceImpl() {
+        //System.out.println( "CommentServiceImpl" );
+    }
     public static CommentServiceImpl getInstance() {
         return instance;
     }

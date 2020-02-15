@@ -45,8 +45,13 @@ class MobileMenu extends React.Component {
 }
 
 export default class App extends React.Component {
-
+    //TODO
     constructor(props) {
+        /**
+         * screen.width. Определяет ширину экрана (монитора).
+         screen.height. Определяет высоту экрана (монитора).
+         * @param props
+         */
         super(props);
         this.onMobileMenuButtonClick = this.onMobileMenuButtonClick.bind(this);
         document.onclick = event =>
@@ -54,14 +59,20 @@ export default class App extends React.Component {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
                 $('#mobMenu').animate({left: '110vw'}, {duration: 200});
         };
-        this.state = {width: document.body.offsetWidth, user: null};
+        this.state = {width: App.getWidth(), user: null};
         const resize = event => {
-            this.setState({width: document.body.offsetWidth, user: this.state.user});
+            this.setState({width: App.getWidth()/*document.body.offsetWidth*/, user: this.state.user});
         };
         window.onresize = resize.bind(this);
         document.body.addEventListener("resize", resize.bind(this));
         document.addEventListener("resize", resize.bind(this));
         this.initUser = this.initUser.bind(this);
+    }
+
+    static getWidth() {
+        //const orientationRegExp = /landscape/;
+        //console.log(window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height);
+        return window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height;
     }
 
     componentDidMount() {
@@ -90,14 +101,14 @@ export default class App extends React.Component {
     f(ind) {
         $(this).css('top', 15 + (10 + this.clientHeight) * ind + 'px');
     }
-
+//1003
     render() {
         return (
             <div id='a'>
                 <nav>
                     <h3><a href='/'>Numerical Analysis</a></h3>
                     {
-                        ((this.state.width > 1003) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
+                        ((this.state.width > 1020) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
                     }
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
                 </nav>

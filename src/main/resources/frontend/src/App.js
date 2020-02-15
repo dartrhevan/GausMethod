@@ -59,22 +59,22 @@ export default class App extends React.Component {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
                 $('#mobMenu').animate({left: '110vw'}, {duration: 200});
         };
-        this.state = {width: App.getWidth(), user: null};
+        this.state = {width: document.body.offsetWidth, user: null};
         const resize = event => {
-            this.setState({width: App.getWidth()/*document.body.offsetWidth*/, user: this.state.user});
+            this.setState({width: document.body.offsetWidth, user: this.state.user});
         };
         window.onresize = resize.bind(this);
         document.body.addEventListener("resize", resize.bind(this));
         document.addEventListener("resize", resize.bind(this));
         this.initUser = this.initUser.bind(this);
     }
-
+/**
     static getWidth() {
         //const orientationRegExp = /landscape/;
         //console.log(window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height);
-        return window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height;
+        return  window.screen.availWidth;//window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height;
     }
-
+*/
     componentDidMount() {
         $.get('/api/get_user_name', this.initUser);
     }
@@ -108,7 +108,7 @@ export default class App extends React.Component {
                 <nav>
                     <h3><a href='/'>Numerical Analysis</a></h3>
                     {
-                        ((this.state.width > 1020) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
+                        ((this.state.width > 1003) ? <Links user={this.state.user} /> : <MobileMenu user={this.state.user} ref='mobMenu' />)
                     }
                     <button ref='menuButton' id='menuButton' onClick={this.onMobileMenuButtonClick}>menu</button>
                 </nav>

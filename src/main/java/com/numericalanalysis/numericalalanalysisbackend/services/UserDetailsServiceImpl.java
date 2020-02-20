@@ -1,7 +1,7 @@
-package com.numericanalysis.numericalanalysisbackend.services;
+package com.numericalanalysis.numericalalanalysisbackend.services;
 
 
-import com.numericanalysis.numericalanalysisbackend.model.User;
+import com.numericalanalysis.numericalalanalysisbackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,30 +16,18 @@ import java.util.Set;
 
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{/*
-    @Autowired
-    private UserRepository userRepository;
-*/
+public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private UserService userService;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        //User user = userRepository.findByEmail(username);
 
         User user = userService.findByEmail(email);
-        // указываем роли для этого пользователя
-        /*Set<GrantedAuthority> roles = new HashSet();
-        roles.add(new SimpleGrantedAuthority("ROLE_USER"));*/
-
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        /*for (Role role : user.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }*/
-
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
     }
 }

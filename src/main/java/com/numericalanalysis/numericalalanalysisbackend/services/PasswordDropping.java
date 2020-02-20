@@ -1,6 +1,6 @@
-package com.numericanalysis.numericalanalysisbackend.services;
+package com.numericalanalysis.numericalalanalysisbackend.services;
 
-import com.numericanalysis.numericalanalysisbackend.model.User;
+import com.numericalanalysis.numericalalanalysisbackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;

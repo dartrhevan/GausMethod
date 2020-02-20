@@ -1,4 +1,4 @@
-package com.numericanalysis.numericalanalysisbackend.model;
+package com.numericalanalysis.numericalalanalysisbackend.model;
 
 public enum Origin {
     Equations(0),

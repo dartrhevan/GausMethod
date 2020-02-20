@@ -1,4 +1,4 @@
-package com.numericanalysis.numericalanalysisbackend.model;
+package com.numericalanalysis.numericalalanalysisbackend.model;
 
 
 import java.util.Objects;

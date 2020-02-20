@@ -1,7 +1,7 @@
-package com.numericanalysis.numericalanalysisbackend.controllers;
+package com.numericalanalysis.numericalalanalysisbackend.controllers;
 
-import com.numericanalysis.numericalanalysisbackend.model.User;
-import com.numericanalysis.numericalanalysisbackend.services.UserService;
+import com.numericalanalysis.numericalalanalysisbackend.model.User;
+import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

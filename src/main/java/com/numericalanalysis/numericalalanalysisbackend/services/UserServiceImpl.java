@@ -1,23 +1,14 @@
-package com.numericanalysis.numericalanalysisbackend.services;
+package com.numericalanalysis.numericalalanalysisbackend.services;
 
-import com.numericanalysis.numericalanalysisbackend.model.User;
-import com.numericanalysis.numericalanalysisbackend.repositories.UserRepository;
+import com.numericalanalysis.numericalalanalysisbackend.model.User;
+import com.numericalanalysis.numericalalanalysisbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.google.common.base.Strings;
 
 @Service
-public class UserServiceImpl implements UserService {/*
-    public User getUser(String login)
-    {
-        return new User(login, "$2y$12$QpTd8iwH6z6mVeyAIEahLeliP1GrnTLLN7u2K7acvkkqEP1TW.zwS");//1//
-    }
-    private static List<User> users = new ArrayList<User>();
-    static {
-        users.add(new User("abc@e", "$2y$12$QpTd8iwH6z6mVeyAIEahLeliP1GrnTLLN7u2K7acvkkqEP1TW.zwS"));//1//
-        users.add(new User("bmde@e", "$2y$12$QpTd8iwH6z6mVeyAIEahLeliP1GrnTLLN7u2K7acvkkqEP1TW.zwS"));//1//
-    }*/
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;

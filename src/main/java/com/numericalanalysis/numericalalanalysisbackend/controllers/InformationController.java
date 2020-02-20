@@ -1,12 +1,12 @@
-package com.numericanalysis.numericalanalysisbackend.controllers;
+package com.numericalanalysis.numericalalanalysisbackend.controllers;
 
 import com.google.gson.Gson;
-import com.numericanalysis.numericalanalysisbackend.model.Comment;
-import com.numericanalysis.numericalanalysisbackend.model.Origin;
-import com.numericanalysis.numericalanalysisbackend.model.User;
-import com.numericanalysis.numericalanalysisbackend.services.CommentServiceImpl;
-import com.numericanalysis.numericalanalysisbackend.services.PasswordDropping;
-import com.numericanalysis.numericalanalysisbackend.services.UserService;
+import com.numericalanalysis.numericalalanalysisbackend.model.Comment;
+import com.numericalanalysis.numericalalanalysisbackend.model.Origin;
+import com.numericalanalysis.numericalalanalysisbackend.model.User;
+import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceImpl;
+import com.numericalanalysis.numericalalanalysisbackend.services.PasswordDropping;
+import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
@@ -39,7 +39,7 @@ public class InformationController {
 
 
     @RequestMapping(value = {"/edit_user_data"},method = RequestMethod.POST)
-    public void editUserData(HttpServletResponse response,User u,@RequestParam("file") MultipartFile file, String newPassword,Model m,Principal principal) throws Exception {//TODO: try/catch
+    public void editUserData(HttpServletResponse response, User u, @RequestParam("file") MultipartFile file, String newPassword, Model m, Principal principal) throws Exception {//TODO: try/catch
         //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         System.out.println( u );
         System.out.println( newPassword );

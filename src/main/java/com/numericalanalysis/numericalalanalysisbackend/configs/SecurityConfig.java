@@ -1,8 +1,8 @@
-package com.numericanalysis.numericalanalysisbackend.configs;
+package com.numericalanalysis.numericalalanalysisbackend.configs;
 
 import javax.sql.DataSource;
 
-import com.numericanalysis.numericalanalysisbackend.services.UserDetailsServiceImpl;
+import com.numericalanalysis.numericalalanalysisbackend.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;

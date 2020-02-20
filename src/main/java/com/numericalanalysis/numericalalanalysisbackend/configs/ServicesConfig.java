@@ -1,6 +1,6 @@
-package com.numericanalysis.numericalanalysisbackend.configs;
+package com.numericalanalysis.numericalalanalysisbackend.configs;
 
-import com.numericanalysis.numericalanalysisbackend.services.CommentServiceImpl;
+import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

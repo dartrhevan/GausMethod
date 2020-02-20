@@ -1,4 +1,4 @@
-package com.numericanalysis.numericalanalysisbackend.configs;
+package com.numericalanalysis.numericalalanalysisbackend.configs;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
@@ -17,8 +17,8 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.numericanalysis.numericalanalysisbackend")
-@EnableJpaRepositories("com.numericanalysis.numericalanalysisbackend.repositories")
+@ComponentScan("com.numericalanalysis.numericalalanalysisbackend")
+@EnableJpaRepositories("com.numericalanalysis.numericalalanalysisbackend.repositories")
 public class DataConfig {
 
     @Resource
@@ -41,7 +41,7 @@ public class DataConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("com.numericanalysis.numericanalysisbackend.model");
+        entityManagerFactoryBean.setPackagesToScan("com.numericalanalysis.numericalalanalysisbackend.model");
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
 
         //entityManagerFactoryBean.setPersistenceUnitName("ru.easyjava.spring.data.jpa");

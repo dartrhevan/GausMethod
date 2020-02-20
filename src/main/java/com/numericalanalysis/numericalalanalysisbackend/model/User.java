@@ -1,4 +1,4 @@
-package com.numericanalysis.numericalanalysisbackend.model;
+package com.numericalanalysis.numericalalanalysisbackend.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

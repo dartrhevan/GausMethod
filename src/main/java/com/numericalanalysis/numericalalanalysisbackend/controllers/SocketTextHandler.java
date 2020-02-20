@@ -1,13 +1,13 @@
-package com.numericanalysis.numericalanalysisbackend.controllers;
+package com.numericalanalysis.numericalalanalysisbackend.controllers;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.gson.Gson;
-import com.numericanalysis.numericalanalysisbackend.model.CommentMessage;
-import com.numericanalysis.numericalanalysisbackend.model.Origin;
-import com.numericanalysis.numericalanalysisbackend.services.CommentServiceImpl;
+import com.numericalanalysis.numericalalanalysisbackend.model.CommentMessage;
+import com.numericalanalysis.numericalalanalysisbackend.model.Origin;
+import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

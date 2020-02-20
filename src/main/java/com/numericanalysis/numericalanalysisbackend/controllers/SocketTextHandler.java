@@ -1,15 +1,15 @@
-package com.numericanalysis.numericanalysisbackend.controllers;
+package com.numericanalysis.numericalanalysisbackend.controllers;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.gson.Gson;
-import com.numericanalysis.numericanalysisbackend.model.Comment;
-import com.numericanalysis.numericanalysisbackend.model.CommentMessage;
-import com.numericanalysis.numericanalysisbackend.model.Origin;
-import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
+import com.numericanalysis.numericalanalysisbackend.model.CommentMessage;
+import com.numericanalysis.numericalanalysisbackend.model.Origin;
+import com.numericanalysis.numericalanalysisbackend.services.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -34,6 +34,7 @@ public class SocketTextHandler extends TextWebSocketHandler {
     }
 
     @Autowired
+    @Qualifier("singleInst")
     private CommentServiceImpl commentService;// = CommentService.getInstance();
 /*
     public SocketTextHandler() {

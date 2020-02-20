@@ -1,4 +1,4 @@
-package com.numericanalysis.numericanalysisbackend.model;
+package com.numericanalysis.numericalanalysisbackend.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,7 +1,7 @@
-package com.numericanalysis.numericanalysisbackend.repositories;
+package com.numericanalysis.numericalanalysisbackend.repositories;
 
-import com.numericanalysis.numericanalysisbackend.model.Comment;
-import com.numericanalysis.numericanalysisbackend.model.Origin;
+import com.numericanalysis.numericalanalysisbackend.model.Comment;
+import com.numericanalysis.numericalanalysisbackend.model.Origin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

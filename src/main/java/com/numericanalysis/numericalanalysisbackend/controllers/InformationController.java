@@ -1,22 +1,19 @@
-package com.numericanalysis.numericanalysisbackend.controllers;
+package com.numericanalysis.numericalanalysisbackend.controllers;
 
-import com.google.common.base.Strings;
 import com.google.gson.Gson;
-import com.numericanalysis.numericanalysisbackend.model.Comment;
-import com.numericanalysis.numericanalysisbackend.model.Origin;
-import com.numericanalysis.numericanalysisbackend.model.User;
-import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
-import com.numericanalysis.numericanalysisbackend.services.PasswordDropping;
-import com.numericanalysis.numericanalysisbackend.services.UserService;
+import com.numericanalysis.numericalanalysisbackend.model.Comment;
+import com.numericanalysis.numericalanalysisbackend.model.Origin;
+import com.numericanalysis.numericalanalysisbackend.model.User;
+import com.numericanalysis.numericalanalysisbackend.services.CommentServiceImpl;
+import com.numericanalysis.numericalanalysisbackend.services.PasswordDropping;
+import com.numericanalysis.numericalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.security.Principal;
 import java.util.Date;
 
@@ -79,6 +76,7 @@ public class InformationController {
     }
 
     @Autowired
+    @Qualifier("singleInst")
     private CommentServiceImpl commentService;// = CommentService.getInstance();
     private final Gson gson = new Gson();
 

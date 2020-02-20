@@ -1,5 +1,5 @@
-package com.numericanalysis.numericanalysisbackend.configs;
-import com.numericanalysis.numericanalysisbackend.controllers.SocketTextHandler;
+package com.numericanalysis.numericalanalysisbackend.configs;
+import com.numericanalysis.numericalanalysisbackend.controllers.SocketTextHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

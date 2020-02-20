@@ -1,13 +1,9 @@
-package com.numericanalysis.numericanalysisbackend.configs;
+package com.numericanalysis.numericalanalysisbackend.configs;
 
-import com.numericanalysis.numericanalysisbackend.services.CommentServiceImpl;
-import com.numericanalysis.numericanalysisbackend.services.PasswordDropping;
-import com.numericanalysis.numericanalysisbackend.services.UserDetailsServiceImpl;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,13 +13,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.numericanalysis.numericanalysisbackend")
-@EnableJpaRepositories("com.numericanalysis.numericanalysisbackend.repositories")
+@ComponentScan("com.numericanalysis.numericalanalysisbackend")
+@EnableJpaRepositories("com.numericanalysis.numericalanalysisbackend.repositories")
 public class DataConfig {
 
     @Resource

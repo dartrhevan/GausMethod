@@ -1,25 +1,26 @@
-package com.numericanalysis.numericanalysisbackend.services;
+package com.numericanalysis.numericalanalysisbackend.services;
 
-import com.numericanalysis.numericanalysisbackend.model.Comment;
-import com.numericanalysis.numericanalysisbackend.model.CommentMessage;
-import com.numericanalysis.numericanalysisbackend.model.Origin;
-import com.numericanalysis.numericanalysisbackend.repositories.CommentRepository;
+import com.numericanalysis.numericalanalysisbackend.model.Comment;
+import com.numericanalysis.numericalanalysisbackend.model.CommentMessage;
+import com.numericanalysis.numericalanalysisbackend.model.Origin;
+import com.numericanalysis.numericalanalysisbackend.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
-
+@Primary
+@Service
 public class CommentServiceImpl implements CommentService {
-    private static final CommentServiceImpl instance = new CommentServiceImpl();
-    private CommentServiceImpl() {
+    //private static final CommentServiceImpl instance = new CommentServiceImpl();
+    public CommentServiceImpl() {
         //System.out.println( "CommentServiceImpl" );
     }
-    public static CommentServiceImpl getInstance() {
+    /*public static CommentServiceImpl getInstance() {
         return instance;
-    }
+    }*/
     @Autowired
     private CommentRepository commentRepository;
 

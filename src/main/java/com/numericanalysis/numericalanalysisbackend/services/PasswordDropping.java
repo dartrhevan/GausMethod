@@ -1,6 +1,6 @@
-package com.numericanalysis.numericanalysisbackend.services;
+package com.numericanalysis.numericalanalysisbackend.services;
 
-import com.numericanalysis.numericanalysisbackend.model.User;
+import com.numericanalysis.numericalanalysisbackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;

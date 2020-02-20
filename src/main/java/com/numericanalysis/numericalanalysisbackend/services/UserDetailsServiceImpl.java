@@ -1,10 +1,8 @@
-package com.numericanalysis.numericanalysisbackend.services;
+package com.numericanalysis.numericalanalysisbackend.services;
 
 
-import com.numericanalysis.numericanalysisbackend.model.User;
+import com.numericanalysis.numericalanalysisbackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

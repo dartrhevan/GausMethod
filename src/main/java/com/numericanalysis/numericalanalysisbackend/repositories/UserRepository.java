@@ -1,6 +1,6 @@
-package com.numericanalysis.numericanalysisbackend.repositories;
+package com.numericanalysis.numericalanalysisbackend.repositories;
 
-import com.numericanalysis.numericanalysisbackend.model.User;
+import com.numericanalysis.numericalanalysisbackend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

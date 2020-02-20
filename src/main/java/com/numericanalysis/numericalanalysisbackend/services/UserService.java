@@ -1,7 +1,7 @@
-package com.numericanalysis.numericanalysisbackend.services;
+package com.numericanalysis.numericalanalysisbackend.services;
 
 //import org.springframework.data.jpa.repository.JpaRepository;
-import com.numericanalysis.numericanalysisbackend.model.User;
+import com.numericanalysis.numericalanalysisbackend.model.User;
 
 public interface UserService/*extends JpaRepository<User, Long>*/ {
     User findByEmail(String email);

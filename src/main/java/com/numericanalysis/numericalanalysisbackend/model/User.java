@@ -1,10 +1,8 @@
-package com.numericanalysis.numericanalysisbackend.model;
+package com.numericanalysis.numericalanalysisbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
-import org.checkerframework.common.aliasing.qual.Unique;
 
 import javax.persistence.*;
 import java.util.Collection;

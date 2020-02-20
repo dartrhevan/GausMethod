@@ -1,15 +1,11 @@
-package com.numericanalysis.numericanalysisbackend.services;
+package com.numericanalysis.numericalanalysisbackend.services;
 
-import com.numericanalysis.numericanalysisbackend.model.User;
-import com.numericanalysis.numericanalysisbackend.repositories.UserRepository;
+import com.numericanalysis.numericalanalysisbackend.model.User;
+import com.numericanalysis.numericalanalysisbackend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.google.common.base.Strings;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {/*

@@ -9,9 +9,6 @@ export default class UserInformationComponent extends React.Component {
     constructor() {
         super();
         this.state = {user: {   }};
-        this.initUser = this.initUser.bind(this);
-        this.passCh = this.passCh.bind(this);
-        this.toggleSubmit = this.toggleSubmit.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
     }
 
@@ -31,7 +28,7 @@ export default class UserInformationComponent extends React.Component {
         await $.get('/api/get_user_data', this.initUser);
     }
 
-    toggleSubmit()
+    toggleSubmit = () =>
     {
         const check = ((i, e) =>
         {
@@ -42,9 +39,9 @@ export default class UserInformationComponent extends React.Component {
         }).bind(this);
         let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#file").val() || $("#file").prop('files').length > 0;
         $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
-    }
+    };
 
-    initUser(data)
+    initUser = (data) =>
     {
         const obj = JSON.parse(data);
         if(obj.error || !obj)
@@ -59,14 +56,14 @@ export default class UserInformationComponent extends React.Component {
             //$('#email').val(obj.email);
             $("#photo").attr('src', `/api/get_photo?email=${obj.email}`);
         }
-    }
+    };
 
-    passCh(event) {
+    passCh = (event) => {
         event.preventDefault();
         $('#newPassBlock').toggle(500, this.toggleSubmit);
         $('#passch').text( $('#passch').text() === 'hide' ? 'Change password' : 'hide');
 
-    }
+    };
 
     render() {
         return (

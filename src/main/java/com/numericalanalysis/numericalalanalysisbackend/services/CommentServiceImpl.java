@@ -14,9 +14,11 @@ import java.util.stream.Collectors;
 @Primary
 @Service
 public class CommentServiceImpl implements CommentService {
-    public CommentServiceImpl() {
-    }
+
     @Autowired
+    public CommentServiceImpl(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
     private CommentRepository commentRepository;
 
     private Consumer onCommentAdd;

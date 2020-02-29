@@ -67,4 +67,9 @@
     h3 a {
         display: block;
     }
+
+    .content
+    {
+        margin: 7px;
+    }
 }

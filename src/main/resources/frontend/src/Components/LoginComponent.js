@@ -10,9 +10,6 @@ export default class LoginComponent extends React.Component {
             alert(res);
         });
     }
-    constructor() {
-        super();
-    }
     render() {
         return (
             <form align='center' className='content' method='post' action="/j_spring_security_check">

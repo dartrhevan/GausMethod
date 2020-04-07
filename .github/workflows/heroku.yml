@@ -8,17 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-       - name: front-build
-         run: |
-          pushd ../frontend/
-          npm install
-          npm run build --if-present
-          mkdir ../backend/src/main/resources/frontend/build
-          cp -r ./build/* ../backend/frontend/build
-          popd
-          #pushd ./backend/       
-
+    steps: 
        - uses: actions/checkout@v2
        - uses: akhileshns/heroku-deploy@v3.0.2 # This is the action
          with:
@@ -28,3 +18,12 @@ jobs:
           dontuseforce: false #OPTIONAL and DEFAULT - false
           appdir: "./backend" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
      
+       - name: front-build
+         run: |
+          pushd ./frontend/
+          npm install
+          npm run build --if-present
+          mkdir ../backend/src/main/resources/frontend/build
+          cp -r ./build/* ../backend/frontend/build
+          popd
+          #pushd ./backend/     

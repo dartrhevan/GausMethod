@@ -11,6 +11,7 @@ jobs:
     steps:
        - name: front-build
          run: |
+          ls
           pushd ./frontend/
           npm install
           npm run build --if-present

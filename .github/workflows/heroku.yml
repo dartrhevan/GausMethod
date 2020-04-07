@@ -13,6 +13,9 @@ jobs:
          
        - name: front-build
          run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git pull heroku
           pushd ./frontend/
           npm install
           npm run build --if-present          

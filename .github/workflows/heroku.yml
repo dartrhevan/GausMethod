@@ -18,7 +18,7 @@ jobs:
           npm run build --if-present          
           mkdir ../backend/src/main/resources/frontend/
           mkdir ../backend/src/main/resources/frontend/build
-          cp -r ./build/* ../backend/frontend/build
+          cp -r ./build/* ../backend/src/main/resources/frontend/build
           popd
           #pushd ./backend/     
 

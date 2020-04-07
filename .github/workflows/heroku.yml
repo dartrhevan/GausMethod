@@ -19,8 +19,9 @@ jobs:
           mkdir ../backend/src/main/resources/frontend/
           mkdir ../backend/src/main/resources/frontend/build
           cp -r ./build/* ../backend/src/main/resources/frontend/build
-          git add ../backend/src/main/resources/frontend/build/*
+          #git add ../backend/src/main/resources/frontend/build/*
           popd
+          git commit -am 'front built'
           #pushd ./backend/     
 
        - uses: akhileshns/heroku-deploy@v3.0.2 # This is the action

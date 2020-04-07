@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/numericalanalysis-backend.iml" filepath="$PROJECT_DIR$/numericalanalysis-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NumericalAnalysis.iml" filepath="$PROJECT_DIR$/.idea/NumericalAnalysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/numericanalysis-backend.iml" filepath="$PROJECT_DIR$/backend/numericanalysis-backend.iml" />
     </modules>
   </component>
 </project>

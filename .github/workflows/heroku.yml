@@ -28,5 +28,5 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.EMAIL}}
           dontuseforce: false #OPTIONAL and DEFAULT - false
-          appdir: "./backend" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
+          appdir: "backend" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
      

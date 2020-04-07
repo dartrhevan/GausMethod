@@ -19,6 +19,7 @@ jobs:
           mkdir ../backend/src/main/resources/frontend/
           mkdir ../backend/src/main/resources/frontend/build
           cp -r ./build/* ../backend/src/main/resources/frontend/build
+          git add ../backend/src/main/resources/frontend/build
           popd
           #pushd ./backend/     
 

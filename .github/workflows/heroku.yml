@@ -10,14 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
        - uses: actions/checkout@v2
-       - uses: akhileshns/heroku-deploy@v3.0.2 # This is the action
-         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
-          heroku_email: ${{secrets.EMAIL}}
-          dontuseforce: false #OPTIONAL and DEFAULT - false
-          appdir: "./backend" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
-     
+         
        - name: front-build
          run: |
           pushd ./frontend/
@@ -27,3 +20,12 @@ jobs:
           cp -r ./build/* ../backend/frontend/build
           popd
           #pushd ./backend/     
+
+       - uses: akhileshns/heroku-deploy@v3.0.2 # This is the action
+         with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
+          heroku_email: ${{secrets.EMAIL}}
+          dontuseforce: false #OPTIONAL and DEFAULT - false
+          appdir: "./backend" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
+     

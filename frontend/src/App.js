@@ -115,9 +115,9 @@ export default class App extends React.Component {
                 <div className='App'>
                     <BrowserRouter>
                     <Switch>
-                        <Route path="/equations" render={(props) => <EquationsComponent isLogged={this.state.user !== null} />}/>
-                        <Route path="/systems" render={(props) => <SystemsComponent isLogged={this.state.user !== null} />} />
-                        <Route path='/interpolation' render={(props) => <InterpolationComponent isLogged={this.state.user !== null} />}  />
+                        <Route path="/equations" render={props => <EquationsComponent isLogged={this.state.user !== null} />}/>
+                        <Route path="/systems" render={props => <SystemsComponent isLogged={this.state.user !== null} />} />
+                        <Route path='/interpolation' render={props => <InterpolationComponent isLogged={this.state.user !== null} />}  />
                         <Route path='/login' component={LoginComponent} />
                         <Route path='/registration' component={RegistrationComponent} />
                         <Route path='/user-information' component={UserInformationComponent} />

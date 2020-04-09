@@ -4,13 +4,13 @@ jdk:
 node_js:
   - 12.14.0
 before_install: 
-  - "pushd ./frontend/"
-  - "npm install"
-  - "npm run build"
-  - "mkdir ../backend/src/main/resources/frontend/"
-  - "mkdir ../backend/src/main/resources/frontend/build"
-  - "cp -r ./build/* ../backend/src/main/resources/frontend/build"
-  - "popd"
+  -"pushd ./frontend/"
+  -"npm install"
+  -"npm run build"
+  -"mkdir ../backend/src/main/resources/frontend/"
+  -"mkdir ../backend/src/main/resources/frontend/build"
+  -"cp -r ./build/* ../backend/src/main/resources/frontend/build"
+  -"popd"
   -"cd ./backend"
 #before_deploy: "cd ./backend"
 deploy:

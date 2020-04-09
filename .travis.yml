@@ -3,7 +3,8 @@ jdk:
   - oraclejdk11
 node_js:
   - 12.14.0
-before_deploy: "cd ./backend"
+before_install: "cd ./backend"
+#before_deploy: "cd ./backend"
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY

@@ -10,7 +10,7 @@ import com.google.common.base.Strings;
 @Service
 public class UserServiceImpl implements UserService {
 
-    //@Autowired
+    @Autowired
     private UserRepository userRepository;
 
     @Override
@@ -22,15 +22,15 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         userRepository.save( user );
         //users.add(user);
-    }
+    }/*
     @Autowired
     UserServiceImpl(PasswordEncoder encoder, UserRepository userRepository)
     {
         this.encoder = encoder;
         this.userRepository = userRepository;
-    }
+    }*/
 
-    //@Autowired
+    @Autowired
     private PasswordEncoder encoder;
     @Override
     public void edit(String email, String newPassword, User user) throws Exception {

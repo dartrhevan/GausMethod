@@ -1,32 +1,4 @@
-/*
-class Solution {
-    result = [];/*
-    toString() {
-        return this.result.join('=>');
-    }*
-
-    constructor(fstp) {
-        console.log(fstp);
-        this.result.push(fstp);
-    }
-
-    add(step) {
-        this.result.push(step);
-    }
-}*/
-/*
-function sysToString(sys) {
-    let str = '';
-    for(let row of sys)
-    {
-        for(let ent of row)
-        {
-            str += ent + ' ';
-        }
-        str += '<br/>';
-    }
-    return str;
-}*/
+/* eslint-disable eqeqeq */
 
 let solution;
 

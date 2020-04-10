@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 function f(x) {
     const fun = document.getElementById('fun');
     return eval(fun.value.replace('x', '('+x+')'));

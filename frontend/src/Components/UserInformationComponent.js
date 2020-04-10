@@ -1,3 +1,5 @@
+/* eslint-disable no-extra-bind */
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import $ from 'jquery';
 
@@ -38,7 +40,7 @@ export default class UserInformationComponent extends React.Component {
             return f !== g;
         }).bind(this);
         let a = $('#newPassBlock').css('display') !== 'none' || $('input').is(check) || $("#file").val() || $("#file").prop('files').length > 0;
-        $("#submit").attr("disabled", !a);//.disabled = !a;// ? 'disabled' : '';
+        $("#submit").attr("disabled", !a);
     };
 
     initUser = (data) =>
@@ -53,7 +55,6 @@ export default class UserInformationComponent extends React.Component {
                 if(obj.hasOwnProperty(e.name))
                     e.value = obj[e.name];
             });
-            //$('#email').val(obj.email);
             $("#photo").attr('src', `/api/get_photo?email=${obj.email}`);
         }
     };
@@ -71,13 +72,13 @@ export default class UserInformationComponent extends React.Component {
                 <h2>Information about you</h2>
                 E-mail
                 <br/>
-                <input type='email' id='email' /*value={this.state.user.email}*/ placeholder='email' required className='inputRow' name='email'/>
+                <input type='email' id='email'  placeholder='email' required className='inputRow' name='email'/>
                 NickName
                 <br/>
-                <input type='text' /*value={this.state.user.nickname}*/ placeholder='nickname' required className='inputRow' name='nickname'/>
+                <input type='text'  placeholder='nickname' required className='inputRow' name='nickname'/>
                 Activity
                 <br/>
-                <input type='text' /*value={this.state.user.activity}*/ placeholder='activity' className='inputRow' name='activity'/>
+                <input type='text' placeholder='activity' className='inputRow' name='activity'/>
                 Photo
                 <br/>
                 <img onDragOver={e => e.preventDefault()} id="photo" onError={event => event.target.src = '/logo192.png'} src='/logo192.png'/>
@@ -88,7 +89,7 @@ export default class UserInformationComponent extends React.Component {
                 <br/>
                 Age
                 <br/>
-                <input type='number' /*value={this.state.user.age}*/ placeholder='age' className='inputRow' name='age'/>
+                <input type='number'  placeholder='age' className='inputRow' name='age'/>
                 <But text={'Change password'} width='220' id='passch' onClick={this.passCh} />
                 <div id='newPassBlock'>
                     New password

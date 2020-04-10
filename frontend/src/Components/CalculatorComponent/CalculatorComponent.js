@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../index.css';
-import PropTypes from 'prop-types';
 import CommentsComponent from "../CommentsComponent/CommentsComponent";
 
 export const Img = props => {

@@ -2,10 +2,6 @@ import React from "react";
 import './Start.css'
 
 export default class StartComponent extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div id='startComp'>

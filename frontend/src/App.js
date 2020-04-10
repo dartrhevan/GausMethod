@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import EquationsComponent from "./Components/EquationsSolving/EquationsComponent";
@@ -9,7 +10,6 @@ import $ from 'jquery';
 import LoginComponent from "./Components/LoginComponent";
 import RegistrationComponent from "./Components/RegistrationComponent";
 import UserInformationComponent from "./Components/UserInformationComponent";
-//import CommentsComponent from "./CommentsComponent/CommentsComponent";
 
 const Links = props => (
     <>

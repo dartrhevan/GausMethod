@@ -40,7 +40,7 @@ export default class InterpolationComponent extends CalculatorComponent {
     }
 
     getCalculator() {
-        return <><iframe onLoad={InterpolationComponent.onFrameLoad} id='frame' src={`/interpolation.html?handler=${this.state.handler}`} seamless frameBorder='none' ></iframe><br/></>
+        return <><iframe title='intepolation' onLoad={InterpolationComponent.onFrameLoad} id='frame' src={`/interpolation.html?handler=${this.state.handler}`} seamless frameBorder='none' ></iframe><br/></>
     }
 
     static getLagrangeDescription() {

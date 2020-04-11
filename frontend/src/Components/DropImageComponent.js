@@ -13,8 +13,9 @@ export default class DropImageComponent extends React.Component
         showPhoto(event.dataTransfer.files[0]);
         this.props.toggleSubmit();
     }
-
+    onImgDragOver = e => e.preventDefault();
+    onImgDrop = e => this.drop(e);
     render() {
-        return <img alt='photo' id='newPhoto' onDragOver={e => e.preventDefault()} onDrop={e => this.drop(e)} width='100' src='/img/dropLabel.bmp' />
+        return <img alt='photo' id='newPhoto' onDragOver={this.onImgDragOver} onDrop={this.onImgDrop} width='100' src='/img/dropLabel.bmp' />
     }
 }

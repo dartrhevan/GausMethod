@@ -1,6 +1,5 @@
 import React from 'react'
 import $ from 'jquery';
-
 import {FileUploadComponent} from "./FileUploadComponent";
 import DropImageComponent from "./DropImageComponent";
 

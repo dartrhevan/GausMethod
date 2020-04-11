@@ -68,13 +68,8 @@ export default class App extends React.Component {
         document.addEventListener("resize", resize.bind(this));
         this.initUser = this.initUser.bind(this);
     }
-/**
-    static getWidth() {
-        //const orientationRegExp = /landscape/;
-        //console.log(window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height);
-        return  window.screen.availWidth;//window.screen.orientation.type.match(/landscape/) ? window.screen.width : window.screen.height;
-    }
-*/
+
+
     componentDidMount() {
         $.get('/api/get_user_name', this.initUser);
     }

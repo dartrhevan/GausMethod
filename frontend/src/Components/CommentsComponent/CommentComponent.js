@@ -6,21 +6,14 @@ export default class CommentComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {hasReply: false};
-        //this.id = `comment${this.props.id}`;
-        this.showReplyArea = this.showReplyArea.bind(this);
-        //this.getReplyArea = this.getReplyArea.bind(this);
-        this.getId = this.getId.bind(this);
-        this.sendData = this.sendData.bind(this);
         this.style = {marginLeft: 15 + this.props.nesting * 15 + 'px'};
         if(props.nesting > 0)
             this.style.borderColor = "darkgrey";
     }
 
-    showReplyArea()
-    {
+    showReplyArea = () =>
         this.setState({hasReply: true});
-        //$(`#${this.getId()}`).append(this.getReplyArea());
-    }
+
 
     render() {
         return (<>
@@ -46,7 +39,6 @@ export default class CommentComponent extends React.Component {
             (<div  className='reply' style={this.style}>
                 <textarea readOnly={!this.props.logged}  id='reply' className='inputRow'></textarea>
                 <br/>
-                {/*<input type='hidden' name='origin' value={this.props.title}/>*/}
                 <button disabled={!this.props.logged}  onClick={this.sendData}>Add</button>
                 <button onClick={() => this.setState({hasReply: false})}>Cancel</button>
             </div>) : ''
@@ -54,12 +46,10 @@ export default class CommentComponent extends React.Component {
             </>);
     }
 
-    sendData() {
+    sendData = () => {
         $.post('/api/reply_comment', {comment: $("#reply").val(), origin: this.props.title, id: this.props.id});
         this.setState({hasReply: false});
-    }
+    };
 
-    getId() {
-        return `comment${this.props.id}`;
-    }
+    getId = () => `comment${this.props.id}`;
 }

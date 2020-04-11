@@ -81,8 +81,8 @@ export default class UserInformationComponent extends React.Component {
                 <input type='text' placeholder='activity' className='inputRow' name='activity'/>
                 Photo
                 <br/>
-                <img onDragOver={e => e.preventDefault()} id="photo" onError={event => event.target.src = '/logo192.png'} src='/logo192.png'/>
-                <DropImageComponent toggleSubmit={this.toggleSubmit.bind(this)} />
+                <img onDragOver={this.onImgDragOver} id="photo" onError={this.onImgError} src='/logo192.png'/>
+                <DropImageComponent toggleSubmit={this.toggleSubmit} />
                 <br/>
                 Change photo
                 <FileUploadComponent />
@@ -107,4 +107,6 @@ export default class UserInformationComponent extends React.Component {
             </form>
         );
     }
+    onImgError = event => event.target.src = '/logo192.png';
+    onImgDragOver = e => e.preventDefault();
 }

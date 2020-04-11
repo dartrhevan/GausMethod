@@ -6,9 +6,7 @@ export const But = props =>
 export default class LoginComponent extends React.Component {
     dropPassword(event) {
         event.preventDefault();
-        $.post("/api/drop_password", {email: $("#email").val()}, res => {
-            alert(res);
-        });
+        $.post("/api/drop_password", {email: $("#email").val()}, res => alert(res));
     }
     render() {
         return (
@@ -30,8 +28,12 @@ export default class LoginComponent extends React.Component {
                 <But onClick={this.dropPassword} text='Drop'/>
                 <br/>
                 If you do not have an account, you can create it
-                <But onClick={event => {event.preventDefault();window.location.href = '/registration'}} text='Create'/>
+                <But onClick={this.butOnClick} text='Create'/>
             </form>
         );
     }
+    butOnClick = event => {
+        event.preventDefault();
+        window.location.href = '/registration';
+    };
 }

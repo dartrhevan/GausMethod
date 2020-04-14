@@ -26,7 +26,6 @@ class SystemsComponent extends CalculatorComponent {
   constructor(props) {
     super(props);
     //this.state = { dimension: 4 };
-    this.changeDimension = this.changeDimension.bind(this);
     const gausHdl = () => {
         const s = calc();
         this.setState(this.getNewState({result: s}));
@@ -39,10 +38,9 @@ class SystemsComponent extends CalculatorComponent {
         types: [new Type('Gaus', SystemsComponent.getGaussDescription(), gausHdl.bind(this)), new Type('Tridiagonal matrix', SystemsComponent.getTridiagonalDescription(), runHdl.bind(this))],
         dimension: 2, current: 0, result: null, title: "Systems"
     };
-    this.getCalculator = this.getCalculator.bind(this);
   }
 
-  changeDimension() {
+  changeDimension = () => {
     const dim = document.getElementById('dim');
       if(dim.value < 2)
       {
@@ -51,9 +49,9 @@ class SystemsComponent extends CalculatorComponent {
       }
       if(dim)
         this.setState(this.getNewState({dimension: dim.value, result: null}));
-  }
+  };
 
-  getCalculator() {
+  getCalculator = () => {
       const rows = [];
       for(let i = 0; i < this.state.dimension; i++)
           rows.push(<Row dimension = {this.state.dimension}/>);
@@ -66,7 +64,7 @@ class SystemsComponent extends CalculatorComponent {
           </div>
           {this.state.result ? (!(this.state.result instanceof Array) ? <CoefficientsResults coefs = {this.state.result} /> : <SystemSolvingResult syses = {this.state.result}/>): ''}
       </>);
-  }
+  };
 
   static getGaussDescription() {
       return (<>
@@ -111,13 +109,6 @@ class SystemsComponent extends CalculatorComponent {
           <br/>
       </>)
   }
-/*
-  getTypes() {
-      return (<div className='switcher'>
-          <div>b</div>
-          <div>a</div>
-      </div>);
-  }*/
 }
 
 export default SystemsComponent;

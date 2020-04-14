@@ -44,7 +44,6 @@ public class DataConfig {
         entityManagerFactoryBean.setPackagesToScan("com.numericalanalysis.numericalalanalysisbackend.model");
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
 
-        //entityManagerFactoryBean.setPersistenceUnitName("ru.easyjava.spring.data.jpa");
         return entityManagerFactoryBean;
     }
 
@@ -60,9 +59,7 @@ public class DataConfig {
         Properties properties = new Properties();
         properties.put(PROP_HIBERNATE_DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         properties.put(PROP_HIBERNATE_SHOW_SQL, "true");
-        //properties.put( "spring.jpa.show-sql", "true" );
-        properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, "update"); //create-drop | validate | create | update
-        //properties.put( "spring.jpa.hibernate.ddl-auto", "update" );
+        properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, "update");
         return properties;
     }
 

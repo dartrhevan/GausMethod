@@ -146,7 +146,6 @@ function runcalc() {
     const sys = getSystem();
     runMethod(sys);
 
-    //output(sys);
     return solution;
 }
 function runOutput(xs, check) {

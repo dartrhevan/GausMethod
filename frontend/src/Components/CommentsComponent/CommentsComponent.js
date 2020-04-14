@@ -3,12 +3,10 @@ import './comments.css';
 import $ from 'jquery';
 import CommentComponent from "./CommentComponent";
 
-export default class CommentsComponent extends React.Component {
+export default class CommentsComponent extends React.PureComponent {
     constructor() {
         super();
         this.state = {comments: []};
-        //this.componentDidMount = this.componentDidMount.bind(this);
-
         this.ws = new WebSocket(`${window.location.protocol === "https:" ? 'wss': 'ws'}://${window.location.host}/comments`);
         this.ws.onopen = ev => {this.ws.send(this.props.title)};
         const onMes = mes => {
@@ -25,14 +23,12 @@ export default class CommentsComponent extends React.Component {
     }
 
     render() {
-        //console.log(this.props.title);
         return (
         <div id='commentSection' className='content'>
             <p align='center'><b>Comments</b></p>
             {this.state.comments.map(c => <Comment logged={this.props.isLogged} parentId={c.parentId} key={c.id} replies={c.replies} title = {this.props.title} nesting={c.nesting} id={c.id} email = {c.author.email} comment={c.comment} date={c.date} nick={c.author.nickname} age={c.author.age} activity={c.author.activity}/>)}
             <textarea readOnly={!this.props.isLogged} id='comment' className='inputRow'></textarea>
             <br/>
-            {/*<input type='hidden' name='origin' value={this.props.title}/>*/}
             <button disabled={!this.props.isLogged} onClick={this.sendData}>Add</button>
         </div>);
     }

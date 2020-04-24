@@ -30,13 +30,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
 
     @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
     // регистрируем нашу реализацию UserDetailsService
     // а также PasswordEncoder для приведения пароля в формат SHA1
     @Autowired
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder( getBCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder( encoder );
     }
 
     @Override
@@ -71,14 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);
 
         http.rememberMe().key("uniqueAndSecret").tokenRepository(persistentTokenRepository());
-    }
-
-    // Указываем Spring контейнеру, что надо инициализировать ShaPasswordEncoder
-    // Это можно вынести в WebAppConfig, но для понимаемости оставил тут
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
-        return encoder;
     }
 
     @Bean

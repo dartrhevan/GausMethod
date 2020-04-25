@@ -36,9 +36,9 @@ public class DataConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(env.getProperty( "db-url" ));
-        dataSource.setUsername(env.getProperty( "db-username" ));
-        dataSource.setPassword(env.getProperty( "db-password" ));
+        dataSource.setUrl(env.getProperty( "db_url" ));
+        dataSource.setUsername(env.getProperty( "db_username" ));
+        dataSource.setPassword(env.getProperty( "db_password" ));
 
         return dataSource;
     }

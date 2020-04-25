@@ -45,7 +45,7 @@ class MobileMenu extends React.Component {
 }
 
 export default class App extends React.Component {
-    //TODO
+
     constructor(props) {
         /**
          * screen.width. Определяет ширину экрана (монитора).

@@ -1,14 +1,17 @@
 package com.numericalanalysis.numericalalanalysisbackend.configs;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
@@ -19,19 +22,23 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("com.numericalanalysis.numericalalanalysisbackend")
 @EnableJpaRepositories("com.numericalanalysis.numericalalanalysisbackend.repositories")
+@PropertySource(value="classpath:db.properties",  ignoreResourceNotFound=true)
+
 public class DataConfig {
 
     @Resource
     private Environment env;
+/*
+    @Value("db-url")
+    private String url;*/
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://ec2-46-137-91-216.eu-west-1.compute.amazonaws.com:5432/dfh3ph8dela78s");
-        dataSource.setUsername("sxnsbiouzcjnzc");
-        dataSource.setPassword("751f0bf9d930ab64e795d1bd28f6ee53e67ac7d7a8f37bc6e075027353241d9f");
+        dataSource.setUrl(env.getProperty( "db-url" ));
+        dataSource.setUsername(env.getProperty( "db-username" ));
+        dataSource.setPassword(env.getProperty( "db-password" ));
 
         return dataSource;
     }

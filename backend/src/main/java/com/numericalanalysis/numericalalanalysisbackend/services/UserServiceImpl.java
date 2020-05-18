@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     public void edit(String email, String newPassword, User user) throws Exception {
         User u = findByEmail( email );
         if(/*!u.getPassword().equals( user.getPassword())*/!encoder.matches(user.getPassword(), u.getPassword()))
-            throw new Exception( "Wrong password" );
+            throw new Exception( "Wrong password" );//TODO: Change for password dropping!!!
         //u.setPassword( encoder.encode( u.getPassword() ) );
         if(!Strings.isNullOrEmpty( newPassword ))
             newPassword=encoder.encode(newPassword);

@@ -31,7 +31,7 @@ public class PasswordDropping {
     public void dropPassword(String email) throws Exception {
         String pswd = generatePassword();
         User user = userService.findByEmail(email);
-        userService.edit(email, encoder.encode(pswd), user);
+        userService.edit(email, encoder.encode(pswd), user, false);
         sender.send("Password dropping", "<h1>Password dropping</h1>Your password has been succesfully dropped. " +
                 "<br/>Your new password: " + pswd, addresserEmail, email);
     }

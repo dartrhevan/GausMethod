@@ -35,7 +35,7 @@ public class DataConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        System.out.println( env.getProperty( "db_url" ) );
+        //System.out.println( env.getProperty( "db_url" ) );
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl(env.getProperty( "db_url" ));
         dataSource.setUsername(env.getProperty( "db_username" ));

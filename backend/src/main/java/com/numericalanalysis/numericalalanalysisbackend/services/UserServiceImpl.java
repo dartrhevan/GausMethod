@@ -15,29 +15,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByEmail(String email) {
-        return userRepository.findByEmail( email );//users.parallelStream().filter( user -> user.getEmail().equals( email ) ).findFirst().get();
+        return userRepository.findByEmail( email );
     }
 
     @Override
     public void save(User user) {
         userRepository.save( user );
-        //users.add(user);
-    }/*
-    @Autowired
-    UserServiceImpl(PasswordEncoder encoder, UserRepository userRepository)
-    {
-        this.encoder = encoder;
-        this.userRepository = userRepository;
-    }*/
+    }
 
     @Autowired
     private PasswordEncoder encoder;
-    @Override
+
     public void edit(String email, String newPassword, User user) throws Exception {
+        edit( email, newPassword, user, true );
+    }
+
+    @Override
+    public void edit(String email, String newPassword, User user, boolean checkPassword) throws Exception {
         User u = findByEmail( email );
-        if(/*!u.getPassword().equals( user.getPassword())*/!encoder.matches(user.getPassword(), u.getPassword()))
+        if(checkPassword && !encoder.matches(user.getPassword(), u.getPassword()))
             throw new Exception( "Wrong password" );//TODO: Change for password dropping!!!
-        //u.setPassword( encoder.encode( u.getPassword() ) );
         if(!Strings.isNullOrEmpty( newPassword ))
             newPassword=encoder.encode(newPassword);
         user.setPassword( newPassword );
@@ -45,7 +42,6 @@ public class UserServiceImpl implements UserService {
                 !Strings.isNullOrEmpty(user.getPassword()) ? user.getPassword() : u.getPassword(), user.getAge(),
                 !Strings.isNullOrEmpty(user.getNickname()) ? user.getNickname() : u.getNickname(),
                 !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity(),
-                user.getPhoto() != null && user.getPhoto().length != 0 ? user.getPhoto() : u.getPhoto()
-                /*!Strings.isNullOrEmpty(user.getDescription()) ? user.getDescription() : u.getDescription()*/);
+                user.getPhoto() != null && user.getPhoto().length != 0 ? user.getPhoto() : u.getPhoto());
     }
 }

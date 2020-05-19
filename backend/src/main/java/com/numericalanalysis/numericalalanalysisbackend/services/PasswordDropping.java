@@ -19,7 +19,7 @@ import java.util.Random;
 @PropertySource(value="classpath:db.properties",  ignoreResourceNotFound=true)
 public class PasswordDropping {
     private static String addresserEmail = null;//"numeranalysis@gmail.com";
-    private static String addresserPassword = null;//"androidos";
+    private static String addresserPassword = null;
     @Autowired
     private BCryptPasswordEncoder encoder;
     @Resource
@@ -41,8 +41,8 @@ public class PasswordDropping {
         Sender sender = new Sender(addresserEmail, addresserPassword);
         User user = userService.findByEmail(email);
         userService.edit(email, encoder.encode(pswd), user, false);
-        sender.send("Password dropping", "<h1>Password dropping</h1>Your password has been succesfully dropped. " +
-                "<br/>Your new password: " + pswd, addresserEmail, email);
+        sender.send("Password dropping", "Password dropping\nYour password has been succesfully dropped. " +
+                "\nYour new password: " + pswd, addresserEmail, email);
     }
 }
 
@@ -57,11 +57,11 @@ class Sender {
         this.password = password;
 
         props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.host", "smtp.mail.ru");
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        props.put("mail.smtp.ssl.trust", "smtp.mail.ru");
         props.put("mail.smtp.port", "465");
     }
 

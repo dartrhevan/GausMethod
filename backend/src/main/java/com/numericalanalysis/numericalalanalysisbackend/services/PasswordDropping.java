@@ -2,9 +2,12 @@ package com.numericalanalysis.numericalalanalysisbackend.services;
 
 import com.numericalanalysis.numericalalanalysisbackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -13,14 +16,17 @@ import java.util.Properties;
 import java.util.Random;
 
 @Component
+@PropertySource(value="classpath:db.properties",  ignoreResourceNotFound=true)
 public class PasswordDropping {
-    private static final String addresserEmail = "numeranalysis@gmail.com";
-    private static final String addresserPassword = "androidos";
+    private static String addresserEmail = null;//"numeranalysis@gmail.com";
+    private static String addresserPassword = null;//"androidos";
     @Autowired
     private BCryptPasswordEncoder encoder;
+    @Resource
+    private Environment env;
     @Autowired
     private UserService userService;
-    private final Sender sender = new Sender(addresserEmail, addresserPassword);
+    //private final Sender sender = new Sender(addresserEmail, addresserPassword);
     private static String generatePassword() {
         StringBuilder res = new StringBuilder();
         Random r = new Random(new Date().getTime());
@@ -30,6 +36,9 @@ public class PasswordDropping {
     }
     public void dropPassword(String email) throws Exception {
         String pswd = generatePassword();
+        if(addresserEmail == null) addresserEmail = env.getProperty( "email_address" );
+        if(addresserPassword == null) addresserPassword = env.getProperty( "email_password" );
+        Sender sender = new Sender(addresserEmail, addresserPassword);
         User user = userService.findByEmail(email);
         userService.edit(email, encoder.encode(pswd), user, false);
         sender.send("Password dropping", "<h1>Password dropping</h1>Your password has been succesfully dropped. " +
@@ -62,7 +71,7 @@ class Sender {
                 return new PasswordAuthentication(username, password);
             }
         });
-        Message message=new MimeMessage(session);
+        Message message = new MimeMessage(session);
         //от кого
         message.setFrom(new InternetAddress(fromEmail));
         //кому

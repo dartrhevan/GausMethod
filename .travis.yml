@@ -4,9 +4,9 @@ jdk:
 node_js:
   - 12.14.0
 before_install: 
-  - echo db_username=$db_username >> ./backend/src/main/resources/db.properties
-  - echo db_url=$db_url >> ./backend/src/main/resources/db.properties
-  - echo db_password=$db_password>> ./backend/src/main/resources/db.properties
+  #- echo db_username=$db_username >> ./backend/src/main/resources/db.properties
+  #- echo db_url=$db_url >> ./backend/src/main/resources/db.properties
+  #- echo db_password=$db_password>> ./backend/src/main/resources/db.properties
   - pushd ./frontend/
   - npm install
   - npm run build

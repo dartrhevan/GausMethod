@@ -23,7 +23,7 @@ const Links = props => (
 const Signs = props => props.user ?
   (<>
       <a className='sign' href='/user-information'>{props.user}</a>
-      <a className='sign' href='/logout'>Logout</a>
+      <a className='sign' onClick={sessionStorage.removeItem('user')} href='/logout'>Logout</a>
   </>) :
   (<>
       <a className='sign' href='/login'>Login</a>
@@ -59,10 +59,8 @@ export default class App extends React.Component {
             if(event.target.id !== 'mobMenu' && event.target.id !== 'menuButton')
                 $('#mobMenu').animate({left: '110vw'}, {duration: 200});
         };
-        this.state = {width: document.body.offsetWidth, user: null};
-        const resize = event => {
-            this.setState({width: document.body.offsetWidth, user: this.state.user});
-        };
+        this.state = {width: document.body.offsetWidth, user: JSON.parse(sessionStorage.getItem('user'))};
+        const resize = event => this.setState({width: document.body.offsetWidth, user: this.state.user});
         window.onresize = resize.bind(this);
         document.body.addEventListener("resize", resize.bind(this));
         document.addEventListener("resize", resize.bind(this));
@@ -76,12 +74,15 @@ export default class App extends React.Component {
 
     initUser(data) {
         const obj = JSON.parse(data);
-        if(obj.error || !obj.user)
+        if(obj.error || !obj.user) {
             console.log(obj.error);
-        else
+            sessionStorage.removeItem('user');
+        }
+        else //if (obj.user)
         {
             console.log(obj.user);
-            this.setState({width: this.state.width, user: obj.user})
+            this.setState({width: this.state.width, user: obj.user});
+            sessionStorage.setItem('user', JSON.stringify(obj.user));
         }
     }
 

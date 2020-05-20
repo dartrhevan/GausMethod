@@ -26,7 +26,7 @@ public class PasswordDropping {
     private Environment env;
     @Autowired
     private UserService userService;
-    //private final Sender sender = new Sender(addresserEmail, addresserPassword);
+    
     private static String generatePassword() {
         StringBuilder res = new StringBuilder();
         Random r = new Random(new Date().getTime());
@@ -40,7 +40,7 @@ public class PasswordDropping {
         if(addresserPassword == null) addresserPassword = env.getProperty( "email_password" );
         Sender sender = new Sender(addresserEmail, addresserPassword);
         User user = userService.findByEmail(email);
-        userService.edit(email, encoder.encode(pswd), user, false);
+        userService.edit(email, pswd, user, false);
         sender.send("Password dropping", "Password dropping\nYour password has been succesfully dropped. " +
                 "\nYour new password: " + pswd, addresserEmail, email);
     }
@@ -65,7 +65,7 @@ class Sender {
         props.put("mail.smtp.port", "465");
     }
 
-    public void send(String subject, String text, String fromEmail, String toEmail) throws Exception{
+    public void send(String subject, String text, String fromEmail, String toEmail) throws Exception {
         Session session = Session.getDefaultInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);

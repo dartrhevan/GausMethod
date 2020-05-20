@@ -77,6 +77,7 @@ export default class App extends React.Component {
         if(obj.error || !obj.user) {
             console.log(obj.error);
             sessionStorage.removeItem('user');
+            this.setState({width: this.state.width, user: null});
         }
         else //if (obj.user)
         {

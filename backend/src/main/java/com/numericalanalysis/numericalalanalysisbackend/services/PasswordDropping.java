@@ -26,7 +26,7 @@ public class PasswordDropping {
     private Environment env;
     @Autowired
     private UserService userService;
-    
+
     private static String generatePassword() {
         StringBuilder res = new StringBuilder();
         Random r = new Random(new Date().getTime());

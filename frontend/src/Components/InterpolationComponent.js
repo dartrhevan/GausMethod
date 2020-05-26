@@ -36,7 +36,7 @@ export default class InterpolationComponent extends CalculatorComponent {
 
     changeType(event) {
         const typeInd = this.state.types.map(t => t.title).indexOf(event.target.textContent);
-        this.setState(this.getNewState({current: typeInd, handler: this.state.types[typeInd].title}))
+        this.setState({current: typeInd, handler: this.state.types[typeInd].title})
     }
 
     getCalculator() {

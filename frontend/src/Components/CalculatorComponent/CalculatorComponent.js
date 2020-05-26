@@ -27,15 +27,15 @@ export default class CalculatorComponent extends React.Component {
 
     changeType(event) {
         const typeInd = this.state.types.map(t => t.title).indexOf(event.target.textContent);
-        this.setState(this.getNewState({current: typeInd}))
+        this.setState({current: typeInd})
     }
 
     getCalculator() {}
-
+/*
     getNewState(obj) {
         return Object.assign({}, this.state, obj);
     }
-
+*/
     render() {
         return(
             <div id='calculator'>

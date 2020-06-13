@@ -14,7 +14,6 @@ function output(sys) {//вывод результата
     const res = document.getElementById('res');
     res.innerHTML = resString;
     return solution;
-    //alert(resString);
 }
 
 function getRowArray(row) {

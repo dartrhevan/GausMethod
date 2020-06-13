@@ -5,9 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0;/*
-  justify-content: center;
-  align-items: center;*/
+  padding: 0;
   height: 99.9vh;
   font-size: 20px;
 }
@@ -51,14 +49,12 @@ code {
 
 .content {
   max-width: 750px;
-  /*width: 90%;*/
   animation: appear 0.8s;
-  /*width: 45%;*/
   padding: 0;
   margin: 15px;
   border: 1px solid lightgrey;
   border-radius: 15px;
-  box-shadow: lightgray 2px 2px 2px 2px, lightgray -2px -2px 2px 2px;
+  box-shadow: lightgray 0 0 3px 3px;
 }
 
 form.content {
@@ -71,10 +67,6 @@ input[type='checkbox'] {
   width: fit-content;
   display: inline;
 }
-/*
-input[type='checkbox']:checked {
-  color: #09d3cf;
-}*/
 
 .description {
   padding: 20px;
@@ -104,12 +96,6 @@ input[type='checkbox']:checked {
 .calculator {
   padding: 15px;
 }
-/*
-#testimg {
-  background: url("/img/lagrangeFormula2.png") no-repeat;
-  background-size: contain;
-  height: 75px;
-}*/
 
 .type {
   min-width: 75px;
@@ -118,10 +104,6 @@ input[type='checkbox']:checked {
   height: inherit;
   transition: background-color 0.4s;
 }
-/*
-.type:last-child {
-  margin-right: 15px;
-}*/
 
 .active-type {
   background-color: white;
@@ -140,8 +122,7 @@ div.active-type:hover {
   margin: 0;
   overflow-y: hidden;
   min-height: 35px;
-  /*padding: 10px;*/
-  background-color: var(--main-color);/* #05ccca;*/
+  background-color: var(--main-color);
 }
 
 nav {
@@ -185,7 +166,7 @@ nav .sign:hover {
 }
 
 button, input[type='file'] + label {
-  box-shadow: lightgray 1px 1px 1px 1px, lightgray -1px -1px 1px 1px;
+  box-shadow: lightgray 0 0 2px 2px;
   background: var(--main-color);
   color: lightgray;
   border-radius: 17px;
@@ -216,7 +197,6 @@ input[type='file'] + label:focus, button:focus {
 
 img  {
    border: 1px solid lightgray;
-   /*background-image: url("/logo192.png");*/
    border-radius: 15px;
    min-width: 100px;
    min-height: 100px;
@@ -242,11 +222,7 @@ footer a {
   left: -3px;
   position: relative;
 }
-/*
-img {
-  background: url("/logo512.png");
-}
-*/
+
 .last-type {
   border-radius: 0 15px 0 0;
 }
@@ -254,12 +230,12 @@ img {
 .inputRow {
   border-radius: 15px;
   border: 1px solid darkgray;
-  box-shadow: lightgray 1px 1px 1px 1px, lightgray -1px -1px 1px 1px;
+  box-shadow: lightgray 0 0 2px 2px;
 }
 
 .inputRow:focus
 {
-  box-shadow: var(--main-color) 1px 1px 1px 1px, var(--main-color) -1px -1px 1px 1px;
+  box-shadow: var(--main-color) 0 0 2px 2px;
   outline: none;
 }
 
@@ -285,14 +261,10 @@ a {
 nav a:hover {
   color: lightgray;
   background-color: var(--main-color-dark);
-  /*#06c9c5;
-  border-left: 1px solid #909090;
-  border-right: 1px solid #909090;*/
   box-shadow: inset 0 -2px 2px;
 }
 
 nav h3 a {
-  /*height: inherit;*/
   padding: 0;
   margin: 0;
   transition: color 0.4s;
@@ -308,8 +280,7 @@ nav h3 {
   margin: 0;
   padding: 0;
   height: inherit;
-  width: 100%;/*
-  text-align: center;*/
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -318,7 +289,7 @@ nav h3 {
 .uploadFile {
   position: relative;
   left: 10px;
-  padding: 1px 10px 1px 0px;
+  padding: 1px 10px 1px 0;
   border: 1px solid;
   border-radius: 15px;
   width: fit-content;
@@ -340,7 +311,6 @@ input {
 }
 
 .App {
-  /*text-align: center;*/
   justify-content: center;
   align-items: center;
   display: flex;

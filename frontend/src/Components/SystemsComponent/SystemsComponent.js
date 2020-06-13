@@ -25,7 +25,6 @@ const CoefficientsResults = props => (
 class SystemsComponent extends CalculatorComponent {
   constructor(props) {
     super(props);
-    //this.state = { dimension: 4 };
     const gausHdl = () => {
         const s = calc();
         this.setState(this.getNewState({result: s}));

@@ -28,22 +28,15 @@
     word-break: break-word;
     display: block;
     padding: 30px 0;
-    /*border: 2px solid black;
-    height: 125px;*/
     width: 95px;
     text-align: center;
     height: 100px;
     font-size: 1.1em;
     transition: color, background-color 0.4s;
-    box-shadow: gray 1px 1px 1px 1px, gray -1px -1px 1px 1px;
+    box-shadow: gray 0 0 2px 2px;
 }
 
 .startLink:hover {
-    box-shadow: inset gray 1px 1px 1px 1px, inset gray -1px -1px 1px 1px,  gray 1px 1px 1px 1px, gray -1px -1px 1px 1px;
+    box-shadow: inset gray 0 0 2px 2px;
     background: #09d3cf;
-    /*color: darkgrey;*/
 }
-/*
-@keyframes appear {
-
-}*/

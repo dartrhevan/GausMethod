@@ -11,7 +11,6 @@ export default class InterpolationComponent extends CalculatorComponent {
                 new Type('MMS', InterpolationComponent.getMMSDescription(),null), new Type('Splains', InterpolationComponent.getSplainDescription(),null)],
             dimension: 2, current: 0, result: null, handler: 'Lagrange', title: "Interpolation"
         };
-        //InterpolationComponent.onFrameLoad();
     }
 
     static onFrameLoad() {

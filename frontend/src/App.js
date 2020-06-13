@@ -79,7 +79,7 @@ export default class App extends React.Component {
             sessionStorage.removeItem('user');
             this.setState({width: this.state.width, user: null});
         }
-        else //if (obj.user)
+        else
         {
             console.log(obj.user);
             this.setState({width: this.state.width, user: obj.user});

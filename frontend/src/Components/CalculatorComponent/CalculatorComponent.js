@@ -31,11 +31,7 @@ export default class CalculatorComponent extends React.Component {
     }
 
     getCalculator() {}
-/*
-    getNewState(obj) {
-        return Object.assign({}, this.state, obj);
-    }
-*/
+
     render() {
         return(
             <div id='calculator'>

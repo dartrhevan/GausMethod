@@ -9,20 +9,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity(name = "users")
-//@Table(name = "user")
-public class User {/*
-    @Id
-    @Column(unique=true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    @Expose(deserialize = true, serialize = false)
-    private Integer id;*/
+public class User {
     @Expose(deserialize = true, serialize = false)
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Collection<Comment> comments;

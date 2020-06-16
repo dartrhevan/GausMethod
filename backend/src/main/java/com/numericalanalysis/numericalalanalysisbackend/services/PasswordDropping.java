@@ -18,7 +18,7 @@ import java.util.Random;
 @Component
 @PropertySource(value="classpath:db.properties",  ignoreResourceNotFound=true)
 public class PasswordDropping {
-    private static String addresserEmail = null;//"numeranalysis@gmail.com";
+    private static String addresserEmail = null;
     private static String addresserPassword = null;
     @Autowired
     private BCryptPasswordEncoder encoder;
@@ -80,7 +80,6 @@ class Sender {
         message.setSubject(subject);
         //текст
         message.setText(text);
-
         //отправляем сообщение
         Transport.send(message);
     }

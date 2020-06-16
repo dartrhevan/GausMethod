@@ -16,7 +16,7 @@ import java.util.Set;
 
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserService userService;
 
@@ -30,6 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
     }
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;

@@ -79,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         final JdbcTokenRepositoryImpl impl = new JdbcTokenRepositoryImpl();
-        //impl.setCreateTableOnStartup(true);
+
         impl.setDataSource(dataSource);
         impl.getJdbcTemplate().execute("create table if not exists persistent_logins(" +
                 " username varchar(50) not null," +

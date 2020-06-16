@@ -63,10 +63,13 @@ public class UserServiceImpl implements UserService {
         if(!Strings.isNullOrEmpty( newPassword ))
             newPassword = encoder.encode(newPassword);
         user.setPassword( newPassword );
-        userRepository.edit( email, !Strings.isNullOrEmpty(user.getEmail()) ? user.getEmail() : u.getEmail(),
-                !Strings.isNullOrEmpty(user.getPassword()) ? user.getPassword() : u.getPassword(), user.getAge(),
-                !Strings.isNullOrEmpty(user.getNickname()) ? user.getNickname() : u.getNickname(),
-                !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity(),
-                user.getPhoto() != null && user.getPhoto().length != 0 ? user.getPhoto() : u.getPhoto());
+        String newEmail = !Strings.isNullOrEmpty(user.getEmail()) ? user.getEmail() : u.getEmail(),
+                newPass = !Strings.isNullOrEmpty(user.getPassword()) ? user.getPassword() : u.getPassword(),
+                newNickname = !Strings.isNullOrEmpty(user.getNickname()) ? user.getNickname() : u.getNickname(),
+                newActivity = !Strings.isNullOrEmpty(user.getActivity()) ? user.getActivity() : u.getActivity();
+
+        byte[] newPhoto = user.getPhoto() != null && user.getPhoto().length != 0 ? user.getPhoto() : u.getPhoto();
+
+        userRepository.edit( email, newEmail, newPass, user.getAge(), newNickname, newActivity, newPhoto);
     }
 }

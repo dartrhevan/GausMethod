@@ -11,7 +11,6 @@ import java.util.Objects;
 
 @DynamicUpdate
 @Entity(name = "comment")
-//@Table(name = "comment")
 public class Comment {
     public Origin getOrigin() {
         return origin;
@@ -23,6 +22,7 @@ public class Comment {
 
     private Origin origin;
     private Date date;
+
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "author")
     private User author;
@@ -47,11 +47,6 @@ public class Comment {
     }
 
     private int nesting = 0;
-    /*
-    public void setId(Integer id) {
-        this.id = id;
-    }
-*/
 
     public int returnId() {
         return id;

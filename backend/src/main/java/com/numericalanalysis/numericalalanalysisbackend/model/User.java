@@ -14,7 +14,7 @@ public class User {
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Collection<Comment> comments;
     @Id
-    @Column(unique=true)
+    @Column(unique = true)
     @Expose
     private String email;
     @Expose(deserialize = true, serialize = false)

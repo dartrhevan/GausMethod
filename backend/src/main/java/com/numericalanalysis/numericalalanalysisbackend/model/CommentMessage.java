@@ -72,7 +72,7 @@ public class CommentMessage {
         this.comment = comment.getComment();
         this.author = new UserMessage(comment.getAuthor());
         this.date = comment.getDate();
-        this.id =comment.returnId();
+        this.id = comment.returnId();
         this.nesting = comment.getNesting();
         this.parentId = comment.getParent() != null ? comment.getParent().returnId() : 0;
         this.replies = comment.getReplies() == null ? new ArrayList<>() : comment.getReplies().parallelStream().map(CommentMessage::new).collect(Collectors.toList());

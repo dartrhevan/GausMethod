@@ -4,22 +4,24 @@ import $ from 'jquery';
 import CommentComponent from "./CommentComponent";
 import LoadingWheel from "./LoadingWheel";
 import Sock from "sockjs-client";
-import {Stomp} from 'stomp';
+import Stomp from 'stompjs';
+import getWSURL from "../../getWSURL";
 
 export default class CommentsComponent extends React.PureComponent {
     constructor() {
         super();
         this.state = {comments: null};
-        const wsUrl = `${window.location.protocol === "https:" ? 'wss': 'ws'}://${window.location.host}/ws`;
-
+        const wsUrl = getWSURL('ws');//`${window.location.protocol === "https:" ? 'wss': 'ws'}://${window.location.host}/ws`;
         const onMes = data =>
             this.setState({comments: JSON.parse(data)});
 
         const socket = new Sock(wsUrl);
+
         this.stompClient = Stomp.over(socket);
-        this.stompClient.connect({}, frame =>
-            this.stompClient.subscribe('/ws-api/comments', onMes.bind(this)));
-        this.stompClient.send()
+        this.stompClient.connect({}, frame => {
+            this.stompClient.subscribe('/client/comments', onMes.bind(this));
+            this.stompClient.send('/ws-api/get/' + this.props.title);
+        });
     }
 
     sendData() {
@@ -27,8 +29,8 @@ export default class CommentsComponent extends React.PureComponent {
         this.stompClient.send("/ws-api/comment", {}, JSON.stringify(data));
     }
 
-    onReply = (comment, origin, id) =>
-        this.stompClient.send("/ws-api/reply", {}, JSON.stringify({comment, origin, id}));
+    onReply = (comment, id) =>
+        this.stompClient.send("/ws-api/reply", {}, JSON.stringify({comment, origin: this.props.title, id}));
 
     render() {
         return (

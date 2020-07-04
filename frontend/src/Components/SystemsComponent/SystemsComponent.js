@@ -27,11 +27,11 @@ class SystemsComponent extends CalculatorComponent {
     super(props);
     const gausHdl = () => {
         const s = calc();
-        this.setState(this.getNewState({result: s}));
+        this.setState({result: s});
     };
     const runHdl = () => {
           const s = runcalc();
-          this.setState(this.getNewState({result: s}));
+          this.setState({result: s});
     };
     this.state = {
         types: [new Type('Gaus', SystemsComponent.getGaussDescription(), gausHdl.bind(this)), new Type('Tridiagonal matrix', SystemsComponent.getTridiagonalDescription(), runHdl.bind(this))],
@@ -47,7 +47,7 @@ class SystemsComponent extends CalculatorComponent {
           return;
       }
       if(dim)
-        this.setState(this.getNewState({dimension: dim.value, result: null}));
+        this.setState({dimension: dim.value, result: null});
   };
 
   getCalculator = () => {

@@ -3,6 +3,7 @@ package com.numericalanalysis.numericalalanalysisbackend.controllers;
 import com.numericalanalysis.numericalalanalysisbackend.model.Comment;
 import com.numericalanalysis.numericalalanalysisbackend.model.CommentMessage;
 import com.numericalanalysis.numericalalanalysisbackend.model.NewCommentMessage;
+import com.numericalanalysis.numericalalanalysisbackend.model.Origin;
 import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceImpl;
 import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,14 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Date;
 
+//@CrossOrigin(origins = "**")
 @Controller
 public class CommentsController {
 
@@ -35,6 +39,14 @@ public class CommentsController {
         commentService.addComment(new Comment(new Date(),
                 userService.findByEmail(principal.getName()), comment.getComment(), comment.getOrigin()));
         return commentService.getComments(comment.getOrigin());
+    }
+
+
+
+    @MessageMapping("/get/{origin}")
+    @SendTo("/client/comments")
+    public Collection<CommentMessage> getComments(@PathVariable Origin origin) {
+        return commentService.getComments(origin);
     }
 
     @Secured("ROLE_USER")

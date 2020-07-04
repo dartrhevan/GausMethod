@@ -18,13 +18,16 @@ import org.springframework.security.web.authentication.rememberme.InMemoryTokenR
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;*/
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //@EnableAsync(proxyTargetClass=true)
 @EnableCaching(proxyTargetClass=true)
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter  //implements WebMvcConfigurer
+{
 
     @Autowired
     private DataSource dataSource;
@@ -73,9 +76,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
 
+        
+
         http.rememberMe().key("uniqueAndSecret").tokenRepository(persistentTokenRepository());
     }
 
+/**
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("*");
+    }
+*/
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         final JdbcTokenRepositoryImpl impl = new JdbcTokenRepositoryImpl();

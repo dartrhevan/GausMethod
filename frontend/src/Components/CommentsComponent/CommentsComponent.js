@@ -8,19 +8,19 @@ export default class CommentsComponent extends React.PureComponent {
     constructor() {
         super();
         this.state = {comments: null};
-        this.ws = new WebSocket(`${window.location.protocol === "https:" ? 'wss': 'ws'}://${window.location.host}/comments`);
+        const wsUrl = `${window.location.protocol === "https:" ? 'wss': 'ws'}://${window.location.host}/comments`;
+        //this.ws = new WebSocket();
         this.ws.onopen = ev => {this.ws.send(this.props.title)};
         const onMes = mes => {
             console.log(mes.data);
             this.setState({comments: JSON.parse(mes.data)});
         };
         this.ws.onmessage = onMes.bind(this);
-        this.sendData = this.sendData.bind(this);
-
     }
 
     sendData() {
-        $.post('/api/add_comment', {comment: $("#comment").val(), origin: this.props.title});
+        const data = {comment: $("#comment").val(), origin: this.props.title};
+        //$.post('/api/add_comment', );
     }
 
     render() {

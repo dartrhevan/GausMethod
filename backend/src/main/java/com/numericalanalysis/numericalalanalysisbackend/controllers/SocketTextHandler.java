@@ -24,7 +24,7 @@ public class SocketTextHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message)
             throws InterruptedException, IOException, IllegalAccessException {
-        /*session.sendMessage(new TextMessage("Hi " +  " how may we help you?"));*/
+
         Origin o = Origin.valueOf(message.getPayload());
         System.out.println(o);
         sockets.put(session, o);
@@ -35,17 +35,12 @@ public class SocketTextHandler extends TextWebSocketHandler {
 
     @Autowired
     @Qualifier("singleInst")
-    private CommentServiceImpl commentService;// = CommentService.getInstance();
-/*
-    public SocketTextHandler() {
-
-    }*/
+    private CommentServiceImpl commentService;
 
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
-        //sockets.add(session);
         if(commentService.getOnCommentAdd() == null)
             commentService.setOnCommentAdd(ob -> {
 
@@ -55,7 +50,8 @@ public class SocketTextHandler extends TextWebSocketHandler {
                 try {
                     Collection<CommentMessage> cms = commentService.getComments(o);
                     s.sendMessage(new TextMessage(gson.toJson(cms)));
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     e.printStackTrace();
                 }
             });

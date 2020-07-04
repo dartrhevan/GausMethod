@@ -3,25 +3,22 @@ import com.numericalanalysis.numericalalanalysisbackend.controllers.SocketTextHa
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
 
 @Configuration
-@EnableWebSocket
-public class WebSocketsConfig implements WebSocketConfigurer
+@EnableWebSocketMessageBroker
+public class WebSocketsConfig extends AbstractWebSocketMessageBrokerConfigurer
 {
-    @Bean
-    public ServletServerContainerFactoryBean createWebSocketContainer() {
-        ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
-        container.setMaxBinaryMessageBufferSize(1024000);
-        return container;
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/client");
+        config.setApplicationDestinationPrefixes("/ws-api");
     }
 
-    @Autowired
-    private SocketTextHandler socketTextHandler;
-
     @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(/*new SocketTextHandler()*/socketTextHandler, "/comments").setAllowedOrigins("*");
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws").withSockJS();
     }
 }

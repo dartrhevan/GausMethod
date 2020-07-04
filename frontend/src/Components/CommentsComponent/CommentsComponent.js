@@ -13,7 +13,7 @@ export default class CommentsComponent extends React.PureComponent {
         this.state = {comments: null};
         const wsUrl = getWSURL('ws');//`${window.location.protocol === "https:" ? 'wss': 'ws'}://${window.location.host}/ws`;
         const onMes = data =>
-            this.setState({comments: JSON.parse(data)});
+            this.setState({comments: JSON.parse(data.body)});
 
         const socket = new Sock(wsUrl);
 
@@ -24,10 +24,14 @@ export default class CommentsComponent extends React.PureComponent {
         });
     }
 
-    sendData() {
+    componentWillUnmount() {
+        this.stompClient.disconnect();
+    }
+
+    sendData = () => {
         const data = {comment: $("#comment").val(), origin: this.props.title};
         this.stompClient.send("/ws-api/comment", {}, JSON.stringify(data));
-    }
+    };
 
     onReply = (comment, id) =>
         this.stompClient.send("/ws-api/reply", {}, JSON.stringify({comment, origin: this.props.title, id}));

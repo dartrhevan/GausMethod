@@ -8,6 +8,7 @@ import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceI
 import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.access.annotation.Secured;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.websocket.server.PathParam;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Date;
@@ -45,7 +47,8 @@ public class CommentsController {
 
     @MessageMapping("/get/{origin}")
     @SendTo("/client/comments")
-    public Collection<CommentMessage> getComments(@PathVariable Origin origin) {
+    public Collection<CommentMessage> getComments(@DestinationVariable("origin") Origin origin) {
+        System.out.println(origin);
         return commentService.getComments(origin);
     }
 

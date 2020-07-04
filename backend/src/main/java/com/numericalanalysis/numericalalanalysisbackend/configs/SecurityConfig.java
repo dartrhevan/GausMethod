@@ -26,8 +26,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter  //implements WebMvcConfigurer
-{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
@@ -76,19 +75,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  //implements W
                 // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
 
-        
+
 
         http.rememberMe().key("uniqueAndSecret").tokenRepository(persistentTokenRepository());
     }
 
-/**
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000")
-                .allowedMethods("*");
-    }
-*/
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         final JdbcTokenRepositoryImpl impl = new JdbcTokenRepositoryImpl();

@@ -4,6 +4,7 @@ import com.numericalanalysis.numericalalanalysisbackend.model.Comment;
 import com.numericalanalysis.numericalalanalysisbackend.model.CommentMessage;
 import com.numericalanalysis.numericalalanalysisbackend.model.NewCommentMessage;
 import com.numericalanalysis.numericalalanalysisbackend.model.Origin;
+import com.numericalanalysis.numericalalanalysisbackend.services.CommentService;
 import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceImpl;
 import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +22,21 @@ import java.util.Date;
 public class CommentsController {
 
     private final UserService userService;
-    private final CommentServiceImpl commentService;
+    private final CommentService commentService;
 
     @Autowired
-    public CommentsController(UserService userService, @Qualifier("singleInst") CommentServiceImpl commentService) {
+    public CommentsController(UserService userService, @Qualifier("singleInst") CommentService commentService) {
         this.userService = userService;
         this.commentService = commentService;
     }
 
-    @Secured("ROLE_USER")
+
     @MessageMapping("/comment")
     @SendTo("/client/comments")
     public Collection<CommentMessage> comment(NewCommentMessage comment, Principal principal) {
-        commentService.addComment(new Comment(new Date(),
+        System.out.println(principal.getName());
+        if(principal.getName() != null)
+            commentService.addComment(new Comment(new Date(),
                 userService.findByEmail(principal.getName()), comment.getComment(), comment.getOrigin()));
         return commentService.getComments(comment.getOrigin());
     }
@@ -47,11 +50,11 @@ public class CommentsController {
         return commentService.getComments(origin);
     }
 
-    @Secured("ROLE_USER")
     @MessageMapping("/reply")
     @SendTo("/client/comments")
     public Collection<CommentMessage> reply(NewCommentMessage comment, Principal principal) {
-        commentService.addComment(new Comment(new Date(),
+        if(principal.getName() != null)
+            commentService.addComment(new Comment(new Date(),
                 userService.findByEmail(principal.getName()), comment.getComment(), comment.getOrigin()), comment.getId());
         return commentService.getComments(comment.getOrigin());
     }

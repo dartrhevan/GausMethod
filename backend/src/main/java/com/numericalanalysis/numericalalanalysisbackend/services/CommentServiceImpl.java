@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+
 @Primary
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -19,17 +20,8 @@ public class CommentServiceImpl implements CommentService {
     public CommentServiceImpl(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }
+
     private CommentRepository commentRepository;
-
-    private Consumer onCommentAdd;
-
-    public Consumer getOnCommentAdd() {
-        return onCommentAdd;
-    }
-
-    public void setOnCommentAdd(Consumer onCommentAdd) {
-        this.onCommentAdd = onCommentAdd;
-    }
 
     @Override
     public Collection<CommentMessage> getComments(Origin origin){
@@ -40,7 +32,6 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void addComment(Comment comment) {
         commentRepository.save(comment);
-        onCommentAdd.accept(null);
     }
 
     @Override
@@ -50,6 +41,5 @@ public class CommentServiceImpl implements CommentService {
         comment.setNesting(parent.getNesting() + 1);
         parent.getReplies().add(comment);
         commentRepository.saveAndFlush(comment);
-        onCommentAdd.accept(null);
     }
 }

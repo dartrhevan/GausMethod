@@ -18,6 +18,8 @@ import org.springframework.security.web.authentication.rememberme.InMemoryTokenR
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;*/
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //@EnableAsync(proxyTargetClass=true)
 @EnableCaching(proxyTargetClass=true)
@@ -72,6 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
+
+
 
         http.rememberMe().key("uniqueAndSecret").tokenRepository(persistentTokenRepository());
     }

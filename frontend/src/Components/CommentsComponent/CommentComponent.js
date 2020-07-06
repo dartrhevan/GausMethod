@@ -47,7 +47,7 @@ export default class CommentComponent extends React.Component {
     }
 
     sendData = () => {
-        $.post('/api/reply_comment', {comment: $("#reply").val(), origin: this.props.title, id: this.props.id});
+        this.props.onReply($("#reply").val(), this.props.id);
         this.setState({hasReply: false});
     };
 

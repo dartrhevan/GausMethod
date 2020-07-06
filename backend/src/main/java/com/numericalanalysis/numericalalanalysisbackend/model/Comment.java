@@ -11,7 +11,6 @@ import java.util.Objects;
 
 @DynamicUpdate
 @Entity(name = "comment")
-//@Table(name = "comment")
 public class Comment {
     public Origin getOrigin() {
         return origin;
@@ -23,7 +22,8 @@ public class Comment {
 
     private Origin origin;
     private Date date;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+
+    @ManyToOne(optional = false)
     @JoinColumn(name = "author")
     private User author;
     private String comment;
@@ -47,11 +47,6 @@ public class Comment {
     }
 
     private int nesting = 0;
-    /*
-    public void setId(Integer id) {
-        this.id = id;
-    }
-*/
 
     public int returnId() {
         return id;
@@ -95,7 +90,7 @@ public class Comment {
     public Comment() {}
 
     public String toJSON() {
-        Gson gson = new Gson();//GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new Gson();
         return gson.toJson( this );
     }
 

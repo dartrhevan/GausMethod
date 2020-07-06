@@ -18,22 +18,27 @@ import java.io.IOException;
 
 @Controller
 public class IndexController {
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public IndexController(UserService userService) {
+        this.userService=userService;
+    }
+
     @RequestMapping(value = {"/", "equations", "systems", "interpolation", "login", "registration", "user-information"},method = RequestMethod.GET)
     public String index(Model m) {
         return "forward:/index.html";
     }
-    //@ResponseBody
+
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String register(User user, @RequestParam("file")MultipartFile file, HttpServletRequest r, Model model) throws IOException {
-        //System.out.println( user );
+    public String register(User user, @RequestParam("file")MultipartFile file, HttpServletRequest request) throws IOException {
         user.setPassword( encoder.encode( user.getPassword() ) );
         System.out.println(file);
         user.setPhoto(file.getBytes());
         userService.save( user );
-        r.setAttribute( View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
+        request.setAttribute( View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
         return "redirect:/j_spring_security_check";
     }
 

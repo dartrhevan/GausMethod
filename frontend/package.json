@@ -9,7 +9,9 @@
     "react-scripts": "3.2.0",
     "react-router-dom": "^5.1.2",
     "jquery": "^3.4.1",
-    "prop-types": "latest"
+    "prop-types": "latest",
+    "stompjs": "latest",
+    "sockjs-client": "^1.4.0"
   },
   "node": "12.14.0",
   "scripts": {
@@ -32,8 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "jquery": "^3.4.1"
   }
 }

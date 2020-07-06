@@ -11,10 +11,10 @@ import java.util.Objects;
 @Entity(name = "users")
 public class User {
     @Expose(deserialize = true, serialize = false)
-    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Collection<Comment> comments;
     @Id
-    @Column(unique=true)
+    @Column(unique = true)
     @Expose
     private String email;
     @Expose(deserialize = true, serialize = false)

@@ -48,7 +48,7 @@ public class InformationController {
         response.sendRedirect(u.getEmail().equals(principal.getName()) ? "/" : "/logout");
         //return "{\"error\": \"You are not authorized\"}";
     }
-
+/*
     @RequestMapping(value="/reply_comment", method=RequestMethod.POST)
     public String replyComment(String origin,String comment, int id, Model model, Principal principal) {
         System.out.println(origin);
@@ -63,7 +63,7 @@ public class InformationController {
     }
 
     @RequestMapping(value = "/add_comment", method = RequestMethod.POST)
-    public String addComment(String origin,String comment,Model model,Principal principal) {
+    public String addComment(String origin, String comment, Model model,Principal principal) {
         System.out.println(origin);
         if(principal == null)
             //response.sendRedirect("/login");
@@ -73,7 +73,7 @@ public class InformationController {
             //response.sendRedirect(req.getRequestURI());
             return "{}";
         }
-    }
+    }*/
 
     @Autowired
     @Qualifier("singleInst")

@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk12
+  - openjdk11
 node_js:
   - 12.14.0
 before_install: 

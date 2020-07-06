@@ -7,6 +7,7 @@ import com.numericalanalysis.numericalalanalysisbackend.repositories.CommentRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.function.Consumer;
@@ -34,6 +35,7 @@ public class CommentServiceImpl implements CommentService {
         commentRepository.save(comment);
     }
 
+    @Transactional
     @Override
     public void addComment(Comment comment,int parentId) {
         Comment parent = commentRepository.getOne(parentId);

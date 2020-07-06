@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-//@EnableAsync(proxyTargetClass=true)
+
 @EnableCaching(proxyTargetClass=true)
 @Configuration
 @EnableWebSecurity

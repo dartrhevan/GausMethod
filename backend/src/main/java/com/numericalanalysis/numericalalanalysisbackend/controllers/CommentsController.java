@@ -25,7 +25,7 @@ public class CommentsController {
     private final CommentService commentService;
 
     @Autowired
-    public CommentsController(UserService userService, @Qualifier("singleInst") CommentService commentService) {
+    public CommentsController(UserService userService, CommentService commentService) {
         this.userService = userService;
         this.commentService = commentService;
     }

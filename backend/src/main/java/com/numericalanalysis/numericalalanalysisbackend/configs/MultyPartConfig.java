@@ -10,7 +10,7 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import javax.servlet.MultipartConfigElement;
 
 @Configuration
-public class MultyPartConfig{
+public class MultyPartConfig {
     @Bean
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();

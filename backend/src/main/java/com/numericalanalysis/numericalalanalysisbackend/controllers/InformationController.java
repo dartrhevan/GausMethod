@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.numericalanalysis.numericalalanalysisbackend.model.Comment;
 import com.numericalanalysis.numericalalanalysisbackend.model.Origin;
 import com.numericalanalysis.numericalalanalysisbackend.model.User;
+import com.numericalanalysis.numericalalanalysisbackend.services.CommentService;
 import com.numericalanalysis.numericalalanalysisbackend.services.CommentServiceImpl;
 import com.numericalanalysis.numericalalanalysisbackend.services.PasswordDropping;
 import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
@@ -47,7 +48,7 @@ public class InformationController {
         response.sendRedirect(u.getEmail().equals(principal.getName()) ? "/" : "/logout");
     }
     @Autowired
-    private CommentServiceImpl commentService;
+    private CommentService commentService;
     private final Gson gson = new Gson();
 
     @RequestMapping("/drop_password")

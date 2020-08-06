@@ -1,5 +1,6 @@
 package com.numericalanalysis.numericalalanalysisbackend.controllers;
 
+import com.numericalanalysis.numericalalanalysisbackend.configs.SecurityConfig;
 import com.numericalanalysis.numericalalanalysisbackend.model.User;
 import com.numericalanalysis.numericalalanalysisbackend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class IndexController {
          * For correct redirect to <b>POST</b> endpoint
          */
         request.setAttribute( View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
-        return "redirect:/j_spring_security_check";
+        return "redirect:" + SecurityConfig.REGISTRATION_URL;
     }
 
 }

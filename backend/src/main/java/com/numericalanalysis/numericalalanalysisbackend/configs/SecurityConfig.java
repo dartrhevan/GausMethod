@@ -36,6 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final BCryptPasswordEncoder encoder;
 
+    public static final String REGISTRATION_URL = "/j_spring_security_check";
+
     private final UserDetailsServiceImpl userDetailsService;
 
     @Autowired
@@ -69,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/j_spring_security_check")
+                .loginProcessingUrl(REGISTRATION_URL)
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .permitAll();

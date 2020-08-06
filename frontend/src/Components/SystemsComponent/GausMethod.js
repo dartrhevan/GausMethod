@@ -34,7 +34,7 @@ function getSystem() {
     return res;
 }
 
-function calc() {
+export function calc() {
 
     function directMove(sys) { //прямой проход
 
@@ -99,7 +99,7 @@ function calc() {
     return output(sys);
 }
 
-function runcalc() {
+export function runcalc() {
     function runMethod(sys) {
         const us = [];
         const vs = [];
@@ -154,8 +154,3 @@ function runOutput(xs, check) {
     string += '<br/>' + check;
     return string;
 }
-
-module.exports = {
-    calc,
-    runcalc
-};

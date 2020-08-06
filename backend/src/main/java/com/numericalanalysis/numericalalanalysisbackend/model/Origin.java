@@ -1,5 +1,9 @@
 package com.numericalanalysis.numericalalanalysisbackend.model;
 
+/**
+ * Identifies the page
+ * @author dartrhevan
+ */
 public enum Origin {
     Equations(0),
     Systems(1),

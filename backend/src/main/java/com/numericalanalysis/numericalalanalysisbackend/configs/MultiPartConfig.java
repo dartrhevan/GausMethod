@@ -9,8 +9,12 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 
 import javax.servlet.MultipartConfigElement;
 
+/**
+ * Configuration for proper sending and receiving files as multipart
+ * @author dartrhevan
+ */
 @Configuration
-public class MultyPartConfig {
+public class MultiPartConfig {
     @Bean
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();

@@ -21,6 +21,10 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * A configuration of Spring Security used for authorization
+ * @author dartrhevan
+ */
 
 @EnableCaching(proxyTargetClass=true)
 @Configuration
@@ -28,14 +32,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+
+    private final BCryptPasswordEncoder encoder;
+
+    private final UserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    private BCryptPasswordEncoder encoder;
-
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    public SecurityConfig(DataSource dataSource, BCryptPasswordEncoder encoder, UserDetailsServiceImpl userDetailsService) {
+        this.dataSource = dataSource;
+        this.encoder = encoder;
+        this.userDetailsService = userDetailsService;
+    }
 
     // регистрируем нашу реализацию UserDetailsService
     // а также PasswordEncoder для приведения пароля в формат SHA1
@@ -80,10 +88,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.rememberMe().key("uniqueAndSecret").tokenRepository(persistentTokenRepository());
     }
 
+    /**
+     * Initialize if needed and retrieve a token repository for <i>remember me</i> function
+     * @return token repository
+     */
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         final JdbcTokenRepositoryImpl impl = new JdbcTokenRepositoryImpl();
-
         impl.setDataSource(dataSource);
         impl.getJdbcTemplate().execute("create table if not exists persistent_logins(" +
                 " username varchar(50) not null," +

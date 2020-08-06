@@ -21,8 +21,14 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api")
 public class InformationController {
+
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public InformationController(UserService userService, PasswordDropping passwordDropping) {
+        this.userService = userService;
+        this.passwordDropping = passwordDropping;
+    }
 
     @RequestMapping(value = {"/get_user_data"},method = RequestMethod.GET)
     public String getUserData(Model m, Principal principal) {
@@ -47,13 +53,10 @@ public class InformationController {
         userService.edit( principal.getName(), newPassword, u );
         response.sendRedirect(u.getEmail().equals(principal.getName()) ? "/" : "/logout");
     }
-    @Autowired
-    private CommentService commentService;
-    private final Gson gson = new Gson();
 
     @RequestMapping("/drop_password")
     public String dropPassword(String email, Model model) {
-        try{
+        try {
             passwordDropping.dropPassword(email);
             return "Password has been successfully dropped";
         }
@@ -63,8 +66,7 @@ public class InformationController {
         }
     }
 
-    @Autowired
-    private PasswordDropping passwordDropping;
+    private final PasswordDropping passwordDropping;
     @ResponseBody
     @RequestMapping("/get_photo")
     public byte[] getPhoto(String email, Model model) {

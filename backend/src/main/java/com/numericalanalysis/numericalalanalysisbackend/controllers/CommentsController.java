@@ -42,7 +42,6 @@ public class CommentsController {
     }
 
 
-
     @MessageMapping("/get/{origin}")
     @SendTo("/client/comments")
     public Collection<CommentMessage> getComments(@DestinationVariable("origin") Origin origin) {

@@ -11,6 +11,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from users u where u.email = :email")
     User findByEmail(@Param("email")String email);
 
+    /**
+     * Edit data of an existing user
+     */
     @Transactional
     @Modifying
     @Query("UPDATE users u SET u.email = ?2, u.password = ?3, u.age = ?4, u.nickname = ?5, u.activity = ?6, u.photo = ?7 WHERE u.email = ?1")

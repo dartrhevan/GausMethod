@@ -18,26 +18,43 @@ import java.io.IOException;
 
 @Controller
 public class IndexController {
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    private final BCryptPasswordEncoder encoder;
 
     private final UserService userService;
 
     @Autowired
-    public IndexController(UserService userService) {
+    public IndexController(BCryptPasswordEncoder encoder, UserService userService) {
+        this.encoder = encoder;
         this.userService=userService;
     }
 
+    /**
+     * Redirects the request to allow react-router handle them
+     * @return - redirecting to index.html
+     */
     @RequestMapping(value = {"/", "equations", "systems", "interpolation", "login", "registration", "user-information"},method = RequestMethod.GET)
     public String index(Model m) {
         return "forward:/index.html";
     }
 
+    /**
+     * Registration
+     * @param user - user to be registered
+     * @param photo - MultiPart image file to save as an user's photo
+     * @param request - used for correct redirect to <b>POST</b> endpoint
+     * @return - redirection to Spring Secure login path
+     * @throws IOException
+     */
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String register(User user, @RequestParam("file")MultipartFile file, HttpServletRequest request) throws IOException {
+    public String register(User user, @RequestParam("photo")MultipartFile photo, HttpServletRequest request) throws IOException {
         user.setPassword( encoder.encode( user.getPassword() ) );
-        System.out.println(file);
-        user.setPhoto(file.getBytes());
+        System.out.println(photo);
+        user.setPhoto(photo.getBytes());
         userService.save( user );
+        /**
+         * For correct redirect to <b>POST</b> endpoint
+         */
         request.setAttribute( View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
         return "redirect:/j_spring_security_check";
     }

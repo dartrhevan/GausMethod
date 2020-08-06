@@ -9,14 +9,21 @@ import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
 import javax.servlet.Filter;
 
+/**
+ * Websockets configuration
+ * @author dartrhevan
+ */
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketsConfig extends AbstractWebSocketMessageBrokerConfigurer
 {
+    /**
+     * Register prefixes for clients to subscribe and send respectively
+     */
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/client");
-        config.setApplicationDestinationPrefixes("/ws-api");
+        config.enableSimpleBroker("/client");//prefix of client subscription and "SendTo"
+        config.setApplicationDestinationPrefixes("/ws-api");//prefix of controller's endpoints
     }
 
     /**
@@ -27,8 +34,12 @@ public class WebSocketsConfig extends AbstractWebSocketMessageBrokerConfigurer
         return new SecurityContextHolderAwareRequestFilter();
     }
 
+    /**
+     * Required for correct passing of authorization data
+     */
     @Bean
-    public FilterRegistrationBean deactivateSecurityContextHolderAwareRequestFilter(@Qualifier("securityContextHolderAwareRequestFilter") SecurityContextHolderAwareRequestFilter filter) {
+    public FilterRegistrationBean deactivateSecurityContextHolderAwareRequestFilter(
+            @Qualifier("securityContextHolderAwareRequestFilter") SecurityContextHolderAwareRequestFilter filter) {
         return deactivate(filter);
     }
 
@@ -39,6 +50,9 @@ public class WebSocketsConfig extends AbstractWebSocketMessageBrokerConfigurer
         return registrationBean;
     }
 
+    /**
+     * Register websocket endpoint for clients to connect
+     */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws").setAllowedOrigins("http://localhost:3000").withSockJS();

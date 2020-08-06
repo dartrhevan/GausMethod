@@ -11,19 +11,9 @@ import com.google.common.base.Strings;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
-
-    @Override
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    @Override
-    public PasswordEncoder getEncoder() {
-        return encoder;
     }
 
     @Override

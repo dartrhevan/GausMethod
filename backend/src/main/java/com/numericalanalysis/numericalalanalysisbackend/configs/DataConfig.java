@@ -18,6 +18,10 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Database configuration
+ * @author dartrhevan
+ */
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("com.numericalanalysis.numericalalanalysisbackend")
@@ -29,6 +33,10 @@ public class DataConfig {
     @Resource
     private Environment env;
 
+    /**
+     * Sets the database connection data from the environment
+     * @return DataSource
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -40,6 +48,9 @@ public class DataConfig {
         return dataSource;
     }
 
+    /**
+     * Configure objects mapping with Hibernate
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -59,6 +70,10 @@ public class DataConfig {
         return transactionManager;
     }
 
+    /**
+     * Configure Hibernate
+     * @return Hibernate params
+     */
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.put(PROP_HIBERNATE_DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
